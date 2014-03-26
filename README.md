@@ -1,9 +1,9 @@
 Dog-Diabetes
 ============
-
-Group Members:
-Elizabeth Britton
-Vincent Do
-Robert Glynn
-Jared Rodman
-Tobi Idowu
+<br>
+Group Members:<br> <br>
+Elizabeth Britton<br>
+Vincent Do<br>
+Robert Glynn<br>
+Jared Rodman<br>
+Tobi Idowu<br>
