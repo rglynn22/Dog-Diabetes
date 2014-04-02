@@ -5,17 +5,57 @@
 	<title> Training Session</title>
 	<h1> Training Session</h1>
 </head>
+
+<script>
+var successCount = 0;
+var missCount = 0;
+var falseCount = 0;
+var trialCount = 0;
+
+function recordSuccess() {
+	successCount++;
+	document.getElementById("success_tally").innerHTML = successCount + "";
+	trialCount++;
+	document.getElementById("trial_tally").innerHTML = trialCount + "";
+}
+
+function recordMiss() {
+	missCount++;
+	document.getElementById("miss_tally").innerHTML = missCount + "";
+	trialCount++;
+	document.getElementById("trial_tally").innerHTML = trialCount + ""; 
+}
+
+function recordFalseAlert() {
+	falseCount++;
+	document.getElementById("false_tally").innerHTML = falseCount + "";
+	trialCount++;
+	document.getElementById("trial_tally").innerHTML = trialCount + "";
+}
+
+function endSession() {
+	window.location = 'dog-menu.ejs';
+	//store variables to DB
+}
+
+
+</script>
+
+</head>
 <body>
 
-<button type="button" onclick="">Success</button>
-<button type="button" onclick="">Miss</button>
-<button type="button" onclick="">False Alert</button>
+<button type="button" onclick="recordSuccess()">Success</button>
+<button type="button" onclick="recordMiss()">Miss</button>
+<button type="button" onclick="recordFalseAlert()">False Alert</button>
 
-<div class="button">
-	<a href="dog-menu.ejs">
-		End Session
-	</a>
-</div>
+<div> S: <span id="success_tally"> 0 </div>
+<div> M: <span id="miss_tally"> 0 </div> 
+<div> F: <span id="false_tally"> 0 </div> 
+<div> Total: <span id="trial_tally"> 0 </div> 
+
+<br> </br>
+<button type="button" onclick="endSession()">End Session</button>
+
 
 </body>
 </html>
