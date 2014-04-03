@@ -36,6 +36,15 @@ var getAllTrainingSessions = function(req, res) {
 
 // Handler to get a single training session for a particular dog
 var getTrainingSession = function(req, res) {
+  var sessionID = req.query.uuid;
+  db.getTrainingSession(sessionID, function(data, err){
+    if (err) {
+      res.send(500);
+    }
+    else {
+      res.send(data);
+    }
+  })
 
 }
 
@@ -50,7 +59,24 @@ var getTrainingSession = function(req, res) {
 
 // Handler to add new training session to database
  var postAddTrainingSession = function(req, res) {
-    
+  var formData = {};
+  formData.sessionID = req.body.uuid;
+  formData.location = req.body.location;
+  formData.canister = req.body.canister;
+  formData.handler = req.body.handler;
+  formData.sample_num = req.body.sample_num;
+  formData.sample_info = req.body.sample_info;
+  formData.sample_time = req.body.sample_time;
+  formData.duration = req.body.duration;
+
+  db.addTrainingSession(formData, function(data, err) {
+    if (err) {
+      res.send(500);
+    }
+    else {
+      res.send(data);
+    }
+  })    
  }
 
 // Expose call backs to app controller
