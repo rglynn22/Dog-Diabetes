@@ -6,7 +6,12 @@ var db = require('../models/parseDB.js');
 
 // Handler for main / home page
 var getMain = function(req, res) {
+  res.render('index.ejs');
+}
 
+// Handler for new training session page
+var getNewTrainingSession = function(req, res) {
+  res.render('new-session.ejs');
 }
 
 // Handler for dog selection page
@@ -82,10 +87,11 @@ var getTrainingSession = function(req, res) {
 // Expose call backs to app controller
 var routes = {
     get_main = getMain,
+    get_new_training_session = getNewTrainingSession,
     get_all_dogs = getAllDogs,
     get_dog_info = getDogInfo,
     get_all_training_sessions = getAllTrainingSessions,
-    get_training_session = get_training_session
+    get_training_session = getTrainingSession
 };
 
 module.exports = routes;
