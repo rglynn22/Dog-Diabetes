@@ -38,15 +38,14 @@ function endSession() {
 	//store variables to session in DB
 }
 
-
 </script>
 
 </head>
 <body>
 
-<button type="button" onclick="recordSuccess()">Success</button>
-<button type="button" onclick="recordMiss()">Miss</button>
-<button type="button" onclick="recordFalseAlert()">False Alert</button>
+<button id="successbutton" type="button" onclick="recordSuccess()">Success</button>
+<button id="missbutton" type="button" onclick="recordMiss()">Miss</button>
+<button id="falsebutton" type="button" onclick="recordFalseAlert()">False Alert</button>
 
 <div> S: <span id="success_tally"> 0 </div>
 <div> M: <span id="miss_tally"> 0 </div> 
@@ -55,7 +54,6 @@ function endSession() {
 
 <br> </br>
 <button type="button" onclick="endSession()">End Session</button>
-
 
 </body>
 </html>
