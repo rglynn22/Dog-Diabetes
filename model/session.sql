@@ -1,4 +1,4 @@
-CREATE TABLE Session {
+CREATE TABLE Session (
   id varchar(32) NOT NULL PRIMARY KEY,
   dogID varchar(32) NOT NULL FOREIGN KEY,
   location varchar (32) NOT NULL,
@@ -8,4 +8,4 @@ CREATE TABLE Session {
   sample_info int NOT NULL,
   time varchar(32) NOT NULL,
   duration varchar(32) NOT NULL
-}
+)
