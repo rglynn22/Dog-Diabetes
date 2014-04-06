@@ -18,14 +18,3 @@ app.get('/getsession', routes.get_training_session);
 /* Run the server */
 app.listen(3000);
 console.log('Server running on port 3000. Now open http://localhost:3000/ in your browser!');
-
-//connect to DATABASE_URL 
-var pg = require('pg');
-
-pg.connect(process.env.DATABASE_URL, function(err, client, done) {
-  client.query('SELECT * FROM your_table', function(err, result) {
-    done();
-    if(err) return console.error(err);
-    console.log(result.rows);
-  });
-});
