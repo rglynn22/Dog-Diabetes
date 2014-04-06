@@ -8,7 +8,6 @@
    "dependencies": {
       "express": "*",
       "ejs": "*",
-      "parse": "*",
 	  "pg": "*"
    },
    "repository": {
