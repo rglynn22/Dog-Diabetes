@@ -1,7 +1,8 @@
 var db = require('../models/parseDB.js');
 
+
 /*********************************************
-  Callbacks for GET requests
+  Callbacks for Page Loads
  *********************************************/
 
 // Handler for main / home page
@@ -10,19 +11,33 @@ var getMain = function(req, res) {
 }
 
 // Handler for new training session page
-var getNewTrainingSession = function(req, res) {
+var getNewTrainingSessionPage = function(req, res) {
   res.render('new-session.ejs');
 }
 
+// Handler for displaying session page
+var getSession = function(req, res) {
+  res.render('session.ejs');
+}
+
+// Handler for displaying page for adding dog
+var getAddDogPage = function(req, res) {
+  res.render('add-dog.ejs');
+}
+
+// Handler for displaying session summary page
+var getSessionSummaryPage = function(req, res) {
+  res.render('session-summary.ejs')
+}
+
 // Handler for dog selection page
-var getDogSelection = function(req, res) {
-
+var getDogSelectionMenu = function(req, res) {
+  res.render('dog-menu.ejs')
 }
 
-// Handler for training session selection
-var getTrainingSelection = function(req, res) {
-
-}
+/*********************************************
+  Callbacks for GET requests
+ *********************************************/
 
 // Handler to get all dogs
 var getAllDogs = function(req, res) {
