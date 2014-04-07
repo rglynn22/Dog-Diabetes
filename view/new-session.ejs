@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>New Training Session</title>
+</head>
+<body>
+<<<<<<< HEAD:block.html
+	<h1>New Training Block</h1>
+	<form>
+=======
+	<form id="new-training-form">
+		<div class="tb field" visibility="hidden">
+			UUID: <input type="text" id="uuid" name="uuid">
+		</div>
+>>>>>>> FETCH_HEAD:view/new-session.ejs
+		<div class="tb field">
+			Location: <input type="text" id="location" name="location" required> 
+		</div>
+		<div class="tb field">
+			Canister position: <input type="text" id="canister" name="canister" required>
+		</div>
+		<div class="tb field">
+			Handler: <input type="text" id="handler" name="handler" required>
+		</div>
+		<div class="tb field">
+			Sample Number: <input type="text" id="sample_num" name="sample_num" required>
+		</div>
+		<div class="tb field">
+			Sample Usage Information: <input type="text" id="sample_info" name="sample_info" required>
+		</div>
+		<!-- Automate later -->
+		<div class="tb field">
+			Time Obtained: <input type="text" id="sample_time" name="sample_time" required>
+		</div>
+		<div class="tb field">
+			Length of Session: <input type="text" id="duration" name="duration" required>
+		</div>
+		<div class="tb button">
+			<input type="submit" value="Begin Session">
+		</div>
+	</form>
+	
+	<div class="button">
+		<a href="dog-menu.ejs">
+			Back to Dog Menu
+		</a>
+	</div>
+</body>
+</html>
