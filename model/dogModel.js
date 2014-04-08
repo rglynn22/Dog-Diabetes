@@ -1,7 +1,7 @@
 var pg = require('pg');
 
 // Fill this in when database is set up
-var DATABASE_URL = '';
+var DATABASE_URL = process.env.DATABASE_URL;
 
 // Example of how to run a query
 var getDogInfo = function(dogId, route_callbck) {
