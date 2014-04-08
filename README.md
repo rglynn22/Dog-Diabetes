@@ -1,5 +1,4 @@
-Dog-Diabetes
-============
+#Dog-Diabetes
 
 ##Group Members:
 
@@ -7,7 +6,7 @@ Dog-Diabetes
 * Vincent Do
 * Robert Glynn
 * Jared Rodman
-*Tobi Idowu
+* Tobi Idowu
 
 ## Build Instruction
 
