@@ -1,0 +1,10 @@
+How to run the app:
+0) if you have no node_modules folder in your directory 
+      --> in command line type "npm install" 
+1) in command line type "node app.js"
+2) open localhost:3000 in browser to view app
+
+How to use database: 
+err = null or error message
+client = connection to your database
+done = ???

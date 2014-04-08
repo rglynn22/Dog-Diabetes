@@ -22,5 +22,5 @@ var getSessionInfo = function(sessionId, route_callbck) {
 }
 
 var sessionModel = {
-  getSessionInfo = model_getSessionInfo
+  getSessionInfo: model_getSessionInfo
 }

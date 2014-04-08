@@ -15,14 +15,17 @@ var getDogInfo = function(dogId, route_callbck) {
         if (err) {
           console.log("Error running specified query" + err);
         }
-        else route_callbck(result, null);
+        else {
+          console.log(result);
+          route_callbck(result, null);
+        }
       })
     }    
   })
 }
 
 var dogModel = {
-  getDogInfo = model_getDogInfo
+  getDogInfo: model_getDogInfo
 }
 
 module.export(dogModel);
