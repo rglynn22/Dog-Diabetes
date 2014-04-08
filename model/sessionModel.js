@@ -6,7 +6,7 @@ var DATABASE_URL = process.env.DATABASE_URL;
 // Example of how to run a query
 var getSessionInfo = function(sessionId, route_callbck) {
 
-  pg.connect(DATABASE_URL, function(err, client, done) {
+  pg.connect(DATABASE_URL, function(err, client) {
     if (err) {
       console.log('Error connecting to database' + err);
     }
