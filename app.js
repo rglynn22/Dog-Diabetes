@@ -16,5 +16,6 @@ app.get('/', routes.get_main);
 app.get('/getsession', routes.get_training_session);
 
 /* Run the server */
-app.listen(3000);
-console.log('Server running on port 3000. Now open http://localhost:3000/ in your browser!');
+var port = Number(process.env.PORT || 3000)
+app.listen(port);
+console.log('Server running on port ' + port);
