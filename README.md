@@ -8,6 +8,7 @@
 * Jared Rodman
 * Tobi Idowu
 
+
 ## Build Instruction
 
 Make sure you have nodejs installed. In the main directory run this command
@@ -17,6 +18,13 @@ npm install
 ~~~~
 
 This should install all of the dependencies required for you to run the app.
+
+**
+Please note that at the time being, I have not added instruction for a creating a local dev environement. So if you run the app locally, I DO NOT believe that you will have access to the database. If you want, go ahead and look up instruction to install a local instance of postgresql (which should not be too difficult). Otherwise, to test your code, follow the isntruction below to push your code to heroku.
+
+Note that this is bad practice because that is our development site. If your code is bad, you WILL break the build and the app will be terminated. I will figure out a way to integrate the remote DB locally at some point, or if anyone of you would like to venture and try, feel free to do so.
+**
+
 
 ## Installing Heroku
 
