@@ -7,5 +7,9 @@ CREATE TABLE Session (
   sample_number int NOT NULL,
   sample_info int NOT NULL,
   time varchar(32) NOT NULL,
-  duration varchar(32) NOT NULL
+  duration varchar(32) NOT NULL,
+  successes int NOT NULL,
+  misses int NOT NULL,
+  false_alerts int NOT NULL,
+  total_trials int NOT NULL
 )
