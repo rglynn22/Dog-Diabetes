@@ -13,9 +13,17 @@ app.use('/js', express.static(path.join(__dirname, '/views/js')));
 app.use(express.session({secret:'48112959837082048697'}));
 
 app.get('/', routes.get_main);
+<<<<<<< HEAD
 app.get('/getsession', routes.get_training_session);
 app.post('/postsessionresults', routes.post_session_results);
 
+=======
+// app.get('/adddog', routes.get_add_dog);
+app.get('/newsession', routes.get_new_training_session);
+app.get('/session', routes.get_session);
+app.get('/sessionsummary', routes.get_session_summary);
+app.get('/doginfo/:dogname', routes.get_dog_info);
+>>>>>>> FETCH_HEAD
 
 /* Run the server */
 var port = Number(process.env.PORT || 3000)
