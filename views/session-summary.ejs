@@ -2,10 +2,11 @@
 <html>
 <head>
 	<title>Training Session Summary</title>
+	<link type="text/css" rel="stylesheet" href="css/stylesheet.css"/>
 </head>
 <body>
 	<h1>Training Session Summary</h1>  
-	<%if (summary && stats) { %>
+	<%if (summary != null && stats != null) { %>
 		<div> 
 			Dog: <%= summary.dog%>
 		</div>
@@ -28,7 +29,7 @@
 			Sample Number: <%= summary.sample_num%>
 		</div>
 		<div> 
-			Sample Usage Information: <%= summary.sample_use%>
+			Sample Usage Information: <%= summary.sample_info%>
 		</div>
 		
 		<p>

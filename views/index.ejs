@@ -2,19 +2,21 @@
 <html>
 <head>
 	<title>Main Menu</title>
+	<link type="text/css" rel="stylesheet" href="css/stylesheet.css"/>
 <script>
 //Dog Array
 </script>
 </head>
 <body>
 	<h1>Dogs</h1>
-  	<% if (results) {%>
-		<% for (i = 0; i < results.length;i++) {%>
+  	<% if (results != null) {%>
+		<% for (i = 0; i < results.length; i++) {%>
 			<div class="select_dog button">
 				<%= results[i].name%>
 			</div>
 		<% } %>
+	<% } else { %>
+		<div> Add New Dog </div>
 	<% } %>
-  </table>
 </body>
 </html>
