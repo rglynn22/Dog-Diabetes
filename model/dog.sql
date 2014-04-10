@@ -3,3 +3,6 @@ CREATE TABLE Dog (
   name varchar(32) NOT NULL,
   age int NOT NULL
 )
+
+INSERT INTO Dog (id, name, age) VALUES ('1','Fido', '3');
+INSERT INTO Dog (id, name, age) VALUES ('2','Spot', '5');
