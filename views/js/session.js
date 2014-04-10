@@ -26,7 +26,6 @@ function recordFalseAlert() {
 }
 
 function endSession() {
-	storeSessionResults;
+	//call storeSessionResults;
 	window.location = 'dog-menu.ejs';
-	//store variables to session in DB
 }
