@@ -14,6 +14,7 @@ app.use(express.session({secret:'48112959837082048697'}));
 
 app.get('/', routes.get_main);
 app.get('/getsession', routes.get_training_session);
+app.post('/postsessionresults', routes.post_session_results);
 
 
 /* Run the server */

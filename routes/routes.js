@@ -96,6 +96,25 @@ var getTrainingSession = function(req, res) {
     }
   })    
  }
+ 
+ 
+var postSessionResults = function(req, res) {
+  var db = require('./model/sessionModel.js');
+  var sessionID = req.query.uuid;
+  var s = req.parameters
+  var m = 
+  var f = 
+  var t = 
+  
+  db.postSessionResults(sessionID, s, m, f, t, function(data, err) {
+    if (err) {
+      res.send(500);
+    }
+    else {
+      res.send(data);
+    }
+  })    
+ } 
 
 // Expose call backs to app controller
 var routes = {
@@ -104,7 +123,8 @@ var routes = {
     get_all_dogs: getAllDogs,
     get_dog_info: getDogInfo,
     get_all_training_sessions: getAllTrainingSessions,
-    get_training_session: getSession
+    get_training_session: getSession,
+	post_session_results: postSessionResults
 	
 };
 

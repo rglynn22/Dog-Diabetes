@@ -1,4 +1,3 @@
-//var sessionModel = require('./model/sessionModel.js') 
 var successCount = 0;
 var missCount = 0;
 var falseCount = 0;
@@ -26,6 +25,6 @@ function recordFalseAlert() {
 }
 
 function endSession() {
-	//call storeSessionResults;
+	// postAddSessionResults(successCount, missCount, falseCount, trialCount);
 	window.location = 'dog-menu.ejs';
 }

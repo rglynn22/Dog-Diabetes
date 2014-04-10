@@ -22,14 +22,14 @@ var getSessionInfo = function(sessionId, route_callbck) {
 }
 
 
-var storeSessionResults = function(sessionId, route_callbck) {
+var postSessionResults = function(sessionId, s, m, f, t, route_callbck) {
     
 	pg.connect(DATABASE_URL, function(err, client) {
       if (err) {
         console.log('Error connecting to database' + err);
       }
       else {
-        client.query("INSERT INTO session(successes, misses, false_alerts, total_trials) VALUES(successCount, missCount, falseCount, trialCount);");
+        client.query("UPDATE session SET successes=s, misses=m, false_alerts=f, total_trials=t WHERE id = sessionId;");
       }    
     })
 }
