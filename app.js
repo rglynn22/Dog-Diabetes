@@ -15,6 +15,7 @@ app.use(express.session({secret:'48112959837082048697'}));
 app.get('/', routes.get_main);
 app.get('/getsession', routes.get_training_session);
 
+
 /* Run the server */
 var port = Number(process.env.PORT || 3000)
 app.listen(port);

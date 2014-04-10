@@ -104,7 +104,8 @@ var routes = {
     get_all_dogs: getAllDogs,
     get_dog_info: getDogInfo,
     get_all_training_sessions: getAllTrainingSessions,
-    get_training_session: getTrainingSession
+    get_training_session: getSession
+	
 };
 
 module.exports = routes;
