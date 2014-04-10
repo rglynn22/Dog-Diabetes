@@ -21,6 +21,20 @@ var getSessionInfo = function(sessionId, route_callbck) {
   })
 }
 
+
+var storeSessionResults = function(sessionId, route_callbck) {
+    
+	pg.connect(DATABASE_URL, function(err, client) {
+      if (err) {
+        console.log('Error connecting to database' + err);
+      }
+      else {
+        client.query("INSERT INTO session(successes, misses, false_alerts, total_trials) VALUES(successCount, missCount, falseCount, trialCount);");
+      }    
+    })
+}
+
 var sessionModel = {
-  getSessionInfo: model_getSessionInfo
+  getSessionInfo: getSessionInfo,
+  storeSessionResults: storeSessionResults
 }
