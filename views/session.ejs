@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<link type="text/css" rel="stylesheet" href="stylesheet.css"/>
+	<title> Training Session</title>
+	<h1> Training Session</h1>
+
+<script src="js/session.js"></script>
+
+</head>
+<body>
+
+<button id="successbutton" type="button" onclick="recordSuccess()">Success</button>
+<button id="missbutton" type="button" onclick="recordMiss()">Miss</button>
+<button id="falsebutton" type="button" onclick="recordFalseAlert()">False Alert</button>
+
+<div> S: <span id="success_tally"> 0 </div>
+<div> M: <span id="miss_tally"> 0 </div> 
+<div> F: <span id="false_tally"> 0 </div> 
+<div> Total: <span id="trial_tally"> 0 </div> 
+
+<br> </br>
+<button type="button" onclick="endSession()">End Session</button>
+
+</body>
+</html>
