@@ -12,7 +12,9 @@
   	<% if (results != null) {%>
 		<% for (i = 0; i < results.length; i++) {%>
 			<div class="select_dog button">
-				<%= results[i].name%>
+				<a href="doginfo/<%= results[i].name%>">
+					<%= results[i].name%>
+				</a>
 			</div>
 		<% } %>
 	<% } else { %>
