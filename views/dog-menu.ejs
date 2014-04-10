@@ -1,27 +1,28 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<link type="text/css" rel="stylesheet" href="stylesheet.css"/>
+	<link type="text/css" rel="stylesheet" href="css/stylesheet.css"/>
 	<title>Dog Menu</title>
 </head>
 <body>
 	<h1>Dog Menu</h1>
-<div class="nav button">
-	<a href="index.ejs">
-		Back to Main Menu
-	</a>
-</div>
+	<% if (name) { %> <h2><%= name %></h2> <% } %>
 <div class="nav button">
 	<a href="new-session.ejs">
 		New Training Session
 	</a>
 </div>
-<% if (results) {%>
-	<% for (i = 0; i < results.length;i++) {%>
-		<div class="past_session button">
-			<%= results[i].date%>
+<% if (sessions) {%>
+	<% for (i = 0; i < sessions.length;i++) {%>
+		<div class="past_session button" id=""+<%=sessions[i].uuid%>>
+			<%= sessions[i].date%>
 		</div>
 	<% } %>
 <% } %>
+<div class="nav button">
+	<a href="index.ejs">
+		Back to Main Menu
+	</a>
+</div>
 </body>
 </html>
