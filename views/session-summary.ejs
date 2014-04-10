@@ -2,59 +2,62 @@
 <html>
 <head>
 	<title>Training Session Summary</title>
-	<h1>Training Session Summary</h1>  
 </head>
 <body>
-	<div> 
-		Dog: 
-	</div>
-	<div> 
-		Date: 
-	</div>
-	<div> 
-		Time: 
-	</div>
-	<div> 
-		Location: 
-	</div>
-	<div> 
-		Cansiter Location: 
-	</div>
-	<div> 
-		Handler: 
-	</div>
-	<div> 
-		Sample Number: 
-	</div>
-	<div> 
-		Sample Usage Information: 
-	</div>
-	
-	<p>
+	<h1>Training Session Summary</h1>  
+	<%if (summary && stats) { %>
 		<div> 
-			- Session Stats - 
+			Dog: <%= summary.dog%>
 		</div>
 		<div> 
-			Length of Session: 
+			Date: <%= summary.date%>
 		</div>
 		<div> 
-			Number of Trials: 
+			Time: <%= summary.time%>
 		</div>
 		<div> 
-			Successes: 
+			Location: <%= summary.location%>
 		</div>
 		<div> 
-			Misses: 
+			Cansiter Location: <%= summary.canister%>
 		</div>
 		<div> 
-			False Alerts: 
+			Handler: <%= summary.handler%>
 		</div>
 		<div> 
-			Notes: 
+			Sample Number: <%= summary.sample_num%>
 		</div>
-	</p>
-
-<div class="button">
+		<div> 
+			Sample Usage Information: <%= summary.sample_use%>
+		</div>
+		
+		<p>
+			<div> 
+				- Session Stats - 
+			</div>
+			<div> 
+				Length of Session: <%= stats.duration%>
+			</div>
+			<div> 
+				Number of Trials: <%= stats.trials%>
+			</div>
+			<div> 
+				Successes: <%= stats.success%>
+			</div>
+			<div> 
+				Misses: <%= stats.miss%>
+			</div>
+			<div> 
+				False Alerts: <%= stats.false_alert%>
+			</div>
+			<div> 
+				Notes: <%= stats.notes%>
+			</div>
+		</p>
+	<% } else { %>
+		<div> Error reading session. </div>
+	<% } %>
+<div class="nav button">
 	<a href="index.ejs">
 		Back to Main Menu
 	</a>

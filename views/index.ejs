@@ -1,14 +1,20 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Session Options</title>
-	<title> </title>
 	<title>Main Menu</title>
 <script>
 //Dog Array
 </script>
 </head>
 <body>
-	<h1>Session Options</h1>
+	<h1>Dogs</h1>
+  	<% if (results) {%>
+		<% for (i = 0; i < results.length;i++) {%>
+			<div class="select_dog button">
+				<%= results[i].name%>
+			</div>
+		<% } %>
+	<% } %>
+  </table>
 </body>
 </html>

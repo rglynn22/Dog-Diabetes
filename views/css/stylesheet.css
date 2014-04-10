@@ -24,8 +24,10 @@ div {
     text-align: center;
     
 }
-a
-{
+a {
     text-decoration: none;
     font-family: Univers, sans-serif;
 }
+div.button{}
+div.select_dog{}
+div.nav{}

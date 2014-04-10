@@ -8,7 +8,7 @@
    "dependencies": {
       "express": "*",
       "ejs": "*",
-	  "pg": "*"
+	   "pg": "*"
    },
    "repository": {
       "type": "git",
