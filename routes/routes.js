@@ -4,6 +4,10 @@ var dogDB = require('./model/dogModel.js');
   Callbacks for Page Loads
  *********************************************/
 
+/*********************************************
+  Callbacks for Page Loads
+ *********************************************/
+
 // Handler for main / home page
 var getMain = function(req, res) {
   // change dogs to pull from backend
@@ -20,6 +24,7 @@ var getNewTrainingSession = function(req, res) {
 // Handler for displaying session page
 var getSession = function(req, res) {
   res.render('session.ejs');
+  //res.post(req, postAddTrainingSession);
 }
 
 var getAllSessions = function(req, res) {
@@ -113,6 +118,7 @@ var getTrainingSession = function(req, res) {
 // Handler to add new training session to database
  var postAddTrainingSession = function(req, res) {
   var formData = {};
+  var db = require("./model/sessionModel.js")
   formData.sessionID = req.body.uuid;
   formData.location = req.body.location;
   formData.canister = req.body.canister;
@@ -161,6 +167,9 @@ var routes = {
 <<<<<<< HEAD
     get_all_training_sessions: getAllTrainingSessions,
     get_training_session: getSession,
+<<<<<<< HEAD
+	post_training_session_info: postAddTrainingSession
+=======
 	post_session_results: postSessionResults
 =======
     // get_add_dog: getAddDog,
@@ -169,6 +178,7 @@ var routes = {
     get_all_dogs: getAllDogs,
     get_all_training_sessions: getAllTrainingSessions,
 	get_all_sessions: getAllSessions
+>>>>>>> FETCH_HEAD
 >>>>>>> FETCH_HEAD
 	
 };
