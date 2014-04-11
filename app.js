@@ -23,6 +23,7 @@ app.get('/newsession', routes.get_new_training_session);
 app.get('/session', routes.get_session);
 app.get('/sessionsummary', routes.get_session_summary);
 app.get('/doginfo/:dogname', routes.get_dog_info);
+app.get('/getsessions/:dogname', routes.getAllSessions);
 >>>>>>> FETCH_HEAD
 
 /* Run the server */

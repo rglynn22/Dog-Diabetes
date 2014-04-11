@@ -25,6 +25,16 @@ function recordFalseAlert() {
 }
 
 function endSession() {
-	// postAddSessionResults(successCount, missCount, falseCount, trialCount);
-	window.location = 'dog-menu.ejs';
+    //getelememnetbyiD to get session id
+	var url = '/postsessionresults';
+	var results = [ { "s":successCount, "m":missCount, "f":falseCount, "t":trialCount} ]
+	
+	$.post(url, results, function(data, status) {
+      if (status == 'success') {
+        window.location.replace('/getsessions?dogid='+uuid);
+      }
+      else {
+        alert('Failed to store session results. Please try again!');
+      }
+    })
 }
