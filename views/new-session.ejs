@@ -3,16 +3,20 @@
 <head>
 	<title>New Training Session</title>
 </head>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src = "js/training-session.js"></script>
+<script> $(document).ready(function() {
+  $('#new-training-form').submit(function(event) {
+    event.preventDefault();
+    submitForm();
+  })
+}) </script>
 <body>
-<<<<<<< HEAD:block.html
 	<h1>New Training Block</h1>
-	<form>
-=======
 	<form id="new-training-form">
 		<div class="tb field" visibility="hidden">
 			UUID: <input type="text" id="uuid" name="uuid">
 		</div>
->>>>>>> FETCH_HEAD:view/new-session.ejs
 		<div class="tb field">
 			Location: <input type="text" id="location" name="location" required> 
 		</div>

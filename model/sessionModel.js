@@ -1,7 +1,8 @@
 var pg = require('pg');
 
 // Fill this in when database is set up
-var DATABASE_URL = process.env.DATABASE_URL;
+var DATABASE_URL = process.env.DATABASE_URL; //--Heroku Server
+//var DATABASE_URL = "postgres://Tobi@localhost/mylocaldb"
 
 // Example of how to run a query
 var getSessionInfo = function(sessionId, route_callbck) {
@@ -21,6 +22,25 @@ var getSessionInfo = function(sessionId, route_callbck) {
   })
 }
 
+var addTrainingSession = function(data, route_callback) {
+	pg.connect(DATABASE_URL, function(err, client) {
+		if (err) {
+			console.log('Error connecting to database' + err);
+		}
+		else {
+			var query = client.query('INSERT * INTO session', function (err, result) {
+				if (err) {
+					console.log("Error inserting specified data" + err);
+				}
+				else route_callback(result, null);
+			} )
+		}
+	})
+	
+}
+
 var sessionModel = {
-  getSessionInfo: model_getSessionInfo
+  getSessionInfo: getSessionInfo,
+  addTrainingSession: addtTrainingSession
+  
 }

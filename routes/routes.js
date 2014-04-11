@@ -3,6 +3,10 @@
   Callbacks for Page Loads
  *********************************************/
 
+/*********************************************
+  Callbacks for Page Loads
+ *********************************************/
+
 // Handler for main / home page
 var getMain = function(req, res) {
   res.render('index.ejs');
@@ -16,6 +20,7 @@ var getNewTrainingSession = function(req, res) {
 // Handler for displaying session page
 var getSession = function(req, res) {
   res.render('session.ejs');
+  //res.post(req, postAddTrainingSession);
 }
 
 // Handler for displaying page for adding dog
@@ -78,6 +83,7 @@ var getTrainingSession = function(req, res) {
 // Handler to add new training session to database
  var postAddTrainingSession = function(req, res) {
   var formData = {};
+  var db = require("./model/sessionModel.js")
   formData.sessionID = req.body.uuid;
   formData.location = req.body.location;
   formData.canister = req.body.canister;
@@ -104,7 +110,8 @@ var routes = {
     get_all_dogs: getAllDogs,
     get_dog_info: getDogInfo,
     get_all_training_sessions: getAllTrainingSessions,
-    get_training_session: getSession
+    get_training_session: getSession,
+	post_training_session_info: postAddTrainingSession
 	
 };
 
