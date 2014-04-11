@@ -2,26 +2,30 @@
 <html>
 <head>
 	<link type="text/css" rel="stylesheet" href="../css/stylesheet.css"/>
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
 	<title>Dog Menu</title>
 </head>
 <body>
 	<h1>Dog Menu</h1>
-	<% if (name) { %> <h2><%= name %></h2> <% } %>
-<div class="nav button">
-	<a href="/newsession">
+	<% if (name) { %> <h2> Dog: <%= name %></h2> <% } %>
+	<div>
+
+	<a href="/session" class="btn btn-lg btn-success">
 		New Training Session
 	</a>
 </div>
 <% if (sessions) {%>
 	<% for (i = 0; i < sessions.length;i++) {%>
 		<div class="past_session button" id=""+<%=sessions[i].uuid%>>
-			<%= sessions[i].date%>
+			<a href="/sessionsummary"><%= sessions[i].date%></a>
 		</div>
 	<% } %>
 <% } %>
 <div class="nav button">
-	<a href="/">
-		Back to Main Menu
+	<a href="/" class="btn btn-lg btn-primary">
+		<i class="icon-white icon-arrow-left"></i>
+		Main Menu
 	</a>
 </div>
 </body>

@@ -3,64 +3,57 @@
 <head>
 	<title>Training Session Summary</title>
 	<link type="text/css" rel="stylesheet" href="css/stylesheet.css"/>
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
 </head>
 <body>
 	<h1>Training Session Summary</h1>  
 	<%if (summary != null && stats != null) { %>
-		<div> 
-			Dog: <%= summary.dog%>
-		</div>
-		<div> 
-			Date: <%= summary.date%>
-		</div>
-		<div> 
-			Time: <%= summary.time%>
-		</div>
-		<div> 
-			Location: <%= summary.location%>
-		</div>
-		<div> 
-			Cansiter Location: <%= summary.canister%>
-		</div>
-		<div> 
-			Handler: <%= summary.handler%>
-		</div>
-		<div> 
-			Sample Number: <%= summary.sample_num%>
-		</div>
-		<div> 
-			Sample Usage Information: <%= summary.sample_info%>
-		</div>
-		
-		<p>
-			<div> 
-				- Session Stats - 
+		<div class="session_stats panel panel-info">
+	        <div class="panel-heading">
+	            <h3 class="panel-title">Summary</h3>
+	        </div>
+	        <div class="panel-body">
+				Dog: <%= summary.dog%> <br>
+				Date: <%= summary.date%> <br>
+				Time: <%= summary.time%> <br>
+				Location: <%= summary.location%> <br>
+				Cansiter Location: <%= summary.canister%> <br>
+				Handler: <%= summary.handler%> <br>
+				Sample Number: <%= summary.sample_num%> <br>
+				Sample Usage Info: <%= summary.sample_info%> <br>
 			</div>
-			<div> 
-				Length of Session: <%= stats.duration%>
-			</div>
-			<div> 
-				Number of Trials: <%= stats.trials%>
-			</div>
-			<div> 
-				Successes: <%= stats.success%>
-			</div>
-			<div> 
-				Misses: <%= stats.miss%>
-			</div>
-			<div> 
-				False Alerts: <%= stats.false_alert%>
-			</div>
-			<div> 
-				Notes: <%= stats.notes%>
-			</div>
-		</p>
+		</div>
+
+		<div class="session_stats panel panel-primary">
+	        <div class="panel-heading">
+	            <h3 class="panel-title">Stats</h3>
+	        </div>
+	        <div class="panel-body">
+					Duration: <%= stats.duration%> <br>
+					Total Trials: <%= stats.trials%> <br>
+					Successes: <%= stats.success%> <br>
+					Misses: <%= stats.miss%> <br>
+					False Alerts: <%= stats.false_alert%> <br>
+	        </div>
+	    </div>
+		<%if (stats.notes != "") { %>
+		    <div class="session_stats panel panel-warning">
+		        <div class="panel-heading">
+		            <h3 class="panel-title">Notes</h3>
+		        </div>
+		        <div class="panel-body">
+					<%= stats.notes%> <br>
+		        </div>
+		    </div>
+		<% } %>
 	<% } else { %>
-		<div> Error reading session. </div>
+		<p> Error reading session. </p>
 	<% } %>
 <div class="nav button">
-	<a href="/">
-		Back to Main Menu
+	<a href="/" class="btn btn-lg btn-primary">
+		<i class="icon-white icon-arrow-left"></i>
+		Main Menu
 	</a>
 </div>
 </body>

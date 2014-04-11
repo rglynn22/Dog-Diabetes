@@ -3,6 +3,8 @@
 <head>
 	<title>Main Menu</title>
 	<link type="text/css" rel="stylesheet" href="css/stylesheet.css"/>
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
 <script>
 //Dog Array
 </script>
@@ -10,13 +12,15 @@
 <body>
 	<h1>Dogs</h1>
   	<% if (results != null) {%>
+  		<div id="dogs_box">
 		<% for (i = 0; i < results.length; i++) {%>
-			<div class="select_dog button">
-				<a href="doginfo/<%= results[i].name%>">
+			<div>
+				<a href="doginfo/<%= results[i].name%>" class="btn btn-primary btn-large btn-block">
 					<%= results[i].name%>
 				</a>
 			</div>
 		<% } %>
+	</div>
 	<% } else { %>
 		<div > No Dogs in System </div>
 	<% } %>

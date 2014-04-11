@@ -3,6 +3,8 @@
 <head>
 	<title>New Training Session</title>
 	<link type="text/css" rel="stylesheet" href="css/stylesheet.css"/>
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
 </head>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 <script src = "js/training-session.js"></script>
@@ -14,47 +16,47 @@
 }) </script> -->
 <body>
 	<h1>New Training Session</h1>
-	<% if (name) { %> <h2><%= name %></h2> <% } %>
+	<% if (name) { %> <h2>Dog: <%= name %></h2> <% } %>
 
 	<form id="new-training-form">
 		<div class="session field" visibility="hidden">
-			UUID: <input type="text" id="uuid" name="uuid">
+			<input type="text" id="uuid" name="uuid" placeholder="UUID">
 		</div>
 		<div class="session field">
-			Location: <input type="text" id="location" name="location" required> 
+			<input type="text" id="location" name="location" placeholder="Location" required> 
 		</div>
 		<div class="session field">
-			Canister position: <input type="text" id="canister" name="canister" required>
+			<input type="text" id="canister" name="canister" placeholder="Canister position" required>
 		</div>
 		<div class="session field">
-			Handler: <input type="text" id="handler" name="handler" required>
+			<input type="text" id="handler" name="handler" placeholder="Handler" required>
 		</div>
 		<div class="session field">
-			Sample Number: <input type="text" id="sample_num" name="sample_num" required>
+			<input type="text" id="sample_num" name="sample_num" placeholder="Sample Number" required>
 		</div>
 		<div class="session field">
-			Sample Usage Information: <input type="text" id="sample_info" name="sample_info" required>
+			<input type="text" id="sample_info" name="sample_info" placeholder="Sample Usage Info" required>
 		</div>
 		<!-- Automate later -->
 		<div class="session field">
-			Time Obtained: <input type="text" id="sample_time" name="sample_time" required>
+			<input type="text" id="sample_time" name="sample_time" placeholder="Time Obtained" required>
 		</div>
 		<div class="session field">
-			Length of Session: <input type="text" id="duration" name="duration" required>
+			<input type="text" id="duration" name="duration" placeholder="Session Duration" required>
 		</div>
-<!-- 		<div class="session submit_button">
+<!-- 	<div class="session submit_button">
 			<input type="submit" value="Begin Session">
 		</div> -->
 	</form>
 	<div class="nav button">
-		<a href="/session">
+		<button type="button" class="btn btn-lg btn-primary" onclick=window.location="/session">
 			Begin Session
-		</a>
+		</button>
 	</div>	
 	<div class="nav button">
-		<a href="doginfo/<%= name%>">
-			Back to Dog Menu
-		</a>
-	</div>
+	<button type="button" class="btn btn-lg btn-warning" onclick=window.location="/doginfo/<%= name %>">
+		Back to Dog Menu
+	</button>
+</div>
 </body>
 </html>

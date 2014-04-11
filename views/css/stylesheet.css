@@ -13,13 +13,6 @@ p {
 
 
 div {
-    height: 50px;
-    width: 120px;
-    border-color: #6495ed;
-    background-color: #BCD2EE;
-    border-style: dashed;
-    border-width: 2px;
-    border-radius: 5px;
     margin: 0 auto;
     text-align: center;
     
@@ -32,6 +25,14 @@ h1, h2 {
 a {
     text-decoration: none;
     font-family: Univers, sans-serif;
+}
+
+#dogs_box {
+    width: 200px;
+}
+
+.session_stats{
+    width: 250px;
 }
 
 div.button{}
