@@ -1,9 +1,5 @@
-var sessionDB = require('./model/sessionModel.js');
-var dogDB = require('./model/dogModel.js');
-/*********************************************
-  Callbacks for Page Loads
- *********************************************/
-
+// var sessionDB = require('../model/sessionModel.js');
+// var dogDB = require('../model/dogModel.js');
 /*********************************************
   Callbacks for Page Loads
  *********************************************/
@@ -19,17 +15,13 @@ var getMain = function(req, res) {
 // Handler for new training session page
 var getNewTrainingSession = function(req, res) {
   var dog = "Skip";
-  res.render('new-session.ejs',{name: dog});
+  res.render('new-session.ejs', {name: dog});
 }
 
 // Handler for displaying session page
 var getSession = function(req, res) {
   res.render('session.ejs');
   //res.post(req, postAddTrainingSession);
-}
-
-var getAllSessions = function(req, res) {
-	res.render('dog-menu.ejs');
 }
 
 // TO DO
@@ -139,23 +131,23 @@ var getTrainingSession = function(req, res) {
   })    
  }
  
- 
-var postSessionResults = function(req, res) {
-  	//NEED TO ACCESS SESSION ID
-	var s = req.body.s;
-	var m = req.body.m;
-	var f = req.body.f;
-	var t = req.body.t;
+// BUGGY
+// var postSessionResults = function(req, res) {
+//   //NEED TO ACCESS SESSION ID
+// 	var s = req.body.s;
+// 	var m = req.body.m;
+// 	var f = req.body.f;
+// 	var t = req.body.t;
 	
-  	sessionDB.postSessionResults(sessionID, s, m, f, t, function(data, err) {
-    if (err) {
-      res.send(500);
-    }
-    else {
-      res.send(data);
-    }
-  })    
- } 
+//   	sessionDB.postSessionResults(sessionID, s, m, f, t, function(data, err) {
+//     if (err) {
+//       res.send(500);
+//     }
+//     else {
+//       res.send(data);
+//     }
+//   })    
+//  } 
 
 // Expose call backs to app controller
 var routes = {
@@ -165,14 +157,13 @@ var routes = {
     get_session: getSession,
     get_session_summary: getSessionSummary,
     get_dog_info: getDogInfo,
-    get_all_training_sessions: getAllTrainingSessions,
-    get_training_session: getSession,
+    // get_training_session: getSession,
     // get_add_dog: getAddDog,
 
     // GET routes
     get_all_dogs: getAllDogs,
-    get_all_training_sessions: getAllTrainingSessions,
-	  get_all_sessions: getAllSessions
+    //get_all_training_sessions: getAllTrainingSessions,
+	  //get_all_sessions: getAllSessions
 	
 };
 

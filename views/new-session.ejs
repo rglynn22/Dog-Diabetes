@@ -6,14 +6,15 @@
 </head>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 <script src = "js/training-session.js"></script>
-<script> $(document).ready(function() {
+<!-- <script> $(document).ready(function() {
   $('#new-training-form').submit(function(event) {
     event.preventDefault();
     submitForm();
   })
-}) </script>
+}) </script> -->
 <body>
 	<h1>New Training Session</h1>
+	<% if (name) { %> <h2><%= name %></h2> <% } %>
 
 	<form id="new-training-form">
 		<div class="session field" visibility="hidden">
@@ -41,13 +42,17 @@
 		<div class="session field">
 			Length of Session: <input type="text" id="duration" name="duration" required>
 		</div>
-		<div class="session submit_button">
+<!-- 		<div class="session submit_button">
 			<input type="submit" value="Begin Session">
-		</div>
+		</div> -->
 	</form>
-	
 	<div class="nav button">
-		<a href="dog-menu.ejs">
+		<a href="/session">
+			Begin Session
+		</a>
+	</div>	
+	<div class="nav button">
+		<a href="doginfo/<%= name%>">
 			Back to Dog Menu
 		</a>
 	</div>

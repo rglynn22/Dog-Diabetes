@@ -18,7 +18,7 @@ app.get('/newsession', routes.get_new_training_session);
 app.get('/session', routes.get_session);
 app.get('/sessionsummary', routes.get_session_summary);
 app.get('/doginfo/:dogname', routes.get_dog_info);
-app.get('/getsessions/:dogname', routes.getAllSessions);
+//app.get('/getsessions/:dogname', routes.getAllSessions);
 
 /* Run the server */
 var port = Number(process.env.PORT || 3000)
