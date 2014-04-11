@@ -20,12 +20,20 @@ div {
     border-style: dashed;
     border-width: 2px;
     border-radius: 5px;
-    margin: auto;
+    margin: 0 auto;
     text-align: center;
     
 }
-a
-{
+
+h1, h2 {
+    text-align: center;
+}
+
+a {
     text-decoration: none;
     font-family: Univers, sans-serif;
 }
+
+div.button{}
+div.select_dog{}
+div.nav{}

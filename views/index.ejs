@@ -1,14 +1,24 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Session Options</title>
-	<title> </title>
 	<title>Main Menu</title>
+	<link type="text/css" rel="stylesheet" href="css/stylesheet.css"/>
 <script>
 //Dog Array
 </script>
 </head>
 <body>
-	<h1>Session Options</h1>
+	<h1>Dogs</h1>
+  	<% if (results != null) {%>
+		<% for (i = 0; i < results.length; i++) {%>
+			<div class="select_dog button">
+				<a href="doginfo/<%= results[i].name%>">
+					<%= results[i].name%>
+				</a>
+			</div>
+		<% } %>
+	<% } else { %>
+		<div> Add New Dog </div>
+	<% } %>
 </body>
 </html>

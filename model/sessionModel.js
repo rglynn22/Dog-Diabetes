@@ -22,6 +22,7 @@ var getSessionInfo = function(sessionId, route_callbck) {
   })
 }
 
+<<<<<<< HEAD
 var addTrainingSession = function(data, route_callback) {
 	pg.connect(DATABASE_URL, function(err, client) {
 		if (err) {
@@ -37,10 +38,27 @@ var addTrainingSession = function(data, route_callback) {
 		}
 	})
 	
+=======
+
+var postSessionResults = function(sessionId, s, m, f, t, route_callbck) {
+    
+	pg.connect(DATABASE_URL, function(err, client) {
+      if (err) {
+        console.log('Error connecting to database' + err);
+      }
+      else {
+        client.query("UPDATE session SET successes=s, misses=m, false_alerts=f, total_trials=t WHERE id = sessionId;");
+      }    
+    })
+>>>>>>> FETCH_HEAD
 }
 
 var sessionModel = {
   getSessionInfo: getSessionInfo,
+<<<<<<< HEAD
   addTrainingSession: addtTrainingSession
   
+=======
+  storeSessionResults: storeSessionResults
+>>>>>>> FETCH_HEAD
 }

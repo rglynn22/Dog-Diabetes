@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<body>
+	<h1>
+	<%if (user) { %>
+	Welcome <%= user %>!
+	<%}%>
+	</h1>
+  <table border="1">
+  	<tr>
+  	  <th>Latitude</th>
+  	  <th>Longitude</th>
+  	  <th>Name</th>
+  	  <th>Description</th>
+  	  <th>User</th>
+  	</tr>
+  	<% if (results) {%>
+		<% for (i = 0; i < results.length;i++) {%>
+			<tr>
+				<td><%= results[i].lat%></td>
+				<td><%= results[i].long%></td>
+				<td><%= results[i].name%></td>
+				<td><%= results[i].dscrpt%></td>
+				<td><%= results[i].usr%></td>
+			</tr>
+		<% } %>
+	<% } %>
+  </table>
+  </br>
+   <p style="color:red">
+  <% if (error != null) {%>
+  	<%= error %>
+  <%}%>
+  &nbsp;
+  </p>
+  <form action="/addrestaurant" method="post" id="add">
+    Latitude: <input type="text" name="latitude"></br>
+    Longitude: <input type="text" name="longitude"></br>
+    Name: <input type="text" name="name"></br>
+    Description: </br>
+    <textarea rows="4" cols="50" name="description" form="add"></textarea></br>
+    <input type="submit" value="Add">
+  </form>
+  </br>
+  <a href="/logout"> Log out </a>
+</body>
+</html>

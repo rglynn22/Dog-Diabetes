@@ -1,56 +1,12 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 <link type="text/css" rel="stylesheet" href="stylesheet.css"/>
 	<title> Training Session</title>
 	<h1> Training Session</h1>
-</head>
 
-<script>
-var pg = require('pg');
-var successCount = 0;
-var missCount = 0;
-var falseCount = 0;
-var trialCount = 0;
-
-function recordSuccess() {
-	successCount++;
-	document.getElementById("success_tally").innerHTML = successCount + "";
-	trialCount++;
-	document.getElementById("trial_tally").innerHTML = trialCount + "";
-}
-
-function recordMiss() {
-	missCount++;
-	document.getElementById("miss_tally").innerHTML = missCount + "";
-	trialCount++;
-	document.getElementById("trial_tally").innerHTML = trialCount + ""; 
-}
-
-function recordFalseAlert() {
-	falseCount++;
-	document.getElementById("false_tally").innerHTML = falseCount + "";
-	trialCount++;
-	document.getElementById("trial_tally").innerHTML = trialCount + "";
-}
-
-function endSession() {
-   
-	
-    pg.connect(DATABASE_URL, function(err, client) {
-      if (err) {
-        console.log('Error connecting to database' + err);
-      }
-      else {
-        client.query("INSERT INTO session(successes, misses, false_alerts, total_trials) VALUES(successCount, missCount, falseCount, trialCount);");
-      }    
-    })
-	
-	window.location = 'dog-menu.ejs';
-	//store variables to session in DB
-}
-
-</script>
+<script src="js/session.js"></script>
 
 </head>
 <body>

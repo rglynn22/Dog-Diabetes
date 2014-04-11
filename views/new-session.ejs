@@ -2,6 +2,7 @@
 <html>
 <head>
 	<title>New Training Session</title>
+	<link type="text/css" rel="stylesheet" href="css/stylesheet.css"/>
 </head>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 <script src = "js/training-session.js"></script>
@@ -12,39 +13,48 @@
   })
 }) </script>
 <body>
+<<<<<<< HEAD
 	<h1>New Training Block</h1>
+=======
+	<h1>New Training Session</h1>
+
+>>>>>>> FETCH_HEAD
 	<form id="new-training-form">
-		<div class="tb field" visibility="hidden">
+		<div class="session field" visibility="hidden">
 			UUID: <input type="text" id="uuid" name="uuid">
 		</div>
+<<<<<<< HEAD
 		<div class="tb field">
+=======
+		<div class="session field">
+>>>>>>> FETCH_HEAD
 			Location: <input type="text" id="location" name="location" required> 
 		</div>
-		<div class="tb field">
+		<div class="session field">
 			Canister position: <input type="text" id="canister" name="canister" required>
 		</div>
-		<div class="tb field">
+		<div class="session field">
 			Handler: <input type="text" id="handler" name="handler" required>
 		</div>
-		<div class="tb field">
+		<div class="session field">
 			Sample Number: <input type="text" id="sample_num" name="sample_num" required>
 		</div>
-		<div class="tb field">
+		<div class="session field">
 			Sample Usage Information: <input type="text" id="sample_info" name="sample_info" required>
 		</div>
 		<!-- Automate later -->
-		<div class="tb field">
+		<div class="session field">
 			Time Obtained: <input type="text" id="sample_time" name="sample_time" required>
 		</div>
-		<div class="tb field">
+		<div class="session field">
 			Length of Session: <input type="text" id="duration" name="duration" required>
 		</div>
-		<div class="tb button">
+		<div class="session submit_button">
 			<input type="submit" value="Begin Session">
 		</div>
 	</form>
 	
-	<div class="button">
+	<div class="nav button">
 		<a href="dog-menu.ejs">
 			Back to Dog Menu
 		</a>
