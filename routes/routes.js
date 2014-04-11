@@ -18,7 +18,8 @@ var getMain = function(req, res) {
 
 // Handler for new training session page
 var getNewTrainingSession = function(req, res) {
-  res.render('new-session.ejs');
+  var dog = "Skip";
+  res.render('new-session.ejs',{name: dog});
 }
 
 // Handler for displaying session page
@@ -65,7 +66,7 @@ var getSessionSummary = function(req, res) {
 // Handler for dog information page
 var getDogInfo = function(req, res) {
   var dog = req.param('dogname');
-  
+
   // change data and dogs to pull info from db
   var data = [{date: "March 10, 2014", uuid:1}, {date: "February 29, 2014", uuid:2}];
 
