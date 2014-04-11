@@ -165,22 +165,14 @@ var routes = {
     get_session: getSession,
     get_session_summary: getSessionSummary,
     get_dog_info: getDogInfo,
-<<<<<<< HEAD
     get_all_training_sessions: getAllTrainingSessions,
     get_training_session: getSession,
-<<<<<<< HEAD
-	post_training_session_info: postAddTrainingSession
-=======
-	post_session_results: postSessionResults
-=======
     // get_add_dog: getAddDog,
 
     // GET routes
     get_all_dogs: getAllDogs,
     get_all_training_sessions: getAllTrainingSessions,
-	get_all_sessions: getAllSessions
->>>>>>> FETCH_HEAD
->>>>>>> FETCH_HEAD
+	  get_all_sessions: getAllSessions
 	
 };
 
