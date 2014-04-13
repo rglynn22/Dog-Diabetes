@@ -71,7 +71,14 @@ var getDogInfo = function(req, res) {
 
 // Handler to get all dogs
 var getAllDogs = function(req, res) {
-
+  dogDB.getAllDogs(function(data, err) {
+    if (err) {
+      res.send(500);
+    }
+    else {
+      res.send(data);
+    }
+  })
 }
 
 // Part of loading Dog Info page

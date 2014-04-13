@@ -4,7 +4,7 @@ var pg = require('pg');
 var DATABASE_URL = process.env.DATABASE_URL; //--Heroku Server
 //var DATABASE_URL = "postgres://Tobi@localhost/mylocaldb"
 
-// Example of how to run a query
+// Get all info regarding a session with id sessionId
 var getSessionInfo = function(sessionId, route_callbck) {
 
   pg.connect(DATABASE_URL, function(err, client) {
@@ -12,7 +12,8 @@ var getSessionInfo = function(sessionId, route_callbck) {
       console.log('Error connecting to database' + err);
     }
     else {
-      var query = client.query('SELECT * FROM Session', function(err, result){
+      var query = 'SELECT * FROM Session where id = ' + sessionId + ';';
+      client.query(query, function(err, result){
         if (err) {
           console.log("Error running specified query" + err);
         }
@@ -22,18 +23,37 @@ var getSessionInfo = function(sessionId, route_callbck) {
   })
 }
 
+
+// Add new training session given a set of data
 var addTrainingSession = function(data, route_callback) {
 	pg.connect(DATABASE_URL, function(err, client) {
 		if (err) {
 			console.log('Error connecting to database' + err);
 		}
 		else {
-			var query = client.query('INSERT * INTO session', function (err, result) {
+      var query = 'INSERT * INTO session' + 
+                  '(id, dogID, location, canister, handler, sample_number, 
+                    sample_info, time, duration, successes, misses, false_alerts, 
+                    total_trials)' + 
+                  'VALUES (' + data.id + ','
+                             + data.dogId + ','
+                             + data.location + ','
+                             + data.canister + ','
+                             + data.handler + ','
+                             + data.sample_number + ','
+                             + data.sample_info + ','
+                             + data.time + ','
+                             + data.duration + ','
+                             + data.successes + ','
+                             + data.misses + ','
+                             + data.false_alerts + ','
+                             + data.total_trials + ');';
+			client.query(query, function (err, result) {
 				if (err) {
 					console.log("Error inserting specified data" + err);
 				}
 				else route_callback(result, null);
-			} )
+			})
 		}
 	})
 	
