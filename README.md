@@ -1,4 +1,4 @@
-git#Dog-Diabetes
+#Dog-Diabetes
 
 ##Group Members:
 
