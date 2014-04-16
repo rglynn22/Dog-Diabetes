@@ -1,6 +1,6 @@
 CREATE TABLE Session (
-  id varchar(32) NOT NULL PRIMARY KEY,
-  dogID varchar(32) REFERENCES dog(id),
+  id varchar(64) NOT NULL PRIMARY KEY,
+  dogID varchar(64) REFERENCES dog(id),
   location varchar (32) NOT NULL,
   canister varchar (32) NOT NULL,
   handler varchar(32) NOT NULL,

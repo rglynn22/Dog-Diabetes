@@ -38,7 +38,7 @@ var getSession = function(req, res) {
 
 // Handler for displaying session summary page
 var getSessionSummary = function(req, res) {
-    var sessionSummary = {
+  var sessionSummary = {
     dog: "Skip", // add
     sessionID: "1",
     date: "3/10/14", // add
@@ -122,9 +122,8 @@ var getTrainingSession = function(req, res) {
  // }
 
 // Handler to add new training session to database
- var postAddTrainingSession = function(req, res) {
+var postAddTrainingSession = function(req, res) {
   var formData = {};
-  var db = require("./model/sessionModel.js")
   formData.sessionID = req.body.uuid;
   formData.location = req.body.location;
   formData.canister = req.body.canister;
@@ -134,7 +133,7 @@ var getTrainingSession = function(req, res) {
   formData.sample_time = req.body.sample_time;
   formData.duration = req.body.duration;
 
-  db.addTrainingSession(formData, function(data, err) {
+  sessionDB.addTrainingSession(formData, function(data, err) {
     if (err) {
       res.send(500);
     }
@@ -142,7 +141,7 @@ var getTrainingSession = function(req, res) {
       res.send(data);
     }
   })    
- }
+}
  
 // BUGGY
 // var postSessionResults = function(req, res) {
@@ -177,6 +176,8 @@ var routes = {
     get_all_dogs: getAllDogs,
     //get_all_training_sessions: getAllTrainingSessions,
 	  //get_all_sessions: getAllSessions
+
+    post_add_training_session: postAddTrainingSession,
 	
 };
 

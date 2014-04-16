@@ -32,23 +32,25 @@ var addTrainingSession = function(data, route_callback) {
 			console.log('Error connecting to database' + err);
 		}
 		else {
-      var query = 'INSERT * INTO session' + 
+      console.log(data);
+      var query = 'INSERT INTO session ' + 
                   '(id, dogID, location, canister, handler, sample_number,'+ 
-                    'sample_info, time, duration, successes, misses, false_alerts,' + 
-                    'total_trials)' + 
-                  'VALUES (' + data.id + ','
-                             + data.dogId + ','
-                             + data.location + ','
-                             + data.canister + ','
-                             + data.handler + ','
-                             + data.sample_number + ','
-                             + data.sample_info + ','
-                             + data.time + ','
-                             + data.duration + ','
-                             + data.successes + ','
-                             + data.misses + ','
-                             + data.false_alerts + ','
-                             + data.total_trials + ');';
+                  'sample_info, time, duration) ' + 
+                  'VALUES (' + '\'' + data.sessionID + '\'' +','
+                             + '1' + ','
+                             + '\'' + data.location + '\'' + ','
+                             + '\'' + data.canister + '\'' + ','
+                             + '\'' + data.handler + '\'' + ','
+                             + '\'' + data.sample_num + '\'' + ','
+                             + '\'' + data.sample_info + '\'' + ','
+                             + '\'' + data.sample_time + '\'' + ','
+                             + '\'' + data.duration + '\''
+                             // + data.successes + ','
+                             // + data.misses + ','
+                             // + data.false_alerts + ','
+                             // + data.total_trials + ');';
+                             + ');';
+      console.log(query);
 			client.query(query, function (err, result) {
 				if (err) {
 					console.log("Error inserting specified data" + err);
