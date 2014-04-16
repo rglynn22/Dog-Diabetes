@@ -1,15 +1,15 @@
 CREATE TABLE Session (
   id varchar(32) NOT NULL PRIMARY KEY,
-  dogID varchar(32) NOT NULL FOREIGN KEY,
+  dogID varchar(32) REFERENCES dog(id),
   location varchar (32) NOT NULL,
   canister varchar (32) NOT NULL,
   handler varchar(32) NOT NULL,
   sample_number int NOT NULL,
   sample_info int NOT NULL,
   time varchar(32) NOT NULL,
-  duration varchar(32) NOT NULL,
-  successes int NOT NULL,
-  misses int NOT NULL,
-  false_alerts int NOT NULL,
-  total_trials int NOT NULL
-)
+  duration varchar(32),
+  successes int,
+  misses int,
+  false_alerts int,
+  total_trials int
+);

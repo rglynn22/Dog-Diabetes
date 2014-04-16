@@ -1,5 +1,5 @@
-// var sessionDB = require('../model/sessionModel.js');
-// var dogDB = require('../model/dogModel.js');
+var sessionDB = require('../model/sessionModel.js');
+var dogDB = require('../model/dogModel.js');
 /*********************************************
   Callbacks for Page Loads
  *********************************************/
