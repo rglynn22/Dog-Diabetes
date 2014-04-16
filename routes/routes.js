@@ -7,9 +7,16 @@ var dogDB = require('../model/dogModel.js');
 // Handler for main / home page
 var getMain = function(req, res) {
   // change dogs to pull from backend
-  var dogs = [{name: "Skip"},{name: "Fluffy"}];
-
-  res.render('index.ejs', {results: dogs});
+  dogDB.getAllDogs(function(result, err) {
+    if (err) {
+      res.send(500);
+    }
+    else {
+      console.log(result);
+      var dogs = [{name: "Skip"},{name: "Fluffy"}];
+      res.render('index.ejs', {results: dogs});
+    }
+  }) 
 }
 
 // Handler for new training session page
@@ -60,7 +67,7 @@ var getDogInfo = function(req, res) {
   var dog = req.param('dogname');
 
   // change data and dogs to pull info from db
-  var data = [{date: "March 10, 2014", uuid:1}, {date: "February 29, 2014", uuid:2}];
+  // var data = [{date: "March 10, 2014", uuid:1}, {date: "February 29, 2014", uuid:2}];
 
   res.render('dog-menu.ejs', {name: dog, sessions: data});
 }
