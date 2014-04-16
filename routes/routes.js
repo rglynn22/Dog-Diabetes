@@ -12,9 +12,8 @@ var getMain = function(req, res) {
       res.send(500);
     }
     else {
-      console.log(result);
-      var dogs = [{name: "Skip"},{name: "Fluffy"}];
-      res.render('index.ejs', {results: dogs});
+      // console.log(result);      
+      res.render('index.ejs', {results: result});
     }
   }) 
 }

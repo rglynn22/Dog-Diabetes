@@ -1,7 +1,8 @@
 var pg = require('pg');
 
 // Fill this in when database is set up
-var DATABASE_URL = process.env.DATABASE_URL; //--Heroku Server
+var DATABASE_URL = process.env.DATABASE_URL || 
+                  "postgres://postgres:123@localhost:5432/cis350"; //--Heroku Server
 //var DATABASE_URL = "postgres://Tobi@localhost/mylocaldb"
 
 // Get all info regarding a session with id sessionId
@@ -32,9 +33,9 @@ var addTrainingSession = function(data, route_callback) {
 		}
 		else {
       var query = 'INSERT * INTO session' + 
-                  '(id, dogID, location, canister, handler, sample_number, 
-                    sample_info, time, duration, successes, misses, false_alerts, 
-                    total_trials)' + 
+                  '(id, dogID, location, canister, handler, sample_number,'+ 
+                    'sample_info, time, duration, successes, misses, false_alerts,' + 
+                    'total_trials)' + 
                   'VALUES (' + data.id + ','
                              + data.dogId + ','
                              + data.location + ','
@@ -63,3 +64,5 @@ var sessionModel = {
   getSessionInfo: getSessionInfo,
   addTrainingSession: addTrainingSession
 }
+
+module.exports = sessionModel;

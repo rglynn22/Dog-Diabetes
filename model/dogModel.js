@@ -1,7 +1,8 @@
 var pg = require('pg');
 
 // Fill this in when database is set up
-var DATABASE_URL = process.env.DATABASE_URL;
+var DATABASE_URL = process.env.DATABASE_URL || 
+                  "postgres://postgres:123@localhost:5432/cis350";
 
 // Get info for all dogs in database
 var getAllDogs = function(route_callbck) {
@@ -17,7 +18,12 @@ var getAllDogs = function(route_callbck) {
         }
         else {
           // console.log(result);
-          route_callbck(result, null);
+          var rows = result.rows;
+          var data = [];
+          for (var i = 0; i < rows.length; i++) {
+            data.push({'name': rows[i].name});
+          }
+          route_callbck(data, null);
         }
       })
     }
@@ -37,12 +43,12 @@ var getDogInfo = function(dogId, route_callbck) {
           console.log("Error running specified query" + err);
         }
         else {
-          console.log(result);
-          route_callbck(result, null);
+          var rows = result.rows;
+          route_callbck(rows, null);
         }
-      })
+      });
     }    
-  })
+  });
 }
 
 // Add a dog given a set of data
@@ -57,8 +63,8 @@ var addDog = function(dogData, route_callbck) {
       console.log('Error connecting to database' + err);
     }
     else {
-      var query = 'INSERT INTO dog (id, name, age)
-                  VALUES ('+ id + ',' + name + ',' + age +');'
+      var query = 'INSERT INTO dog (id, name, age)' +
+                  'VALUES ('+ id + ',' + name + ',' + age +');'
       client.query(query, function(err, result) {
         if (err) {
           console.log("Error running specified query" + err);
@@ -67,12 +73,10 @@ var addDog = function(dogData, route_callbck) {
           console.log(result);
           route_callbck(result, null);
         }
-      })
+      });
     }
-  }
+  });
 }
-
-
 
 var dogModel = {
   getAllDogs: getAllDogs,
@@ -80,4 +84,4 @@ var dogModel = {
   addDog: addDog,
 }
 
-module.export(dogModel);
+module.exports = dogModel;
