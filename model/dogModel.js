@@ -1,7 +1,5 @@
 var pg = require('pg');
 
-// Fill this in when database is set up
-console.log(process.env.DATABASE_URL);
 var DATABASE_URL = process.env.DATABASE_URL || 
                   "postgres://postgres:123@localhost:5432/cis350";
 
