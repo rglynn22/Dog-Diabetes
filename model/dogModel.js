@@ -63,7 +63,9 @@ var addDog = function(dogData, route_callbck) {
     }
     else {
       var query = 'INSERT INTO dog (id, name, age)' +
-                  'VALUES ('+ id + ',' + name + ',' + age +');'
+                  'VALUES ('+ '\'' + id + '\'' + ',' 
+                            + '\'' + name + '\'' + ',' 
+                            + '\'' + age + '\'' +');'
       client.query(query, function(err, result) {
         if (err) {
           console.log("Error running specified query" + err);

@@ -24,15 +24,45 @@ var getSessionInfo = function(sessionId, route_callbck) {
   })
 }
 
+// Initial implementation. Use this to update a session with
+// trial data.
+var updateTrainingSession = function(data, route_callbck) {
+  pg.connect(DATABASE_URL, function(err, client) {
+    if (err) {
+      console.log('Error connecting to database ' + err);
+    }
+    else {
+      console.log(data);
+      var query = 'UPDATE session ' + 
+                  'SET successes = ' + '\'' + data.successes + '\'' +
+                      'misses = ' + '\'' + data.misses + '\'' + 
+                      'false_alerts = ' + '\'' + data.false_alerts + '\'' +
+                      'total_trials = ' + '\'' + data.total_trials + '\'' +
+                  'WHERE id=' + '\'' + data.sessionID + '\';';
+      client.query(query, function(err, result) {
+        if (err) {
+          console.log('Error executing query.')
+          console.log('Query: ' + query);
+          console.log('Error: ' + err);
+        }
+        else {
+          route_callbck(result, null);
+        }
+      })
+
+    }
+  })
+}
+
 
 // Add new training session given a set of data
-var addTrainingSession = function(data, route_callback) {
+var addTrainingSession = function(data, route_callbck) {
 	pg.connect(DATABASE_URL, function(err, client) {
 		if (err) {
 			console.log('Error connecting to database' + err);
 		}
 		else {
-      console.log(data);
+      // console.log(data);
       var query = 'INSERT INTO session ' + 
                   '(id, dogID, location, canister, handler, sample_number,'+ 
                   'sample_info, time, duration) ' + 
@@ -55,7 +85,7 @@ var addTrainingSession = function(data, route_callback) {
 				if (err) {
 					console.log("Error inserting specified data" + err);
 				}
-				else route_callback(result, null);
+				else route_callbck(result, null);
 			})
 		}
 	})
@@ -64,7 +94,8 @@ var addTrainingSession = function(data, route_callback) {
 
 var sessionModel = {
   getSessionInfo: getSessionInfo,
-  addTrainingSession: addTrainingSession
+  addTrainingSession: addTrainingSession,
+  updateTrainingSession: updateTrainingSession,
 }
 
 module.exports = sessionModel;
