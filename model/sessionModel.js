@@ -10,15 +10,17 @@ var getSessionInfo = function(sessionId, route_callbck) {
 
   pg.connect(DATABASE_URL, function(err, client) {
     if (err) {
-      console.log('Error connecting to database' + err);
+      // console.log('Error connecting to database' + err);
+      route_callbck(null, err);
     }
     else {
       var query = 'SELECT * FROM Session where id = ' + sessionId + ';';
       client.query(query, function(err, result){
         if (err) {
-          console.log("Error running specified query" + err);
+          route_callbck(null, err);
+          // console.log("Error running specified query" + err);
         }
-        else route_callbck(result, null);
+        else route_callbck(result.rows, null);
       })
     }    
   })
@@ -29,7 +31,8 @@ var getSessionInfo = function(sessionId, route_callbck) {
 var updateTrainingSession = function(data, route_callbck) {
   pg.connect(DATABASE_URL, function(err, client) {
     if (err) {
-      console.log('Error connecting to database ' + err);
+      // console.log('Error connecting to database ' + err);
+      route_callbck(null, err);
     }
     else {
       console.log(data);
@@ -41,6 +44,7 @@ var updateTrainingSession = function(data, route_callbck) {
                   'WHERE id=' + '\'' + data.sessionID + '\';';
       client.query(query, function(err, result) {
         if (err) {
+          route_callbck(null, err);
           console.log('Error executing query.')
           console.log('Query: ' + query);
           console.log('Error: ' + err);
@@ -59,7 +63,8 @@ var updateTrainingSession = function(data, route_callbck) {
 var addTrainingSession = function(data, route_callbck) {
 	pg.connect(DATABASE_URL, function(err, client) {
 		if (err) {
-			console.log('Error connecting to database' + err);
+			// console.log('Error connecting to database' + err);
+      route_callbck(null, err);
 		}
 		else {
       // console.log(data);
@@ -83,19 +88,45 @@ var addTrainingSession = function(data, route_callbck) {
       console.log(query);
 			client.query(query, function (err, result) {
 				if (err) {
-					console.log("Error inserting specified data" + err);
+          route_callbck(null, err);
+					// console.log("Error inserting specified data" + err);
 				}
 				else route_callbck(result, null);
 			})
 		}
-	})
-	
+	})	
 }
+
+var getSessionsByDogId = function(dogID, route_callbck) {
+  pg.connect(DATABASE_URL, function(err, client) {
+    if (err) {
+      console.log('Error connecting to database: ' + err);
+      route_callbck(null, err);
+    }
+    else {
+      var query = 'SELECT * from session ' + 
+                  'WHERE dogID=' + '\'' + dogID +'\'';
+      // console.log(query);
+      client.query(query, function(err, result) {
+        if (err) {
+          console.log('Error running query: ');
+          console.log(query);
+          console.log(err);
+          route_callbck(null, err);
+        }
+        else {
+          route_callbck(result.rows, null);
+        }
+      })
+    }
+  })
+} 
 
 var sessionModel = {
   getSessionInfo: getSessionInfo,
   addTrainingSession: addTrainingSession,
   updateTrainingSession: updateTrainingSession,
+  getSessionsByDogId: getSessionsByDogId,
 }
 
 module.exports = sessionModel;

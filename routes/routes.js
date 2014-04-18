@@ -63,12 +63,25 @@ var getSessionSummary = function(req, res) {
 
 // Handler for dog information page
 var getDogInfo = function(req, res) {
-  var dog = req.param('dogname');
+  var dogID = req.query.id;
+  var dog = req.query.dog;
+
+  sessionDB.getSessionsByDogId(dogID, function(data, err) {
+    if (err) {
+      console.log(err);
+    }
+    else {
+      var result = [];
+      for (var i = 0; i < data.length; i++) {
+        result.push({date: data[i].record_date, sessionId: data[i].id});
+      }
+      res.render('dog-menu.ejs', {name: dog, sessions: result});
+    }
+  })
 
   // change data and dogs to pull info from db
-  // var data = [{date: "March 10, 2014", uuid:1}, {date: "February 29, 2014", uuid:2}];
 
-  res.render('dog-menu.ejs', {name: dog, sessions: data});
+  
 }
 
 /*********************************************

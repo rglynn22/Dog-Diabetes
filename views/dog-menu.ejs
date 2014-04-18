@@ -17,7 +17,7 @@
 </div>
 <% if (sessions) {%>
 	<% for (i = 0; i < sessions.length;i++) {%>
-		<div class="past_session button" id=""+<%=sessions[i].uuid%>>
+		<div class="past_session button" id="<%=sessions[i].sessionId%>">
 			<a href="/sessionsummary"><%= sessions[i].date%></a>
 		</div>
 	<% } %>

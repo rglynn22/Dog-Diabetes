@@ -20,7 +20,7 @@ var getAllDogs = function(route_callbck) {
           var rows = result.rows;
           var data = [];
           for (var i = 0; i < rows.length; i++) {
-            data.push({'name': rows[i].name});
+            data.push({'name': rows[i].name, 'id':rows[i].id});
           }
           route_callbck(data, null);
         }
