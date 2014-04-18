@@ -122,7 +122,10 @@ var getTrainingSession = function(req, res) {
       res.send(data);
     }
   })
+}
 
+var getNewDogForm = function(req, res) {
+  res.render('add-dog.ejs');
 }
 
 /*********************************************
@@ -155,6 +158,22 @@ var postAddTrainingSession = function(req, res) {
     }
   })    
 }
+
+var postAddDog = function(req, res) {
+  var formData = {};
+  formData.id = req.body.uuid;
+  formData.name = req.body.name;
+  formData.age = req.body.age;
+
+  dogDB.addDog(formData, function(data, err) {
+    if (err) {
+      res.send(500);
+    }
+    else {
+      res.send(data);
+    }
+  })
+}
  
 // BUGGY
 // var postSessionResults = function(req, res) {
@@ -183,7 +202,7 @@ var routes = {
     get_session_summary: getSessionSummary,
     get_dog_info: getDogInfo,
     // get_training_session: getSession,
-    // get_add_dog: getAddDog,
+    get_new_dog_form: getNewDogForm,
 
     // GET routes
     get_all_dogs: getAllDogs,
@@ -191,6 +210,7 @@ var routes = {
 	  //get_all_sessions: getAllSessions
 
     post_add_training_session: postAddTrainingSession,
+    post_add_dog: postAddDog,
 	
 };
 

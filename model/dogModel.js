@@ -53,19 +53,15 @@ var getDogInfo = function(dogId, route_callbck) {
 // Add a dog given a set of data
 var addDog = function(dogData, route_callbck) {
 
-  var id = dogData.id;
-  var name = dogData.name;
-  var age = dogData.age;
-
   pg.connect(DATABASE_URL, function(err, client) {
     if (err) {
       console.log('Error connecting to database' + err);
     }
     else {
       var query = 'INSERT INTO dog (id, name, age)' +
-                  'VALUES ('+ '\'' + id + '\'' + ',' 
-                            + '\'' + name + '\'' + ',' 
-                            + '\'' + age + '\'' +');'
+                  'VALUES ('+ '\'' + dogData.id + '\'' + ',' 
+                            + '\'' + dogData.name + '\'' + ',' 
+                            + '\'' + dogData.age + '\'' +');'
       client.query(query, function(err, result) {
         if (err) {
           console.log("Error running specified query" + err);

@@ -18,7 +18,9 @@ app.get('/newsession', routes.get_new_training_session);
 app.get('/session', routes.get_session);
 app.get('/sessionsummary', routes.get_session_summary);
 app.get('/doginfo', routes.get_dog_info);
+app.get('/newdogform', routes.get_new_dog_form);
 app.post('/addsession', routes.post_add_training_session);
+app.post('/adddog', routes.post_add_dog);
 //app.get('/getsessions/:dogname', routes.getAllSessions);
 
 /* Run the server */
