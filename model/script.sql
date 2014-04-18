@@ -1,13 +1,15 @@
 DROP TABLE session;
 DROP TABLE dog;
 
-CREATE TABLE dog (
+CREATE TABLE Dog (
   id varchar(64) NOT NULL PRIMARY KEY,
   name varchar(32) NOT NULL,
-  age int NOT NULL
+  age int NOT NULL,
+  breed varchar(32),
+  start_date timestamp  
 );
 
-CREATE TABLE session (
+CREATE TABLE Session (
   id varchar(64) NOT NULL PRIMARY KEY,
   dogID varchar(64) REFERENCES dog(id),
   location varchar (32) NOT NULL,
@@ -16,7 +18,7 @@ CREATE TABLE session (
   sample_number int NOT NULL,
   sample_info int NOT NULL,
   time varchar(32) NOT NULL,
-  record_date date,
+  record_date timestamp,
   duration varchar(32),
   successes int,
   misses int,
@@ -24,5 +26,5 @@ CREATE TABLE session (
   total_trials int
 );
 
-INSERT INTO Dog (id, name, age) VALUES ('1','Fido', '3');
-INSERT INTO Dog (id, name, age) VALUES ('2','Spot', '5');
+INSERT INTO dog (id, name, age) VALUES ('1','Fido', '3');
+INSERT INTO dog (id, name, age) VALUES ('2','Spot', '5');

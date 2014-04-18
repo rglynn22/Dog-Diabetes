@@ -14,7 +14,7 @@
 	<h1>Add New Dog</h1>
   <form id="add-dog-form">
     <div class="dog field">
-      <input type="text" id="uuid" name="uuid" placeholder="UUID"  visibility="hidden">
+      <input type="hidden" id="uuid" name="uuid">
     </div>
     <div class="dog field">
       <input type="text" id="name" name="name" placeholder="Name" required> 
@@ -22,9 +22,21 @@
     <div class="dog field">
       <input type="text" id="age" name="age" placeholder="Dog age" required>
     </div>
+    <div class="dog field">
+      <input type="text" id="breed" name="breed" placeholder="Dog breed" required>
+    </div>
+    <div class="dog field">
+      <input type="hidden" id="date" name="date">
+    </div>
     <div class="dog submit_button">
       <input type="submit" value="Add Dog">
     </div>
   </form>
+  <div class="nav button">
+  <a href="/" class="btn btn-lg btn-primary">
+    <i class="icon-white icon-arrow-left"></i>
+    Main Menu
+  </a>
+</div>
 </body>
 </html>

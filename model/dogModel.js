@@ -58,13 +58,16 @@ var addDog = function(dogData, route_callbck) {
       console.log('Error connecting to database' + err);
     }
     else {
-      var query = 'INSERT INTO dog (id, name, age)' +
+      var query = 'INSERT INTO dog (id, name, age, start_date, breed)' +
                   'VALUES ('+ '\'' + dogData.id + '\'' + ',' 
                             + '\'' + dogData.name + '\'' + ',' 
-                            + '\'' + dogData.age + '\'' +');'
+                            + '\'' + dogData.age + '\'' + ','
+                            + '\'' + dogData.date + '\'' + ','
+                            + '\'' + dogData.breed + '\'' +');'
       client.query(query, function(err, result) {
         if (err) {
           console.log("Error running specified query" + err);
+          console.log(query);
         }
         else {
           console.log(result);

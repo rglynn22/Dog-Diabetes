@@ -164,6 +164,8 @@ var postAddDog = function(req, res) {
   formData.id = req.body.uuid;
   formData.name = req.body.name;
   formData.age = req.body.age;
+  formData.date = req.body.date;
+  formData.breed = req.body.breed;
 
   dogDB.addDog(formData, function(data, err) {
     if (err) {
