@@ -24,9 +24,15 @@ var getNewTrainingSession = function(req, res) {
   res.render('new-session.ejs', {name: dog});
 }
 
-// Handler for displaying session page
-var getSession = function(req, res) {
-  res.render('session.ejs');
+// Handler for displaying canister session page
+var getCanisterSession = function(req, res) {
+  res.render('canister-session.ejs');
+  //res.post(req, postAddTrainingSession);
+}
+
+// Handler for displaying scent wheel session page
+var getScentWheelSession = function(req, res) {
+  res.render('scent-wheel-session.ejs');
   //res.post(req, postAddTrainingSession);
 }
 
@@ -200,7 +206,8 @@ var routes = {
     // page rend routes
     get_main: getMain,
     get_new_training_session: getNewTrainingSession,
-    get_session: getSession,
+    get_canister_session: getCanisterSession,
+    get_scent_wheel_session: getScentWheelSession,
     get_session_summary: getSessionSummary,
     get_dog_info: getDogInfo,
     // get_training_session: getSession,
