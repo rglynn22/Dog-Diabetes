@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<link type="text/css" rel="stylesheet" href="css/stylesheet.css"/>
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
+	<title> Scent Wheel Session</title>
+</head>
+<body>
+<h1> Scent Wheel Session</h1>
+
+<div>
+	<button id="arm3_Sbutton" type="button" onclick="recordSuccess()" class="btn btn-success btn-large">
+		Success  <br> <span id="success_tally"> 0 </span>
+	</button>
+	<button id="arm3_Mbutton" type="button" onclick="recordMiss()" class="btn btn-danger btn-large">
+		Miss  <br> <span id="miss_tally"> 0 </span>
+	</button>
+</div>
+
+<div>
+	<button id="arm2button" type="button" onclick="recordFalseArm2()" class="btn btn-warning btn-large">
+		Arm 2 False Alert <br> <span id="arm2_false_tally"> 0 </span>
+	</button>
+	<button id="arm4button" type="button" onclick="recordFalseArm4()" class="btn btn-warning btn-large">
+		Arm 4 False Alert  <br> <span id="arm4_false_tally"> 0 </span>
+	</button>
+</div>
+
+<div>
+	<button id="arm1button" type="button" onclick="recordFalseArm1()" class="btn btn-warning btn-large">
+		Arm 1 False Alert <br> <span id="arm1_false_tally"> 0 </span>
+	</button>
+</div>
+
+<div>
+	<button id="clockwise_button" type="button" onclick="changeDirClockwise()" class="btn btn-primary btn-large">
+		Clockwise
+	</button>
+	<button id="counterclockwise_button" type="button" onclick="changeDirCounterClockwise()" class="btn btn-primary btn-large"> Counter-Clockwise 
+	</button>
+</div>
+
+
+<h2> Total: <span id="arm_tally"> 0 </span></h2> 
+
+<br>
+<div>
+<!-- <button type="button" onclick="endSession()">End Session</button> -->
+<a href="/sessionsummary" class="btn btn-primary btn-large">End Session</a>
+</div>
+</body>
+<script src="js/scent-wheel-session.js"></script>
+</html>
