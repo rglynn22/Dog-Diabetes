@@ -2,6 +2,7 @@ var successCount = 0;
 var missCount = 0;
 var falseCount = 0;
 var trialCount = 0;
+var startTime = new Date().getTime();
 
 function recordSuccess() {
 	successCount++;
@@ -26,8 +27,16 @@ function recordFalseAlert() {
 
 function endSession() {
     //getelememnetbyiD to get session id
+	var endTime = new Date().getTime();
+	//pull start time from DB?
+	//how to get sessionID?
+	var duration = endTime-startTime;
 	var url = '/postsessionresults';
-	var results = [ { "s":successCount, "m":missCount, "f":falseCount, "t":trialCount} ]
+	var results = [ {"duration":duration,
+		 			"successes":successCount, 
+					"misses":missCount, 
+					"false_alerts":falseCount, 
+					"total_trials":trialCount} ];
 	
 	$.post(url, results, function(data, status) {
       if (status == 'success') {

@@ -17,7 +17,7 @@ CREATE TABLE Session (
   handler varchar(32) NOT NULL,
   sample_number int NOT NULL,
   sample_info int NOT NULL,
-  time varchar(32) NOT NULL,
+  sample_time varchar(32) NOT NULL,
   record_date timestamp,
   duration varchar(32),
   successes int,

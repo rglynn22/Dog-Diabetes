@@ -41,6 +41,7 @@ var updateTrainingSession = function(data, route_callbck) {
                       'misses = ' + '\'' + data.misses + '\'' + 
                       'false_alerts = ' + '\'' + data.false_alerts + '\'' +
                       'total_trials = ' + '\'' + data.total_trials + '\'' +
+					  'duration = ' + '\'' + data.duration + '\'' +
                   'WHERE id=' + '\'' + data.sessionID + '\';';
       client.query(query, function(err, result) {
         if (err) {
@@ -70,7 +71,7 @@ var addTrainingSession = function(data, route_callbck) {
       // console.log(data);
       var query = 'INSERT INTO session ' + 
                   '(id, dogID, location, canister, handler, sample_number,'+ 
-                  'sample_info, time, duration) ' + 
+                  'sample_info, sample_time, record_date) ' + 
                   'VALUES (' + '\'' + data.sessionID + '\'' +','
                              + '1' + ','
                              + '\'' + data.location + '\'' + ','
@@ -79,7 +80,8 @@ var addTrainingSession = function(data, route_callbck) {
                              + '\'' + data.sample_num + '\'' + ','
                              + '\'' + data.sample_info + '\'' + ','
                              + '\'' + data.sample_time + '\'' + ','
-                             + '\'' + data.duration + '\''
+							 + '\'' + (new Date()) + '\''
+                             //+ '\'' + data.duration + '\'' + ','
                              // + data.successes + ','
                              // + data.misses + ','
                              // + data.false_alerts + ','
