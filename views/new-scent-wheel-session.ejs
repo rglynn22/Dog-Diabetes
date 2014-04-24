@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>New Scent Wheel Session</title>
+	<link type="text/css" rel="stylesheet" href="css/stylesheet.css"/>
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
+</head>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="js/common.js"></script>
+<script src = "js/new-scent-wheel-session.js"></script>
+<body>
+	<h1>New Scent Wheel Session</h1>
+	<% if (dogID) { %> <h2>Dog: <%= dogID %></h2> <% } %>
+
+	<form id="new-training-form">
+		<div class="session field" >
+			<input type="hidden" id="uuid" name="uuid">
+		</div>
+		<div class="session field">
+			<input type="text" id="location" name="location" placeholder="Location" required> 
+		</div>
+		<div class="session field">
+			<input type="text" id="handler" name="handler" placeholder="Handler" required>
+		</div>
+		Can Contents:
+		<div class="session field">
+			<input type="text" id="can_1" name="can_1" placeholder="Can 1 Contents" required>
+		</div>
+		<div class="session field">
+			<input type="text" id="can_2" name="can_2" placeholder="Can 2 Contents" required>
+		</div>
+		<div class="session field">
+			<input type="text" id="can_3" name="can_3" placeholder="Can 3 Contents" required>
+		</div>
+		<div class="session field">
+			<input type="text" id="can_4" name="can_4" placeholder="Can 4 Contents" required>
+		</div>
+		
+		<!-- Automate later -->
+		
+	<div class="session submit_button">
+			<input type="submit" value="Begin Session">
+		</div>
+	</form>
+	<!-- <div class="nav button">
+		<button type="button" class="btn btn-lg btn-primary" onclick=window.location="/session">
+			Begin Session
+		</button>
+	</div> -->	
+	<div class="nav button">
+	<button type="button" class="btn btn-lg btn-warning" onclick=window.location="/doginfo/<%= dogID %>">
+		Back to Dog Menu
+	</button>
+</div>
+</body>
+</html>
