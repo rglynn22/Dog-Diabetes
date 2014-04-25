@@ -6,7 +6,7 @@ CREATE TABLE Dog (
   name varchar(32) NOT NULL,
   age int NOT NULL,
   breed varchar(32),
-  start_date timestamp  
+  start_date varchar(64)  
 );
 
 CREATE TABLE Session (
@@ -18,7 +18,7 @@ CREATE TABLE Session (
   sample_number int NOT NULL,
   sample_info int NOT NULL,
   sample_time varchar(32) NOT NULL,
-  record_date timestamp,
+  record_date varchar(64),
   duration varchar(32),
   successes int,
   misses int,

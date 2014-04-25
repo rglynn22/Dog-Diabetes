@@ -11,7 +11,7 @@ var submitForm = function() {
   $('input[name="uuid"]').val(uuid);
   $.post(url, $('#new-training-form').serialize(), function(data, status) {
     if (status == 'success') {
-      window.location.replace('/session');
+      window.location.replace('/scentwheelsession?id='+uuid);
     }
     else {
       alert('Failed to create new training session. Please try again!');

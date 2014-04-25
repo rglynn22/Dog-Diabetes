@@ -35,7 +35,7 @@ var getCanisterSession = function(req, res) {
 var getScentWheelSession = function(req, res) {
   var dir = "clockwise";
   var pos = 2;
-  res.render('scent-wheel-test.ejs',{direction: dir, position: pos});
+  res.render('scent-wheel-session.ejs',{direction: dir, position: pos});
   //res.post(req, postAddTrainingSession);
 }
 

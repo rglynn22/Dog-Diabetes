@@ -8,14 +8,17 @@
 </head>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 <script src="js/common.js"></script>
-<script src = "js/training-session.js"></script>
+<script src = "js/canister-session-form.js"></script>
 <body>
 	<h1>New Training Session</h1>
-	<% if (dogID) { %> <h2>Dog: <%= dogID %></h2> <% } %>
+	<% if (dogName) { %> <h2>Dog: <%= dogName %></h2> <% } %>
 
 	<form id="new-training-form">
 		<div class="session field" >
 			<input type="hidden" id="uuid" name="uuid">
+		</div>
+		<div class="session field" >
+			<input type="hidden" id="dogID" name="dogID" value="<%=dogID%>">
 		</div>
 		<div class="session field">
 			<input type="text" id="location" name="location" placeholder="Location" required> 
@@ -49,7 +52,7 @@
 		</button>
 	</div> -->	
 	<div class="nav button">
-	<button type="button" class="btn btn-lg btn-warning" onclick=window.location="/doginfo/<%= dogID %>">
+	<button type="button" class="btn btn-lg btn-warning" onclick=window.location.replace("/doginfo?dogID=<%=dogID%>&dogName=<%=dogName%>")>
 		Back to Dog Menu
 	</button>
 </div>

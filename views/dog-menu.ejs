@@ -8,13 +8,13 @@
 </head>
 <body>
 	<h1>Dog Menu</h1>
-	<% if (name) { %> <h2> Dog: <%= name %></h2> <% } %>
+	<% if (dogName) { %> <h2> Dog: <%= dogName %></h2> <% } %>
 	<div>
 
-	<a href="/canistersession" class="btn btn-lg btn-success">
+	<a href="/newsessionform?dogID=<%=dogID%>&dogName=<%=dogName%>"  class="btn btn-lg btn-success">
 		New Training Session
 	</a>
-	<a href="/scentwheelsession" class="btn btn-lg btn-success">
+	<a href="/newscentwheelsession?dogID=<%=dogID%>&dogName=<%=dogName%>" class="btn btn-lg btn-success">
 		New Scent Wheel Session
 	</a>
 	
