@@ -1,57 +1,86 @@
-var successCount = 0;
-var missCount = 0;
-var falseCountArm1 = 0;
-var falseCountArm2 = 0;
-var falseCountArm4 = 0;
+// Component of trial string written: 
+// <direction>,<position>,<data>
+// ex: c,1,3 --> clockwise, arm 1, 3 falses
+// ex: cc,3,S --> counterclockwise, arm 3, success
+
+// Series of trial components space separated
+// ex: c,1,3 c,2,0 c,3,M
+
+var trial = "";
+
+var direction;
+var position;
+
+var success = false;
+var tempFalseCount = 0;
+
+var falseCount = 0;
 var trialCount = 0;
-var direction = 1;
+
+function init(dir, pos) {
+	if (dir == "clockwise"){
+		trial += 'c';
+		direction = 'c';
+	} else {
+		trial += 'cc';
+		direction = "cc";
+	} 
+	trial += ','+pos+',';
+	position = pos;
+	console.log(trial);
+}
 
 function recordSuccess() {
-	successCount++;
-	document.getElementById("success_tally").innerHTML = successCount + "";
+	success=true;
 	trialCount++;
-	document.getElementById("arm_tally").innerHTML = trialCount + "";
 }
 
-function recordMiss() {
-	missCount++;
-	document.getElementById("miss_tally").innerHTML = missCount + "";
+function recordFalse() {
+	falseCount++;
+	tempFalseCount++;
 	trialCount++;
-	document.getElementById("arm_tally").innerHTML = trialCount + ""; 
 }
 
-function recordFalseArm1() {
-	falseCountArm1++;
-	document.getElementById("arm1_false_tally").innerHTML = falseCountArm1 + "";
-	trialCount++;
-	document.getElementById("arm_tally").innerHTML = trialCount + "";
+function move(dir) {
+	// Record result from previous arm
+	if (position == 3) {
+		trial+=(success)?'S':'M';
+		success = false;
+	} else {
+		trial+=tempFalseCount;
+		tempFalseCount = 0;
+	}
+	console.log(trial);
+
+	// Update direction
+	trial+= ' '+dir;
+	if (dir != direction) {
+		direction = dir;
+		updateDirection(); // page change
+	}
+	// Update position
+	if (position == 4 && direction == 'c') { position = 1 }
+	else if (position == 1 && direction == 'cc') { position = 4 }
+	else {
+		if (direction == 'c') position++;
+		else position--;
+	};
+	trial+=','+position+',';
+	updatePosition(); // page change
 }
 
-function recordFalseArm2() {
-	falseCountArm2++;
-	document.getElementById("arm2_false_tally").innerHTML = falseCountArm2 + "";
-	trialCount++;
-	document.getElementById("arm_tally").innerHTML = trialCount + "";
+function updateDirection () {
+	if (direction == 'c') {
+		$('#current_direction').html("<h3>clockwise</h3>");
+	} else {
+		$('#current_direction').html("<h3>counterclockwise</h3>");
+	}
 }
 
-function recordFalseArm4() {
-	falseCountArm4++;
-	document.getElementById("arm4_false_tally").innerHTML = falseCountArm4 + "";
-	trialCount++;
-	document.getElementById("arm_tally").innerHTML = trialCount + "";
+function updatePosition () {
+	$('.arm button:enabled').prop('disabled',true);
+	$('#'+position).prop('disabled',false);
 }
-
-function changeDirClockwise() {
-	direction = 0;
-	this.disabled = 'disabled'; //grey out buttton after clicked
-}
-
-function changeDirCounterClockwise() {
-	direction = 1;
-	this.disabled = 'disabled'; //greay out button after clicked
-}
-
-
 
 function endSession() {
     //getelememnetbyiD to get session id
