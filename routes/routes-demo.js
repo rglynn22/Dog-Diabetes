@@ -6,16 +6,17 @@ var dogDB = require('../model/dogModel.js');
 
 // Handler for main / home page
 var getMain = function(req, res) {
-  // change dogs to pull from backend
-  dogDB.getAllDogs(function(result, err) {
-    if (err) {
-      res.send(500);
-    }
-    else {
-      // console.log(result);      
-      res.render('index.ejs', {results: result});
-    }
-  }) 
+  result = [{name: "Skip", id: "8k73M"}];
+  res.render('index.ejs',{results: result})
+  // dogDB.getAllDogs(function(result, err) {
+  //   if (err) {
+  //     res.send(500);
+  //   }
+  //   else {
+  //     // Dog represented as {name: ---, id: ---}    
+  //     res.render('index.ejs', {results: result});
+  //   }
+  // }) 
 }
 
 // Handler for new training session page
@@ -71,19 +72,20 @@ var getSessionSummary = function(req, res) {
 var getDogInfo = function(req, res) {
   var dogID = req.query.id;
   var dog = req.query.dog;
-
-  sessionDB.getSessionsByDogId(dogID, function(data, err) {
-    if (err) {
-      console.log(err);
-    }
-    else {
-      var result = [];
-      for (var i = 0; i < data.length; i++) {
-        result.push({date: data[i].record_date, sessionId: data[i].id});
-      }
-      res.render('dog-menu.ejs', {name: dog, sessions: result});
-    }
-  })
+  var result = {date: "12/3/2014", sessionID: "491"};
+  res.render('dog-menu.ejs',{name: dog, sessions: result})
+  // sessionDB.getSessionsByDogId(dogID, function(data, err) {
+  //   if (err) {
+  //     console.log(err);
+  //   }
+  //   else {
+  //     var result = [];
+  //     for (var i = 0; i < data.length; i++) {
+  //       result.push({date: data[i].record_date, sessionId: data[i].id});
+  //     }
+  //     res.render('dog-menu.ejs', {name: dog, sessions: result});
+  //   }
+  // })
 
   // change data and dogs to pull info from db
 

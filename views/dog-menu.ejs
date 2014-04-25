@@ -11,22 +11,22 @@
 	<% if (name) { %> <h2> Dog: <%= name %></h2> <% } %>
 	<div>
 
-	<a href="/session" class="btn btn-lg btn-success">
+	<a href="/canistersession" class="btn btn-lg btn-success">
 		New Training Session
 	</a>
-	<a href="/scent-wheel-session" class="btn btn-lg btn-success">
+	<a href="/scentwheelsession" class="btn btn-lg btn-success">
 		New Scent Wheel Session
 	</a>
 	
 	
-</div>
-<% if (sessions) {%>
-	<% for (i = 0; i < sessions.length;i++) {%>
-		<div class="past_session button" id="<%=sessions[i].sessionId%>">
-			<a href="/sessionsummary"><%= sessions[i].date%></a>
-		</div>
+	</div>
+	<% if (sessions) {%>
+		<% for (i = 0; i < sessions.length;i++) {%>
+			<div class="past_session button" id="<%=sessions[i].sessionId%>">
+				<a href="/sessionsummary"><%= sessions[i].date%></a>
+			</div>
+		<% } %>
 	<% } %>
-<% } %>
 <div class="nav button">
 	<a href="/" class="btn btn-lg btn-primary">
 		<i class="icon-white icon-arrow-left"></i>
