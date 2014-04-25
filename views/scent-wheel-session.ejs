@@ -7,49 +7,52 @@
 	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
 	<title> Scent Wheel Session</title>
 </head>
-<body>
-<h1> Scent Wheel Session</h1>
+<% if (direction != null & position != null) { %>
+	<body onload="init('<%=direction%>',<%=position%>)">
+	<h1> Scent Wheel Session</h1>
+	<div id="current_direction">
+		<h3><%= direction %></h3>
+	</div>
+	<div id="wheel">
+		<div class="arm">
+			<button id="1" type="button" onclick="recordFalse()" class="btn btn-warning btn-large" style="width:60px; height:60px; font-size: 30px;" <% if (position != 1) { %> disabled <% } %>>
+				1
+			</button>
+		</div>
+		<div class="arm">
+			<button id="2" type="button" onclick="recordFalse()" class="btn btn-warning btn-large" style="width:60px; height:60px; font-size: 30px;" <% if (position != 2) { %> disabled <% } %>>
+				2
+			</button>
+		</div>
+		<div class="arm">
+			<button id="3" type="button" onclick="recordSuccess()" class="btn btn-success btn-large" style="width:60px; height:60px; font-size: 30px;" <% if (position != 3) { %> disabled <% } %>>
+				3
+			</button>
+		</div>
+		<div class="arm">
+			<button id="4" type="button" onclick="recordFalse()" class="btn btn-warning btn-large" style="width:60px; height:60px; font-size: 30px;" <% if (position != 4) { %> disabled <% } %>>
+				4
+			</button>
+		</div>
+	</div>
+	<div id="move">
+		<button id="left_button" type="button" onclick="move('cc')" class="btn btn-primary btn-large" >
+			<--
+		</button>
+		<button id="right_button" type="button" onclick="move('c')" class="btn btn-primary btn-large"> 
+		    -->
+		</button>
+	</div>
 
-<div>
-	<button id="arm3_Sbutton" type="button" onclick="recordSuccess()" class="btn btn-success btn-large">
-		Success  <br> <span id="success_tally"> 0 </span>
-	</button>
-	<button id="arm3_Mbutton" type="button" onclick="recordMiss()" class="btn btn-danger btn-large">
-		Miss  <br> <span id="miss_tally"> 0 </span>
-	</button>
-</div>
+	<h2> Total: <span id="arm_tally"> 0 </span></h2> 
 
-<div>
-	<button id="arm2button" type="button" onclick="recordFalseArm2()" class="btn btn-warning btn-large">
-		Arm 2 False Alert <br> <span id="arm2_false_tally"> 0 </span>
-	</button>
-	<button id="arm4button" type="button" onclick="recordFalseArm4()" class="btn btn-warning btn-large">
-		Arm 4 False Alert  <br> <span id="arm4_false_tally"> 0 </span>
-	</button>
-</div>
-
-<div>
-	<button id="arm1button" type="button" onclick="recordFalseArm1()" class="btn btn-warning btn-large">
-		Arm 1 False Alert <br> <span id="arm1_false_tally"> 0 </span>
-	</button>
-</div>
-
-<div>
-	<button id="clockwise_button" type="button" onclick="changeDirClockwise()" class="btn btn-primary btn-large">
-		Clockwise
-	</button>
-	<button id="counterclockwise_button" type="button" onclick="changeDirCounterClockwise()" class="btn btn-primary btn-large"> Counter-Clockwise 
-	</button>
-</div>
-
-
-<h2> Total: <span id="arm_tally"> 0 </span></h2> 
-
-<br>
-<div>
-<!-- <button type="button" onclick="endSession()">End Session</button> -->
-<a href="/sessionsummary" class="btn btn-primary btn-large">End Session</a>
-</div>
-</body>
+	<br>
+	<div>
+	<!-- <button type="button" onclick="endSession()">End Session</button> -->
+	<a href="/sessionsummary" class="btn btn-primary btn-large">End Session</a>
+	</div>
+	</body>
+<% } %> 
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script src="js/scent-wheel-session.js"></script>
 </html>

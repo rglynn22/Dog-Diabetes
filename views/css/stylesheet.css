@@ -46,3 +46,20 @@ div.select_dog{}
 div.nav{
   margin-top: 20px;
 }
+
+#wheel {
+  width: 300px;
+  min-width: 300px;
+  /*border: 1px solid black;*/
+}
+
+#direction {
+  margin: 20px;
+}
+
+div.arm {
+  width: 60px;
+  height: 60px;
+  display: inline-block;
+  margin: 5px;
+}
