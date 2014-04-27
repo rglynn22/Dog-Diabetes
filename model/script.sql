@@ -16,14 +16,15 @@ CREATE TABLE Session (
   canister varchar (32) NOT NULL,
   handler varchar(32) NOT NULL,
   sample_number int NOT NULL,
-  sample_info int NOT NULL,
+  sample_info varchar(64) NOT NULL,
   sample_time varchar(32) NOT NULL,
   record_date varchar(64),
   duration varchar(32),
   successes int,
   misses int,
   false_alerts int,
-  total_trials int
+  total_trials int,
+  notes varchar(MAX)
 );
 
 INSERT INTO dog (id, name, age) VALUES ('1','Fido', '3');

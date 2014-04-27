@@ -9,6 +9,7 @@
 </head>
 <body>
 <h1> Training Session</h1>
+<% if (dogName) { %> <h2>Dog: <%= dogName %></h2> <% } %>
 <div>
 	<div class="session field" >
 			<input type="hidden" id="id" name="id" value="<%=id%>">

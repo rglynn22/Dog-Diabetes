@@ -14,7 +14,7 @@
 	<a href="/newsessionform?dogID=<%=dogID%>&dogName=<%=dogName%>"  class="btn btn-lg btn-success">
 		New Training Session
 	</a>
-	<a href="/newscentwheelsession?dogID=<%=dogID%>&dogName=<%=dogName%>" class="btn btn-lg btn-success">
+	<a href="/newwheelsession?dogID=<%=dogID%>&dogName=<%=dogName%>" class="btn btn-lg btn-success">
 		New Scent Wheel Session
 	</a>
 	
@@ -23,7 +23,7 @@
 	<% if (sessions) {%>
 		<% for (i = 0; i < sessions.length;i++) {%>
 			<div class="past_session button" id="<%=sessions[i].sessionId%>">
-				<a href="/sessionsummary"><%= sessions[i].date%></a>
+				<a href="/sessionsummary?dogName=<%=dogName%>&id=<%=sessions[i].sessionId%>"><%= sessions[i].date%></a>
 			</div>
 		<% } %>
 	<% } %>

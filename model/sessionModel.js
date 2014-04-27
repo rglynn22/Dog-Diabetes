@@ -5,27 +5,6 @@ var DATABASE_URL = process.env.DATABASE_URL || // <-- Heroku URL
                   "postgres://postgres:123@localhost:5432/cis350"; // <-- Replace with your local DB address
 //var DATABASE_URL = "postgres://Tobi@localhost/mylocaldb"
 
-// Get all info regarding a session with id sessionId
-var getSessionInfo = function(sessionId, route_callbck) {
-
-  pg.connect(DATABASE_URL, function(err, client) {
-    if (err) {
-      // console.log('Error connecting to database' + err);
-      route_callbck(null, err);
-    }
-    else {
-      var query = 'SELECT * FROM Session where id = ' + sessionId + ';';
-      client.query(query, function(err, result){
-        if (err) {
-          route_callbck(null, err);
-          // console.log("Error running specified query" + err);
-        }
-        else route_callbck(result.rows, null);
-      })
-    }    
-  })
-}
-
 // Initial implementation. Use this to update a session with
 // trial data.
 var updateTrainingSession = function(data, route_callbck) {
@@ -124,8 +103,32 @@ var getSessionsByDogId = function(dogID, route_callbck) {
   })
 } 
 
+var getSessionById = function(sessionId, route_callbck) {
+  pg.connect(DATABASE_URL, function(err, client) {
+    if (err) {
+      console.log('Error connecting to database: ' + err);
+      route_callbck(null, err);
+    }
+    else {
+      var query = 'SELECT * from session ' +
+                  'WHERE id=' + '\'' + sessionId +'\'';
+      client.query(query, function(err, result) {
+        if (err) {
+          console.log('Error running query: ');
+          console.log(query);
+          console.log(err);
+          route_callbck(null, err);
+        }
+        else {
+          route_callbck(result.rows, null);
+        }
+      })
+    }
+  })
+}
+
 var sessionModel = {
-  getSessionInfo: getSessionInfo,
+  getSessionById: getSessionById,
   addTrainingSession: addTrainingSession,
   updateTrainingSession: updateTrainingSession,
   getSessionsByDogId: getSessionsByDogId,

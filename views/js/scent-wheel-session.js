@@ -85,11 +85,12 @@ function updatePosition () {
 function endSession() {
     //getelememnetbyiD to get session id
 	var url = '/postsessionresults';
+	var dogName = $('h2').val();
 	var results = [ { "s":successCount, "m":missCount, "f1":falseCountArm1, "f2":falseCountArm2, "f4":falseCountArm4, "t":trialCount} ]
 	
 	$.post(url, results, function(data, status) {
       if (status == 'success') {
-        window.location.replace('/getsessions?dogid='+uuid);
+        window.location.replace('/scentwheelsession?id='+uuid +'&dogName=' + dogName);
       }
       else {
         alert('Failed to store session results. Please try again!');

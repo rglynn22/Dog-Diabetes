@@ -46,27 +46,61 @@ var getScentWheelSessionForm = function(req, res) {
 
 // Handler for displaying session summary page
 var getSessionSummary = function(req, res) {
-  var sessionSummary = {
-    dog: "Skip", // add
-    sessionID: "1",
-    date: "3/10/14", // add
-    time: "12:00 PM", // add
-    location: "Training center",
-    canister: "Hip",
-    handler: "Mike",
-    sample_num: "#578",
-    sample_info: "Used 10 times.",
-    sample_time: "9:00 PM"
-  }
-  var sessionStats = {
-    duration: "15 minutes",
-    trials: "7",
-    success: "3",
-    miss: "2",
-    false_alert: "2",
-    notes: "Seemed distracted."
-  }
-  res.render('session-summary.ejs', {summary: sessionSummary, stats: sessionStats});
+  var sessionId = req.body.id;
+  var dogName = req.body.dogName;
+
+  sessionDB.getSessionById(sessionId, function(result, err){
+    if (err) {
+      res.send(500);
+    }
+    else {
+      var composite_time = new Date(result.record_date);
+
+      var sessionSummary = {
+        dog: dogName, // add
+        sessionID: sessionId,
+        date: composite_time.toDateString(), // add
+        time: composite_time.toTimeString(), // add
+        location: result.location,
+        canister: result.canister,
+        handler: result.handler,
+        sample_num: result.sample_number,
+        sample_info: result.sample_info,
+        sample_time: result.sample_time,
+      }
+
+      var sessionStats = {
+        duration: result.duration || 0,
+        trials: result.total_trials || 0,
+        success: result.successes || 0,
+        miss: result.misses || 0,
+        false_alert: result.false_alerts || 0,
+        notes: result.notes || "None"
+      }
+      res.render('session-summary.ejs', {summary: sessionSummary, stats: sessionStats});
+    }
+  })
+  // var sessionSummary = {
+  //   dog: "Skip", // add
+  //   sessionID: "1",
+  //   date: "3/10/14", // add
+  //   time: "12:00 PM", // add
+  //   location: "Training center",
+  //   canister: "Hip",
+  //   handler: "Mike",
+  //   sample_num: "#578",
+  //   sample_info: "Used 10 times.",
+  //   sample_time: "9:00 PM"
+  // }
+  // var sessionStats = {
+  //   duration: "15 minutes",
+  //   trials: "7",
+  //   success: "3",
+  //   miss: "2",
+  //   false_alert: "2",
+  //   notes: "Seemed distracted."
+  // }
+  
 }
 
 // Handler for dog information page
@@ -104,11 +138,6 @@ var getAllDogs = function(req, res) {
       res.send(data);
     }
   })
-}
-
-// Handler to get all training session for a particular dog?
-var getAllTrainingSessions = function(req, res) {
-
 }
 
 // Handler to get a single training session for a particular dog
@@ -175,22 +204,33 @@ var postAddDog = function(req, res) {
 }
  
 // BUGGY
-// var postSessionResults = function(req, res) {
-//   //NEED TO ACCESS SESSION ID
-// 	var s = req.body.s;
-// 	var m = req.body.m;
-// 	var f = req.body.f;
-// 	var t = req.body.t;
+var postSessionResults = function(req, res) {
+  //NEED TO ACCESS SESSION ID
+  var data = {};
+  data.sessionId = req.body.sessionId;
+  data.successes = req.body.s;
+  data.misses = req.body.m;
+  data.false_alerts = req.body.f;
+  data.total_trials = req.body.t;  
+  data.duration = req.body.d;
 	
-//   	sessionDB.postSessionResults(sessionID, s, m, f, t, function(data, err) {
-//     if (err) {
-//       res.send(500);
-//     }
-//     else {
-//       res.send(data);
-//     }
-//   })    
-//  } 
+  sessionDB.updateTrainingSession(data, function(result, err) {
+    if (err) {
+      res.send(500);
+    }
+    else {
+      res.send(data);
+    }
+  })    
+ }
+
+// TODO: Data format not clear
+ var postAddScentWheelSession = function(req, res) {
+  var data = {};
+  data.handler = req.body.handler;
+  data.location = req.body.location;
+
+ } 
 
 // Expose call backs to app controller
 var routes = {

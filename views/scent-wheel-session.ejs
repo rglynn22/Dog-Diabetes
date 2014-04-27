@@ -10,6 +10,7 @@
 <% if (direction != null & position != null) { %>
 	<body onload="init('<%=direction%>',<%=position%>)">
 	<h1> Scent Wheel Session</h1>
+	<% if (dogName) { %> <h2>Dog: <%= dogName %></h2> <% } %>
 	<div class="session field" >
 			<input type="hidden" id="id" name="id" value="<%=id%>">
 	</div>
