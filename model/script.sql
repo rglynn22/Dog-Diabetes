@@ -27,5 +27,22 @@ CREATE TABLE Session (
   notes varchar(MAX)
 );
 
+CREATE TABLE ScentWheel (
+  id varchar(64) NOT NULL PRIMARY KEY,
+  dogID varchar(64) REFERENCES dog(id),
+  location varchar (32) NOT NULL,
+  handler varchar(32) NOT NULL,
+  can1_contents varchar(32) NOT NULL,
+  can2_contents varchar(32) NOT NULL,
+  can3_contents varchar(32) NOT NULL,
+  can4_contents varchar(32) NOT NULL,
+  record_date varchar(64),
+  duration varchar(32),
+  -- other session stats 
+  total_trials int,
+  notes varchar(MAX)
+);
+
+
 INSERT INTO dog (id, name, age) VALUES ('1','Fido', '3');
 INSERT INTO dog (id, name, age) VALUES ('2','Spot', '5');
