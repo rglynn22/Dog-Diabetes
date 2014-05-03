@@ -30,7 +30,8 @@ var getCanisterSessionForm = function(req, res) {
 // Handler for displaying canister session page
 var getCanisterSession = function(req, res) {
   var id = req.query.id;
-  res.render('canister-session.ejs', {id: id});
+  var dogName = req.query.dogName;
+  res.render('canister-session.ejs', {id: id, dogName: dogName});
 }
 
 // Handler for displaying scent wheel session page
@@ -70,7 +71,7 @@ var getSessionSummary = function(req, res) {
         sessionID: sessionId,
         date: composite_time.toDateString(), // add
         time: composite_time.toTimeString(), // add
-		location: result.location,
+		    location: result.location,
         canister: result.canister,
         handler: result.handler,
         sample_num: result.sample_number,
@@ -280,18 +281,18 @@ var postWheelSessionResults = function(req, res) {
 // Expose call backs to app controller
 var routes = {
     // page rend routes
-    get_main: getMain,
-    get_dog_info: getDogInfo,
-    get_canister_session_form: getCanisterSessionForm,
-    get_scent_wheel_session_form: getScentWheelSessionForm,
-    get_canister_session: getCanisterSession,
-    get_scent_wheel_session: getScentWheelSession,
-    get_session_summary: getSessionSummary,
-    get_new_dog_form: getNewDogForm,
-    get_all_dogs: getAllDogs,
-    post_add_training_session: postAddTrainingSession,
+  get_main: getMain,
+  get_dog_info: getDogInfo,
+  get_canister_session_form: getCanisterSessionForm,
+  get_scent_wheel_session_form: getScentWheelSessionForm,
+  get_canister_session: getCanisterSession,
+  get_scent_wheel_session: getScentWheelSession,
+  get_session_summary: getSessionSummary,
+  get_new_dog_form: getNewDogForm,
+  get_all_dogs: getAllDogs,
+  post_add_training_session: postAddTrainingSession,
 	post_add_session_stats: postSessionResults,
-    post_add_dog: postAddDog,
+  post_add_dog: postAddDog,
 	post_add_wheel_session: postAddScentWheelSession,
 	post_add_wheel_session_stats: postWheelSessionResults
 	

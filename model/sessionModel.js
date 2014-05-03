@@ -16,12 +16,13 @@ var updateTrainingSession = function(data, route_callbck) {
     else {
       console.log(data);
       var query = 'UPDATE session ' + 
-                  'SET successes = ' + '\'' + data.successes + '\'' +
-                      'misses = ' + '\'' + data.misses + '\'' + 
-                      'false_alerts = ' + '\'' + data.false_alerts + '\'' +
-                      'total_trials = ' + '\'' + data.total_trials + '\'' +
-					  'duration = ' + '\'' + data.duration + '\'' +
-                  'WHERE id=' + '\'' + data.sessionID + '\';';
+                  'SET successes = ' + '\'' + data.successes + '\',' +
+                      ' misses = ' + '\'' + data.misses + '\',' + 
+                      ' false_alerts = ' + '\'' + data.false_alerts + '\',' +
+                      ' total_trials = ' + '\'' + data.total_trials + '\',' +
+					            ' duration = ' + '\'' + data.duration + '\'' +
+                  ' WHERE id=' + '\'' + data.sessionId + '\';';
+      console.log('Query: ' + query);
       client.query(query, function(err, result) {
         if (err) {
           route_callbck(null, err);
@@ -33,7 +34,6 @@ var updateTrainingSession = function(data, route_callbck) {
           route_callbck(result, null);
         }
       })
-
     }
   })
 }
@@ -59,7 +59,7 @@ var addTrainingSession = function(data, route_callbck) {
                              + '\'' + data.sample_num + '\'' + ','
                              + '\'' + data.sample_info + '\'' + ','
                              + '\'' + data.sample_time + '\'' + ','
-							 + '\'' + (new Date()) + '\''
+							               + '\'' + (new Date()).toISOString() + '\''
                              + ');';      
 			client.query(query, function (err, result) {
   			if (err) {

@@ -8,6 +8,7 @@ $(document).ready(function() {
 var submitForm = function() {
   var url = '/addwheelsession';
   var uuid = guid();
+  var dogName = $('h2').html();
   $('input[name="uuid"]').val(uuid);
   $.post(url, $('#new-training-form').serialize(), function(data, status) {
     if (status == 'success') {

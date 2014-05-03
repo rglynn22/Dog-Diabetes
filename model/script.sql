@@ -1,4 +1,5 @@
 DROP TABLE session;
+DROP TABLE ScentWheelSession;
 DROP TABLE dog;
 
 CREATE TABLE Dog (
@@ -24,10 +25,10 @@ CREATE TABLE Session (
   misses int,
   false_alerts int,
   total_trials int,
-  notes varchar(MAX)
+  notes varchar(255)
 );
 
-CREATE TABLE Scentwheelsession (
+CREATE TABLE ScentWheelSession (
   id varchar(64) NOT NULL PRIMARY KEY,
   dogID varchar(64) REFERENCES dog(id),
   handler varchar(32) NOT NULL,
@@ -40,8 +41,8 @@ CREATE TABLE Scentwheelsession (
   can4_contents varchar(32) NOT NULL,
   record_date varchar(64),
   duration varchar(32),
-  session_string varchar(MAX), 
-  notes varchar(MAX)
+  session_string varchar(255), 
+  notes varchar(255)
 );
 
 

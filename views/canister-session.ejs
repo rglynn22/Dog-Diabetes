@@ -5,16 +5,19 @@
 	<link type="text/css" rel="stylesheet" href="css/stylesheet.css"/>
 	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
 	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+	<script src="js/common.js"></script>
+	<script src = "js/canister-session.js"></script>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title> Training Session</title>
 </head>
 <body>
 <h1> Training Session</h1>
 <% if (dogName) { %> <h2>Dog: <%= dogName %></h2> <% } %>
+
+<input type="hidden" id="id" name="id" value="<%=id%>">
+
 <div>
-	<div class="session field" >
-			<input type="hidden" id="id" name="id" value="<%=id%>">
-	</div>
 	<button id="successbutton" type="button" onclick="recordSuccess()" class="btn btn-success btn-large">
 		Success <br> <span id="success_tally"> 0 </span>
 	</button>
@@ -29,10 +32,8 @@
 <h2> Total: <span id="trial_tally"> 0 </span></h2> 
 
 <br>
-<div>
-<!-- <button type="button" onclick="endSession()">End Session</button> -->
-<a href="/sessionsummary" class="btn btn-primary btn-large">End Session</a>
+<div id="end-button">
+	<button type="button" class="btn btn-primary btn-large">End Session</button>
 </div>
 </body>
-<script src="js/session.js"></script>
 </html>
