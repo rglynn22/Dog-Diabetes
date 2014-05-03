@@ -63,7 +63,7 @@ var getSessionSummary = function(req, res) {
         sessionID: sessionId,
         date: composite_time.toDateString(), // add
         time: composite_time.toTimeString(), // add
-        location: result.location,
+		location: result.location,
         canister: result.canister,
         handler: result.handler,
         sample_num: result.sample_number,
@@ -259,7 +259,7 @@ var postWheelSessionResults = function(req, res) {
   data.can3_contents = req.body.can_3;
   data.can4_contents = req.body.can_4;
   
-  scentWheelDB.addScentWheelSession(formData, function(data, err) {
+  scentWheelDB.addScentWheelSession(data, function(data, err) {
     if (err) {
       res.send(500);
     }
