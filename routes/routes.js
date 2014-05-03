@@ -96,8 +96,8 @@ var getSessionSummary = function(req, res) {
 
 var getScentWheelSessionSummary = function(req, res) {
 	
-  var sessionId = req.body.id;
-  var dogName = req.body.dogName;
+  var sessionId = req.query.id;
+  var dogName = req.query.dogName;
 
   scentWheelDB.getScentWheelSessionById(sessionId, function(result, err){
     if (err) {
@@ -111,15 +111,15 @@ var getScentWheelSessionSummary = function(req, res) {
         sessionID: sessionId,
         date: composite_time.toDateString(), // add
         time: composite_time.toTimeString(), // add
-		location: result.location,
+		    location: result.location,
         handler: result.handler,
         sample_num: result.sample_number,
         sample_info: result.sample_info,
         sample_time: result.sample_time,
-		can1_contents: result.can1_contents,
-		can2_contents: result.can2_contents,
-		can3_contents: result.can3_contents,
-		can4_contents: result.can4_contents
+		    can1_contents: result.can1_contents,
+		    can2_contents: result.can2_contents,
+		    can3_contents: result.can3_contents,
+		    can4_contents: result.can4_contents
       }
 
       var sessionStats = {

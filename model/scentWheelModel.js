@@ -26,9 +26,8 @@ var updateScentWheelSession = function(data, route_callbck) {
           console.log('Query: ' + query);
           console.log('Error: ' + err);
         }
-        else {
-          route_callbck(result, null);
-        }
+        else route_callbck(result, null);
+        client.end();
       })
 
     }
@@ -54,7 +53,7 @@ var addScentWheelSession = function(data, route_callbck) {
                              + '\'' + data.sample_num + '\'' + ','
                              + '\'' + data.sample_info + '\'' + ','
                              + '\'' + data.sample_time + '\'' + ','
-							 + '\'' + (new Date()) + '\''
+							               + '\'' + (new Date()) + '\''
                              + ');';      
 			client.query(query, function (err, result) {
   			if (err) {
@@ -63,6 +62,7 @@ var addScentWheelSession = function(data, route_callbck) {
           console.log(query);
   			}
   			else route_callbck(result, null);
+        client.end();
   		})
 		}
 	})	
@@ -88,6 +88,7 @@ var getScentWheelSessionsByDogId = function(dogID, route_callbck) {
         else {
           route_callbck(result.rows, null);
         }
+        client.end();
       })
     }
   })
@@ -112,6 +113,7 @@ var getScentWheelSessionById = function(sessionId, route_callbck) {
         else {
           route_callbck(result.rows, null);
         }
+        client.end();
       })
     }
   })

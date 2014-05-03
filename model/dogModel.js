@@ -23,6 +23,7 @@ var getAllDogs = function(route_callbck) {
             data.push({'name': rows[i].name, 'id':rows[i].id});
           }
           route_callbck(data, null);
+          client.end();
         }
       })
     }
@@ -44,6 +45,7 @@ var getDogInfo = function(dogId, route_callbck) {
         else {
           var rows = result.rows;
           route_callbck(rows, null);
+          client.end();
         }
       });
     }    
@@ -72,6 +74,7 @@ var addDog = function(dogData, route_callbck) {
         else {
           console.log(result);
           route_callbck(result, null);
+          client.end();
         }
       });
     }

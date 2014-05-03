@@ -32,6 +32,7 @@ var updateTrainingSession = function(data, route_callbck) {
         }
         else {
           route_callbck(result, null);
+          client.end();
         }
       })
     }
@@ -68,6 +69,7 @@ var addTrainingSession = function(data, route_callbck) {
           console.log(query);
   			}
   			else route_callbck(result, null);
+        client.end();
   		})
 		}
 	})	
@@ -90,9 +92,8 @@ var getSessionsByDogId = function(dogID, route_callbck) {
           console.log(err);
           route_callbck(null, err);
         }
-        else {
-          route_callbck(result.rows, null);
-        }
+        else route_callbck(result.rows, null);
+        client.end();
       })
     }
   })
@@ -115,9 +116,8 @@ var getSessionById = function(sessionId, route_callbck) {
           console.log(err);
           route_callbck(null, err);
         }
-        else {
-          route_callbck(result.rows[0], null);
-        }
+        else route_callbck(result.rows[0], null);
+        client.end();
       })
     }
   })

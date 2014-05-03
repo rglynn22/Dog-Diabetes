@@ -1,6 +1,6 @@
-DROP TABLE session;
+DROP TABLE Session;
 DROP TABLE ScentWheelSession;
-DROP TABLE dog;
+DROP TABLE Dog;
 
 CREATE TABLE Dog (
   id varchar(64) NOT NULL PRIMARY KEY,
