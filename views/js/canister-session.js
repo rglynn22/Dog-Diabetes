@@ -26,10 +26,7 @@ function recordFalseAlert() {
 }
 
 function endSession() {
-    //getelememnetbyiD to get session id
-	var endTime = new Date().getTime();
-	//pull start time from DB?
-	//how to get sessionID?
+    var endTime = new Date().getTime();
 	var duration = endTime-startTime;
 	var url = '/postsessionresults';
 	var results = [ {"duration":duration,

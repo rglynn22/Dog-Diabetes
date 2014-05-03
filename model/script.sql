@@ -41,7 +41,7 @@ CREATE TABLE ScentWheel (
   can4_contents varchar(32) NOT NULL,
   record_date varchar(64),
   duration varchar(32),
-  session_string varchar(MAX) NOT NULL, 
+  session_string varchar(MAX), 
   total_trials int,
   notes varchar(MAX)
 );
