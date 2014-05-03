@@ -112,7 +112,7 @@ var getSessionSummary = function(req, res) {
   
 }
 
-var getScentWheelSessionSummary = function(req, res) {
+/*var getScentWheelSessionSummary = function(req, res) {
   var sessionId = req.body.id;
   var dogName = req.body.dogName;
 
@@ -147,7 +147,7 @@ var getScentWheelSessionSummary = function(req, res) {
       res.render('scent-wheel-session-summary.ejs', {summary: sessionSummary, stats: sessionStats});
     }
   })
-
+*/
 // Handler for dog information page
 var getDogInfo = function(req, res) {
   var dogID = req.query.id;
@@ -323,7 +323,7 @@ var routes = {
     get_canister_session: getCanisterSession,
     get_scent_wheel_session: getScentWheelSession,
     get_session_summary: getSessionSummary,
-	get_scent_wheel_session_summary: getScentWheelSessionSummary,
+	//get_scent_wheel_session_summary: getScentWheelSessionSummary,
     get_new_dog_form: getNewDogForm,
     get_all_dogs: getAllDogs,
     post_add_training_session: postAddTrainingSession,
