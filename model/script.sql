@@ -27,10 +27,9 @@ CREATE TABLE Session (
   notes varchar(MAX)
 );
 
-CREATE TABLE ScentWheel (
+CREATE TABLE Scentwheelsession (
   id varchar(64) NOT NULL PRIMARY KEY,
   dogID varchar(64) REFERENCES dog(id),
-  location varchar (32) NOT NULL,
   handler varchar(32) NOT NULL,
   sample_number int NOT NULL,
   sample_info varchar(64) NOT NULL,
@@ -42,7 +41,6 @@ CREATE TABLE ScentWheel (
   record_date varchar(64),
   duration varchar(32),
   session_string varchar(MAX), 
-  total_trials int,
   notes varchar(MAX)
 );
 

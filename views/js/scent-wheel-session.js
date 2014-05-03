@@ -5,6 +5,7 @@
 
 // Series of trial components space separated
 // ex: c,1,3 c,2,0 c,3,M
+var startTime = new Date().getTime();
 
 var trial = "";
 
@@ -83,10 +84,12 @@ function updatePosition () {
 }
 
 function endSession() {
-    //getelememnetbyiD to get session id
-	var url = '/postsessionresults';
+    var endTime = new Date().getTime();
+	var milliseconds = endTime - startTime;
+	var minutes = (milliseconds / (1000*60)) % 60;
+	var url = '/addwheelsessionstats';
 	var dogName = $('h2').val();
-	var results = [ { "s":successCount, "m":missCount, "f1":falseCountArm1, "f2":falseCountArm2, "f4":falseCountArm4, "t":trialCount} ]
+	var results = [ { "duration":minutes, "session_string":session_string} ]
 	
 	$.post(url, results, function(data, status) {
       if (status == 'success') {

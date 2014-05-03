@@ -1,4 +1,5 @@
 var sessionDB = require('../model/sessionModel.js');
+var scentWheelDB = require('../model/scentWheelModel.js');
 var dogDB = require('../model/dogModel.js');
 /*********************************************
   Callbacks for Page Loads
@@ -45,6 +46,7 @@ var getScentWheelSessionForm = function(req, res) {
 }
 
 // Handler for displaying session summary page
+//TODO get scent wheel session summary
 var getSessionSummary = function(req, res) {
   var sessionId = req.body.id;
   var dogName = req.body.dogName;
@@ -141,6 +143,7 @@ var getAllDogs = function(req, res) {
 }
 
 // Handler to get a single training session for a particular dog
+//TODO get scent wheel sessions
 var getTrainingSession = function(req, res) {
   var sessionID = req.query.uuid;
   db.getTrainingSession(sessionID, function(data, err){
@@ -173,8 +176,7 @@ var postAddTrainingSession = function(req, res) {
   formData.sample_num = req.body.sample_num;
   formData.sample_info = req.body.sample_info;
   formData.sample_time = req.body.sample_time;
-  formData.duration = req.body.duration;
-
+  
   sessionDB.addTrainingSession(formData, function(data, err) {
     if (err) {
       res.send(500);
@@ -208,11 +210,11 @@ var postSessionResults = function(req, res) {
   //NEED TO ACCESS SESSION ID
   var data = {};
   data.sessionId = req.body.sessionId;
-  data.successes = req.body.s;
-  data.misses = req.body.m;
-  data.false_alerts = req.body.f;
-  data.total_trials = req.body.t;  
-  data.duration = req.body.d;
+  data.successes = req.body.successes;
+  data.misses = req.body.misses;
+  data.false_alerts = req.body.false_alerts;
+  data.total_trials = req.body.total_trials;  
+  data.duration = req.body.duration;
 	
   sessionDB.updateTrainingSession(data, function(result, err) {
     if (err) {
@@ -223,12 +225,48 @@ var postSessionResults = function(req, res) {
     }
   })    
  }
+ 
+// BUGGY
+var postWheelSessionResults = function(req, res) {
+  //NEED TO ACCESS SESSION ID
+  var data = {};
+  data.sessionId = req.body.sessionId;
+  data.session_string = req.body.session_string;
+  data.duration = req.body.duration;
+
+  scentWheelDB.updateScentWheelSession(data, function(result, err) {
+    if (err) {
+      res.send(500);
+    }
+    else {
+      res.send(data);
+    }
+  })    
+ }
+  
 
 // TODO: Data format not clear
  var postAddScentWheelSession = function(req, res) {
   var data = {};
+  data.sessionID = req.body.uuid;
+  data.dogID = req.body.dogID;
   data.handler = req.body.handler;
-  data.location = req.body.location;
+  data.sample_num = req.body.sample_num;
+  data.sample_info = req.body.sample_info;
+  data.sample_time = req.body.sample_time;
+  data.can1_contents = req.body.can_1;
+  data.can2_contents = req.body.can_2;
+  data.can3_contents = req.body.can_3;
+  data.can4_contents = req.body.can_4;
+  
+  scentWheelDB.addScentWheelSession(formData, function(data, err) {
+    if (err) {
+      res.send(500);
+    }
+    else {
+      res.send(data);
+    }
+  })  
 
  } 
 
@@ -245,8 +283,10 @@ var routes = {
     get_new_dog_form: getNewDogForm,
     get_all_dogs: getAllDogs,
     post_add_training_session: postAddTrainingSession,
+	post_add_session_stats: postSessionResults,
     post_add_dog: postAddDog,
-	post_add_wheel_session: postAddScentWheelSession
+	post_add_wheel_session: postAddScentWheelSession,
+	post_add_wheel_session_stats: postWheelSessionResults
 	
 };
 

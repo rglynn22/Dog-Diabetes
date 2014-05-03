@@ -27,9 +27,10 @@ function recordFalseAlert() {
 
 function endSession() {
     var endTime = new Date().getTime();
-	var duration = endTime-startTime;
-	var url = '/postsessionresults';
-	var results = [ {"duration":duration,
+	var milliseconds = endTime - startTime;
+	var minutes = (milliseconds / (1000*60)) % 60;
+	var url = '/addsessionstats';
+	var results = [ {"duration":minutes,
 		 			"successes":successCount, 
 					"misses":missCount, 
 					"false_alerts":falseCount, 
