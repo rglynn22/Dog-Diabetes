@@ -139,12 +139,12 @@ function endSession() {
 	var milliseconds = endTime - startTime;
 	var minutes = (milliseconds / (1000*60)) % 60;
 	var url = '/addwheelsessionstats';
-	var dogName = $('h2').val();
+	var dogName = $('#dog_name').val();
 	var results = [ { "duration":minutes, "session_string":session_string} ]
 	
 	$.post(url, results, function(data, status) {
       if (status == 'success') {
-        //window.location.replace('/scentwheelsessionsummary?id='+uuid +'&dogName=' + dogName);
+        window.location.replace('/scentwheelsessionsummary?id='+uuid +'&dogName=' + dogName);
       }
       else {
         alert('Failed to store session results. Please try again!');
