@@ -48,7 +48,8 @@ var endSession = function() {
 	
 	$.post(url, results, function(data, status) {
       if (status == 'success') {
-        // window.location.replace('/');
+        window.location.replace('/');
+        // window.location.replace('/sessionsummary?id='+uuid +'&dogName=' + dogName);
       }
       else {
         alert('Failed to store session results. Please try again!');

@@ -30,7 +30,11 @@ var getCanisterSessionForm = function(req, res) {
 // Handler for displaying canister session page
 var getCanisterSession = function(req, res) {
   var id = req.query.id;
+<<<<<<< HEAD
   var dogName = req.query.dogName;
+=======
+  var dogName = req.query.dogName; 
+>>>>>>> 8809117b34ebe8eb4662b89f70f09c8a54e3f7d0
   res.render('canister-session.ejs', {id: id, dogName: dogName});
 }
 
@@ -113,6 +117,42 @@ var getSessionSummary = function(req, res) {
   
 }
 
+/*var getScentWheelSessionSummary = function(req, res) {
+  var sessionId = req.body.id;
+  var dogName = req.body.dogName;
+
+  scentWheelDB.getScentWheelSessionById(sessionId, function(result, err){
+    if (err) {
+      res.send(500);
+    }
+    else {
+      var composite_time = new Date(result.record_date);
+
+      var sessionSummary = {
+        dog: dogName, // add
+        sessionID: sessionId,
+        date: composite_time.toDateString(), // add
+        time: composite_time.toTimeString(), // add
+		location: result.location,
+        handler: result.handler,
+        sample_num: result.sample_number,
+        sample_info: result.sample_info,
+        sample_time: result.sample_time,
+		can1_contents: result.can1_contents,
+		can2_contents: result.can2_contents,
+		can3_contents: result.can3_contents,
+		can4_contents: result.can4_contents
+      }
+
+      var sessionStats = {
+        duration: result.duration || 0,
+        session_string: result.session_string || 0,
+        notes: result.notes || "None"
+      }
+      res.render('scent-wheel-session-summary.ejs', {summary: sessionSummary, stats: sessionStats});
+    }
+  })
+*/
 // Handler for dog information page
 var getDogInfo = function(req, res) {
   var dogID = req.query.id;

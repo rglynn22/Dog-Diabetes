@@ -12,6 +12,7 @@
 <script src = "js/canister-session-form.js"></script>
 <body>
 	<h1>New Training Session</h1>
+
 	<% if (dogName) { %> <h2><%= dogName %></h2> <% } %>
 
 	<form id="new-training-form">
@@ -20,6 +21,9 @@
 		</div>
 		<div class="session field" >
 			<input type="hidden" id="dogID" name="dogID" value="<%=dogID%>">
+		</div>
+		<div class="session field" >
+			<input type="hidden" id="dogName" name="dogName" value="<%=dogName%>">
 		</div>
 		<div class="session field">
 			<input type="text" id="location" name="location" placeholder="Location" required> 
