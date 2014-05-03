@@ -40,7 +40,7 @@ function endSession() {
 	
 	$.post(url, results, function(data, status) {
       if (status == 'success') {
-        window.location.replace('/getsessions?dogid='+uuid);
+        window.location.replace('/sessionsummary?id='+uuid +'&dogName=' + dogName);
       }
       else {
         alert('Failed to store session results. Please try again!');
