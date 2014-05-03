@@ -43,7 +43,7 @@ var updateTrainingSession = function(data, route_callbck) {
 var addTrainingSession = function(data, route_callbck) {
 	pg.connect(DATABASE_URL, function(err, client) {
 		if (err) {
-			// console.log('Error connecting to database' + err);
+			console.log('Error connecting to database' + err);
       route_callbck(null, err);
 		}
 		else {
