@@ -83,7 +83,7 @@ var getSessionSummary = function(req, res) {
       }
       res.render('session-summary.ejs', {summary: sessionSummary, stats: sessionStats});
     }
-  })  
+  });
 }
 
 var getScentWheelSessionSummary = function(req, res) {
@@ -91,37 +91,52 @@ var getScentWheelSessionSummary = function(req, res) {
   var sessionId = req.query.id;
   var dogName = req.query.dogName;
 
-  scentWheelDB.getScentWheelSessionById(sessionId, function(result, err){
-    if (err) {
-      res.send(500);
-    }
-    else {
-      var composite_time = new Date(result.record_date);
+  // scentWheelDB.getScentWheelSessionById(sessionId, function(result, err){
+  //   if (err) {
+  //     res.send(500);
+  //   }
+  //   else {
+  //     var composite_time = new Date(result.record_date);
 
+  //     var sessionSummary = {
+  //       dog: dogName, // add
+  //       sessionID: sessionId,
+  //       date: composite_time.toDateString(), // add
+  //       time: composite_time.toTimeString(), // add
+		//     location: result.location,
+  //       handler: result.handler,
+  //       sample_num: result.sample_number,
+  //       sample_info: result.sample_info,
+  //       sample_time: result.sample_time,
+		//     can1_contents: result.can1,
+		//     can2_contents: result.can2,
+		//     can3_contents: result.can3,
+		//     can4_contents: result.can4
+  //     }
+
+  //     var sessionStats = {
+  //       duration: result.duration || 0,
+  //       session_string: result.session_string || 0,
+  //       notes: result.notes || "None"
+  //     }
       var sessionSummary = {
-        dog: dogName, // add
-        sessionID: sessionId,
-        date: composite_time.toDateString(), // add
-        time: composite_time.toTimeString(), // add
-		    location: result.location,
-        handler: result.handler,
-        sample_num: result.sample_number,
-        sample_info: result.sample_info,
-        sample_time: result.sample_time,
-		    can1_contents: result.can1,
-		    can2_contents: result.can2,
-		    can3_contents: result.can3,
-		    can4_contents: result.can4
+        dog: "Skip", // add
+        sessionID: "1",
+        date: "3/10/14", // add
+        time: "12:00 PM", // add
+        handler: "Mike",
+        sample_num: "#578",
+        sample_info: "Used 10 times.",
+        sample_time: "9:00 PM"
       }
-
       var sessionStats = {
-        duration: result.duration || 0,
-        session_string: result.session_string || 0,
-        notes: result.notes || "None"
+        duration: "15 minutes",
+        trials: "c,1,3 c,2,0 c,3,M/cc,4,0 c,3,S/cc,2,2 cc,1,0 cc,4,1 cc,3,S",
+        notes: "Seemed distracted."
       }
       res.render('scent-wheel-session-summary.ejs', {summary: sessionSummary, stats: sessionStats});
     }
-  })
+  });
 }
 
 // Handler for dog information page
@@ -142,7 +157,7 @@ var getDogInfo = function(req, res) {
                                   sessions: result,
                                   dogID: dogID});
     }
-  })  
+  }); 
 }
 
 /*********************************************
@@ -158,7 +173,7 @@ var getAllDogs = function(req, res) {
     else {
       res.send(data);
     }
-  })
+  });
 }
 
 // Handler to get a single training session for a particular dog
@@ -172,7 +187,7 @@ var getTrainingSession = function(req, res) {
     else {
       res.send(data);
     }
-  })
+  });
 }
 
 var getNewDogForm = function(req, res) {
@@ -203,7 +218,7 @@ var postAddTrainingSession = function(req, res) {
     else {
       res.send(data);
     }
-  })    
+  })  ;  
 }
 
 var postAddDog = function(req, res) {
@@ -221,7 +236,7 @@ var postAddDog = function(req, res) {
     else {
       res.send(data);
     }
-  })
+  });
 }
  
 // BUGGY
@@ -242,7 +257,7 @@ var postSessionResults = function(req, res) {
     else {
       res.send(data);
     }
-  })    
+  });
  }
  
 // BUGGY
@@ -260,7 +275,7 @@ var postWheelSessionResults = function(req, res) {
     else {
       res.send(data);
     }
-  })    
+  });    
  }
   
 
@@ -285,9 +300,9 @@ var postAddScentWheelSession = function(req, res) {
     else {
       res.send(result);
     }
-  })  
+  });
 
- } 
+ }
 
 // Expose call backs to app controller
 var routes = {

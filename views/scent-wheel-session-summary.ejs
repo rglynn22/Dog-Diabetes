@@ -6,7 +6,7 @@
 	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
 	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
 </head>
-<body>
+<body onload="parseSession(<%=stats.session_string%>)">
 	<h1>Training Session Summary</h1>  
 	<%if (summary != null && stats != null) { %>
 		<div class="session_stats panel panel-info">
@@ -35,7 +35,7 @@
 	        <div class="panel-heading">
 	            <h3 class="panel-title">Stats</h3>
 	        </div>
-	        <div class="panel-body">
+	        <div id="stats" class="panel-body">
 					Duration: <%= stats.duration%> <br>
 	        </div>
 	    </div>
@@ -58,5 +58,6 @@
 		Main Menu
 	</a>
 </div>
+<script type="text/javascript" src="js/scent-wheel-session-summary.js"></script>
 </body>
 </html>
