@@ -13,13 +13,15 @@
 <body>
 	<h1>New Training Session</h1>
 	<% if (dogName) { %> <h2>Dog: <%= dogName %></h2> <% } %>
-
 	<form id="new-training-form">
 		<div class="session field" >
 			<input type="hidden" id="uuid" name="uuid">
 		</div>
 		<div class="session field" >
 			<input type="hidden" id="dogID" name="dogID" value="<%=dogID%>">
+		</div>
+		<div class="session field" >
+			<input type="hidden" id="dogName" name="dogName" value="<%=dogName%>">
 		</div>
 		<div class="session field">
 			<input type="text" id="location" name="location" placeholder="Location" required> 
