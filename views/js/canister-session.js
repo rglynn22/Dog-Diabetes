@@ -30,11 +30,13 @@ function endSession() {
 	var milliseconds = endTime - startTime;
 	var minutes = (milliseconds / (1000*60)) % 60;
 	var url = '/addsessionstats';
+	var uuid = guid();
 	var results = [ {"duration":minutes,
 		 			"successes":successCount, 
 					"misses":missCount, 
 					"false_alerts":falseCount, 
 					"total_trials":trialCount} ];
+	
 	
 	$.post(url, results, function(data, status) {
       if (status == 'success') {
