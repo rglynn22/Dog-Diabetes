@@ -116,10 +116,10 @@ var getScentWheelSessionSummary = function(req, res) {
         sample_num: result.sample_number,
         sample_info: result.sample_info,
         sample_time: result.sample_time,
-		    can1_contents: result.can1_contents,
-		    can2_contents: result.can2_contents,
-		    can3_contents: result.can3_contents,
-		    can4_contents: result.can4_contents
+		    can1_contents: result.can1,
+		    can2_contents: result.can2,
+		    can3_contents: result.can3,
+		    can4_contents: result.can4
       }
 
       var sessionStats = {
@@ -273,7 +273,7 @@ var postWheelSessionResults = function(req, res) {
   
 
 // TODO: Data format not clear
- var postAddScentWheelSession = function(req, res) {
+var postAddScentWheelSession = function(req, res) {
   var data = {};
   data.sessionID = req.body.uuid;
   data.dogID = req.body.dogID;
@@ -281,17 +281,17 @@ var postWheelSessionResults = function(req, res) {
   data.sample_num = req.body.sample_num;
   data.sample_info = req.body.sample_info;
   data.sample_time = req.body.sample_time;
-  data.can1_contents = req.body.can_1;
-  data.can2_contents = req.body.can_2;
-  data.can3_contents = req.body.can_3;
-  data.can4_contents = req.body.can_4;
+  data.can1 = req.body.can1_contents;
+  data.can2 = req.body.can2_contents;
+  data.can3 = req.body.can3_contents;
+  data.can4 = req.body.can4_contents;
   
-  scentWheelDB.addScentWheelSession(data, function(data, err) {
+  scentWheelDB.addSession(data, function(result, err) {
     if (err) {
       res.send(500);
     }
     else {
-      res.send(data);
+      res.send(result);
     }
   })  
 

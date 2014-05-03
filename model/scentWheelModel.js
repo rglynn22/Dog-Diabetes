@@ -46,14 +46,19 @@ var addScentWheelSession = function(data, route_callbck) {
       // console.log(data);
       var query = 'INSERT INTO scentwheelsession ' + 
                   '(id, dogID, handler, sample_number,'+ 
-                  'sample_info, sample_time, record_date) ' + 
+                  'sample_info, sample_time, record_date, '+
+                  'can1, can2, can3, can4) ' + 
                   'VALUES (' + '\'' + data.sessionID + '\'' +','
                              + '\'' + data.dogID + '\'' +','
                              + '\'' + data.handler + '\'' + ','
                              + '\'' + data.sample_num + '\'' + ','
                              + '\'' + data.sample_info + '\'' + ','
                              + '\'' + data.sample_time + '\'' + ','
-							               + '\'' + (new Date()) + '\''
+							               + '\'' + (new Date()) + '\'' + ','
+                             + '\'' + data.can1 + '\'' + ','
+                             + '\'' + data.can2 + '\'' + ','
+                             + '\'' + data.can3 + '\'' + ','
+                             + '\'' + data.can4 + '\''
                              + ');';      
 			client.query(query, function (err, result) {
   			if (err) {
