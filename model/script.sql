@@ -32,13 +32,16 @@ CREATE TABLE ScentWheel (
   dogID varchar(64) REFERENCES dog(id),
   location varchar (32) NOT NULL,
   handler varchar(32) NOT NULL,
+  sample_number int NOT NULL,
+  sample_info varchar(64) NOT NULL,
+  sample_time varchar(32) NOT NULL,
   can1_contents varchar(32) NOT NULL,
   can2_contents varchar(32) NOT NULL,
   can3_contents varchar(32) NOT NULL,
   can4_contents varchar(32) NOT NULL,
   record_date varchar(64),
   duration varchar(32),
-  -- other session stats 
+  session_string varchar(MAX) NOT NULL, 
   total_trials int,
   notes varchar(MAX)
 );
