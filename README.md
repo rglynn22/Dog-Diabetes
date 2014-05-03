@@ -59,3 +59,9 @@ Don't forget to also push your code to the github repository
 git push origin master
 ~~~
 
+If the app breaks on heroku, restart the server
+
+~~~
+heroku restart --app dog-diabetes
+~~~
+
