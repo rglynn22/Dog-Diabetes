@@ -114,6 +114,7 @@ var getSessionSummary = function(req, res) {
 }
 
 var getScentWheelSessionSummary = function(req, res) {
+	
   var sessionId = req.body.id;
   var dogName = req.body.dogName;
 
@@ -148,6 +149,7 @@ var getScentWheelSessionSummary = function(req, res) {
       res.render('scent-wheel-session-summary.ejs', {summary: sessionSummary, stats: sessionStats});
     }
   })
+}
 
 // Handler for dog information page
 var getDogInfo = function(req, res) {
