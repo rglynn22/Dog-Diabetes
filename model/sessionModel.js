@@ -2,7 +2,7 @@ var pg = require('pg');
 
 // Fill this in when database is set up
 var DATABASE_URL = process.env.DATABASE_URL || // <-- Heroku URL
-                  "postgres://postgres:123@localhost:5432/cis350"; // <-- Replace with your local DB address
+                   "postgres://postgres:123@localhost:5432/cis350"; // <-- Replace with your local DB address
 //var DATABASE_URL = "postgres://Tobi@localhost/mylocaldb"
 
 // Initial implementation. Use this to update a session with
@@ -10,7 +10,7 @@ var DATABASE_URL = process.env.DATABASE_URL || // <-- Heroku URL
 var updateTrainingSession = function(data, route_callbck) {
   pg.connect(DATABASE_URL, function(err, client) {
     if (err) {
-      // console.log('Error connecting to database ' + err);
+      console.log('Error connecting to database ' + err);
       route_callbck(null, err);
     }
     else {
