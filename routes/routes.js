@@ -246,6 +246,7 @@ var routes = {
     get_all_dogs: getAllDogs,
     post_add_training_session: postAddTrainingSession,
     post_add_dog: postAddDog,
+	post_add_wheel_session: postAddScentWheelSession
 	
 };
 

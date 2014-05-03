@@ -23,6 +23,7 @@ app.get('/doginfo', routes.get_dog_info);
 app.get('/newdogform', routes.get_new_dog_form);
 app.get('/newscentwheelsessionform', routes.get_scent_wheel_session_form);
 app.post('/addsession', routes.post_add_training_session);
+app.post('/addwheelsession', routes.post_add_wheel_session)
 app.post('/adddog', routes.post_add_dog);
 
 /* Run the server */

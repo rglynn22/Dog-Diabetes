@@ -6,7 +6,7 @@ $(document).ready(function() {
 })
 
 var submitForm = function() {
-  var url = '/addsession';
+  var url = '/addwheelsession';
   var uuid = guid();
   $('input[name="uuid"]').val(uuid);
   $.post(url, $('#new-training-form').serialize(), function(data, status) {
