@@ -30,7 +30,8 @@ var getCanisterSessionForm = function(req, res) {
 // Handler for displaying canister session page
 var getCanisterSession = function(req, res) {
   var id = req.query.id;
-  res.render('canister-session.ejs', {id: id});
+  var dogName = req.query.dogName; 
+  res.render('canister-session.ejs', {id: id, dogName: dogName});
 }
 
 // Handler for displaying scent wheel session page
