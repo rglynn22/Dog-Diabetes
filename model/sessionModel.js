@@ -59,7 +59,7 @@ var addTrainingSession = function(data, route_callbck) {
                              + '\'' + data.sample_num + '\'' + ','
                              + '\'' + data.sample_info + '\'' + ','
                              + '\'' + data.sample_time + '\'' + ','
-							               + '\'' + (new Date()).toISOString() + '\''
+							               + '\'' + (new Date()) + '\''
                              + ');';      
 			client.query(query, function (err, result) {
   			if (err) {
@@ -81,7 +81,7 @@ var getSessionsByDogId = function(dogID, route_callbck) {
     }
     else {
       var query = 'SELECT * from session ' + 
-                  'WHERE dogID=' + '\'' + dogID +'\'';
+                  'WHERE dogID=' + '\'' + dogID +'\';';
       // console.log(query);
       client.query(query, function(err, result) {
         if (err) {
@@ -106,7 +106,8 @@ var getSessionById = function(sessionId, route_callbck) {
     }
     else {
       var query = 'SELECT * from session ' +
-                  'WHERE id=' + '\'' + sessionId +'\'';
+                  'WHERE id=' + '\'' + sessionId +'\';';
+      console.log(query);
       client.query(query, function(err, result) {
         if (err) {
           console.log('Error running query: ');
@@ -115,7 +116,7 @@ var getSessionById = function(sessionId, route_callbck) {
           route_callbck(null, err);
         }
         else {
-          route_callbck(result.rows, null);
+          route_callbck(result.rows[0], null);
         }
       })
     }

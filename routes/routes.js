@@ -57,14 +57,15 @@ var getScentWheelSessionForm = function(req, res) {
 // Handler for displaying session summary page
 //TODO get scent wheel session summary
 var getSessionSummary = function(req, res) {
-  var sessionId = req.body.id;
-  var dogName = req.body.dogName;
+  var sessionId = req.query.id;
+  var dogName = req.query.dogName;
 
   sessionDB.getSessionById(sessionId, function(result, err){
     if (err) {
       res.send(500);
     }
     else {
+      console.log(result);
       var composite_time = new Date(result.record_date);
 
       var sessionSummary = {
@@ -90,28 +91,7 @@ var getSessionSummary = function(req, res) {
       }
       res.render('session-summary.ejs', {summary: sessionSummary, stats: sessionStats});
     }
-  })
-  // var sessionSummary = {
-  //   dog: "Skip", // add
-  //   sessionID: "1",
-  //   date: "3/10/14", // add
-  //   time: "12:00 PM", // add
-  //   location: "Training center",
-  //   canister: "Hip",
-  //   handler: "Mike",
-  //   sample_num: "#578",
-  //   sample_info: "Used 10 times.",
-  //   sample_time: "9:00 PM"
-  // }
-  // var sessionStats = {
-  //   duration: "15 minutes",
-  //   trials: "7",
-  //   success: "3",
-  //   miss: "2",
-  //   false_alert: "2",
-  //   notes: "Seemed distracted."
-  // }
-  
+  })  
 }
 
 var getScentWheelSessionSummary = function(req, res) {

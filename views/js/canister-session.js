@@ -37,19 +37,19 @@ var endSession = function() {
 	var milliseconds = endTime - startTime;
 	var minutes = (milliseconds / (1000*60)) % 60;
 	var url = '/addsessionstats';
-  var sessionId = $('#id').val();
-	var results = {  "sessionId": sessionId,
+  var sessionId =  $('#id').val();
+
+  var results = {  "sessionId": sessionId,
                    "duration": minutes,
 		 			         "successes": successCount, 
 					         "misses": missCount, 
 					         "false_alerts": falseCount, 
 					         "total_trials": trialCount };
-
 	
 	$.post(url, results, function(data, status) {
       if (status == 'success') {
-        window.location.replace('/');
-        // window.location.replace('/sessionsummary?id='+uuid +'&dogName=' + dogName);
+        var redirect = '/sessionsummary?id='+sessionId +'&dogName=' + $('h2').html();
+        window.location.replace(redirect);
       }
       else {
         alert('Failed to store session results. Please try again!');
