@@ -19,7 +19,7 @@ app.get('/newwheelsession', routes.get_scent_wheel_session_form);
 app.get('/canistersession', routes.get_canister_session);
 app.get('/scentwheelsession', routes.get_scent_wheel_session);
 app.get('/sessionsummary', routes.get_session_summary);
-//app.get('/scentwheelsessionsummary', routes.get_scent_wheel_session_summary);
+app.get('/scentwheelsessionsummary', routes.get_scent_wheel_session_summary);
 app.get('/doginfo', routes.get_dog_info);
 app.get('/newdogform', routes.get_new_dog_form);
 app.get('/newscentwheelsessionform', routes.get_scent_wheel_session_form);
