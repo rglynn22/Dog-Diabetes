@@ -144,7 +144,7 @@ function endSession() {
 	
 	$.post(url, results, function(data, status) {
       if (status == 'success') {
-        window.location.replace('/scentwheelsession?id='+uuid +'&dogName=' + dogName);
+        //window.location.replace('/scentwheelsessionsummary?id='+uuid +'&dogName=' + dogName);
       }
       else {
         alert('Failed to store session results. Please try again!');
