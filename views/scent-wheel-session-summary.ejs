@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Training Session Summary</title>
+	<title>Scent Wheel Session Summary</title>
 	<link type="text/css" rel="stylesheet" href="css/stylesheet.css"/>
 	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
 	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
 </head>
 <body>
-	<h1>Training Session Summary</h1>  
+	<h1>Scent Wheel Session Summary</h1>  
 	<%if (summary != null && stats != null) { %>
 		<div class="session_stats panel panel-info">
 	        <div class="panel-heading">
@@ -18,10 +18,15 @@
 				Date: <%= summary.date%> <br>
 				Time: <%= summary.time%> <br>
 				Location: <%= summary.location%> <br>
-				Cansiter Location: <%= summary.canister%> <br>
 				Handler: <%= summary.handler%> <br>
 				Sample Number: <%= summary.sample_num%> <br>
 				Sample Usage Info: <%= summary.sample_info%> <br>
+				Sample Time: <%= summary.sample_time%> <br>
+				Can 1 Contents: <%= summary.can1%> <br>
+				Can 2 Contents: <%= summary.can2%> <br>
+				Can 3 Contents: <%= summary.can3%> <br>
+				Can 4 Contents: <%= summary.can4%> <br>
+								
 			</div>
 		</div>
 
