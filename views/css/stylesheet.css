@@ -13,12 +13,12 @@ p {
 
 
 div {
-    margin: 0 auto;
+    margin: 10px auto;
     text-align: center;
     
 }
 
-h1, h2 {
+h1, h2, h3 {
     text-align: center;
 }
 
@@ -47,10 +47,15 @@ div.nav{
   margin-top: 20px;
 }
 
+/* SCENT WHEEL */
+
+#trial {
+  display: none;
+}
+
 #wheel {
   width: 300px;
   min-width: 300px;
-  /*border: 1px solid black;*/
 }
 
 #direction {

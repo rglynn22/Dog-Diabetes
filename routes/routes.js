@@ -35,13 +35,20 @@ var getCanisterSession = function(req, res) {
 
 // Handler for displaying scent wheel session page
 var getScentWheelSession = function(req, res) {
-  var id = req.query.id;
-  res.render('scent-wheel-session.ejs', {id: id});
+  // var id = req.query.id;
+  // var dogName = req.query.id;
+  var id = 2;
+  var dogName = "Teddy";
+  var position = 2;
+  var direction = "clockwise";
+  res.render('scent-wheel-session.ejs', {id: id, dogName: dogName, position: position, direction: direction});
 }
 
 var getScentWheelSessionForm = function(req, res) {
-  var dogID = req.query.dogID;
-  var dogName = req.query.dogName;
+  // var dogID = req.query.dogID;
+  // var dogName = req.query.dogName;
+  dogID = 2;
+  dogName = "Skip";
   res.render('new-scent-wheel-session.ejs', {dogID: dogID, dogName: dogName});
 }
 

@@ -7,56 +7,84 @@
 	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
 	<title> Scent Wheel Session</title>
 </head>
-<% if (direction != null & position != null) { %>
-	<body onload="init('<%=direction%>',<%=position%>)">
+	<body>
 	<h1> Scent Wheel Session</h1>
-	<% if (dogName) { %> <h2>Dog: <%= dogName %></h2> <% } %>
-	<div class="session field" >
+	<!-- SETUP FOR TRIAL  -->
+	<div id="setup">
+		<form>
+			<div>
+				<h3>Choose an initial position: </h3>
+				<br>
+				<button type="button" onclick="setPos(1)" class="btn btn-warning btn-large"> 1 </button>
+				<button type="button" onclick="setPos(2)" class="btn btn-warning btn-large"> 2 </button>
+				<button type="button" onclick="setPos(3)" class="btn btn-success btn-large"> 3 </button>
+				<button type="button" onclick="setPos(4)" class="btn btn-warning btn-large"> 4 </button>
+			</div>
+			<div>
+				<h3>Choose a starting direction: </h3>
+				<br>
+				<button type="button" onclick="setDir('c')" class="btn btn-primary btn-large" >
+					<--
+				</button>
+				<button type="button" onclick="setDir('cc')" class="btn btn-primary btn-large"> 
+				    -->
+				</button>
+			</div>
+			<div>
+				<br><br>
+				<button id="beginsession" type="button" onclick="init()" class="btn btn-primary btn-large" disabled> Begin Trial </button>
+			</div>
+		</form>
+	</div>
+	<!-- SETUP FOR TRIAL  -->
+	<div id="trial">
+		<% if (dogName) { %> <h3>Dog: <%= dogName %></h3> <% } %>
+		<div class="session field" >
 			<input type="hidden" id="id" name="id" value="<%=id%>">
-	</div>
-	<div id="current_direction">
-		<h3><%= direction %></h3>
-	</div>
-	<div id="wheel">
-		<div class="arm">
-			<button id="1" type="button" onclick="recordFalse()" class="btn btn-warning btn-large" style="width:60px; height:60px; font-size: 30px;" <% if (position != 1) { %> disabled <% } %>>
-				1
+		</div>
+		<div id="current_direction">
+			<h3></h3>
+		</div>
+		<div id="wheel">
+			<div class="arm">
+				<button id="1" type="button" onclick="recordFalse()" class="btn btn-warning btn-large" style="width:60px; height:60px; font-size: 30px;" disabled>
+					1
+				</button>
+			</div>
+			<div class="arm">
+				<button id="2" type="button" onclick="recordFalse()" class="btn btn-warning btn-large" style="width:60px; height:60px; font-size: 30px;" disabled>
+					2
+				</button>
+			</div>
+			<div class="arm">
+				<button id="3" type="button" onclick="recordSuccess()" class="btn btn-success btn-large" style="width:60px; height:60px; font-size: 30px;" disabled>
+					3
+				</button>
+			</div>
+			<div class="arm">
+				<button id="4" type="button" onclick="recordFalse()" class="btn btn-warning btn-large" style="width:60px; height:60px; font-size: 30px;" disabled>
+					4
+				</button>
+			</div>
+		</div>
+		<div id="move">
+			<button id="left_button" type="button" onclick="move('cc')" class="btn btn-primary btn-large" >
+				<--
+			</button>
+			<button id="right_button" type="button" onclick="move('c')" class="btn btn-primary btn-large"> 
+			    -->
 			</button>
 		</div>
-		<div class="arm">
-			<button id="2" type="button" onclick="recordFalse()" class="btn btn-warning btn-large" style="width:60px; height:60px; font-size: 30px;" <% if (position != 2) { %> disabled <% } %>>
-				2
-			</button>
+		<div>
+			<br>
+			<button id="new_trial" onclick="newTrial()" class="btn btn-primary btn-large">New Trial</button>
+	<!-- 	<h2> Total: <span id="arm_tally"> 0 </span></h2>  -->
 		</div>
-		<div class="arm">
-			<button id="3" type="button" onclick="recordSuccess()" class="btn btn-success btn-large" style="width:60px; height:60px; font-size: 30px;" <% if (position != 3) { %> disabled <% } %>>
-				3
-			</button>
+		<div>
+		<a href="/sessionsummary" class="btn btn-primary btn-large">End Session</a>
 		</div>
-		<div class="arm">
-			<button id="4" type="button" onclick="recordFalse()" class="btn btn-warning btn-large" style="width:60px; height:60px; font-size: 30px;" <% if (position != 4) { %> disabled <% } %>>
-				4
-			</button>
-		</div>
-	</div>
-	<div id="move">
-		<button id="left_button" type="button" onclick="move('cc')" class="btn btn-primary btn-large" >
-			<--
-		</button>
-		<button id="right_button" type="button" onclick="move('c')" class="btn btn-primary btn-large"> 
-		    -->
-		</button>
-	</div>
-
-	<h2> Total: <span id="arm_tally"> 0 </span></h2> 
-
-	<br>
-	<div>
-	<!-- <button type="button" onclick="endSession()">End Session</button> -->
-	<a href="/sessionsummary" class="btn btn-primary btn-large">End Session</a>
 	</div>
 	</body>
-<% } %> 
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script src="js/scent-wheel-session.js"></script>
 </html>

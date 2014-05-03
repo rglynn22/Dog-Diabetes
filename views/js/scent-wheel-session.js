@@ -7,43 +7,74 @@
 // ex: c,1,3 c,2,0 c,3,M
 var startTime = new Date().getTime();
 
+// Series of trials / separated
+// ex: c,1,3 c,2,0 c,3,M/c,1,3 c,2,0 c,3,M
+
+var session = "";
 var trial = "";
 
-var direction;
-var position;
+var direction = null;
+var position = null;
 
 var success = false;
 var tempFalseCount = 0;
 
-var falseCount = 0;
-var trialCount = 0;
-
-function init(dir, pos) {
-	if (dir == "clockwise"){
-		trial += 'c';
-		direction = 'c';
-	} else {
-		trial += 'cc';
-		direction = "cc";
-	} 
-	trial += ','+pos+',';
-	position = pos;
-	console.log(trial);
+// Trial setup functions  
+function setDir(dir){
+	direction = dir;
+	if (position != null) {
+		$("#beginsession").prop("disabled",false);
+	}
 }
 
+function setPos(pos){
+	position = pos;
+	if (direction != null) {
+		$("#beginsession").prop("disabled",false);
+	}
+}
+
+function reset() {
+	trial = "";
+	direction = null;
+	position = null;
+
+	success = false;
+	tempFalseCount = 0;
+}
+
+function init() {
+	if (direction == "c"){
+		trial += 'c';
+	} else {
+		trial += 'cc';
+	} 
+	trial += ','+position+',';
+
+	// Setup Page
+	if (direction == "c") {
+		$("#current_direction h3").html("clockwise");
+	} else {
+		$("#current_direction h3").html("counterclockwise");
+	}
+
+	$("#"+position).prop("disabled",false);
+
+	$("#setup").hide();
+	$("#trial").show();
+}
+
+
+// Trial functions
 function recordSuccess() {
 	success=true;
-	trialCount++;
 }
 
 function recordFalse() {
-	falseCount++;
 	tempFalseCount++;
-	trialCount++;
 }
 
-function move(dir) {
-	// Record result from previous arm
+function completeArm() {
 	if (position == 3) {
 		trial+=(success)?'S':'M';
 		success = false;
@@ -51,7 +82,11 @@ function move(dir) {
 		trial+=tempFalseCount;
 		tempFalseCount = 0;
 	}
-	console.log(trial);
+}
+
+function move(dir) {
+	// Record result from previous arm
+	completeArm();
 
 	// Update direction
 	trial+= ' '+dir;
@@ -68,6 +103,8 @@ function move(dir) {
 	};
 	trial+=','+position+',';
 	updatePosition(); // page change
+
+	console.log(trial);
 }
 
 function updateDirection () {
@@ -83,6 +120,20 @@ function updatePosition () {
 	$('#'+position).prop('disabled',false);
 }
 
+function newTrial() {
+	completeArm();
+	session += trial + "/";
+	// reset the variables
+	$("#"+position).prop('disabled',true);
+	reset();
+	// swap page
+	$("#trial").hide();
+	$("#setup").show();
+	console.log(session);
+}
+
+
+// Database interaction functions
 function endSession() {
     var endTime = new Date().getTime();
 	var milliseconds = endTime - startTime;
