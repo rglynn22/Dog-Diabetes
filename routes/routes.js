@@ -29,16 +29,9 @@ var getCanisterSessionForm = function(req, res) {
 
 // Handler for displaying canister session page
 var getCanisterSession = function(req, res) {
-<<<<<<< HEAD
+
   var id = req.query.id;
-<<<<<<< HEAD
   var dogName = req.query.dogName;
-=======
-=======
-  var id = req.query.dogID;
->>>>>>> 8c19c663a6420e85c04f760c9e82f1eb97af3dbc
-  var dogName = req.query.dogName; 
->>>>>>> 8809117b34ebe8eb4662b89f70f09c8a54e3f7d0
   res.render('canister-session.ejs', {id: id, dogName: dogName});
 }
 
