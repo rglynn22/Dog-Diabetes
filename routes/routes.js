@@ -29,7 +29,6 @@ var getCanisterSessionForm = function(req, res) {
 
 // Handler for displaying canister session page
 var getCanisterSession = function(req, res) {
-
   var id = req.query.id;
   var dogName = req.query.dogName;
   res.render('canister-session.ejs', {id: id, dogName: dogName});
@@ -37,20 +36,16 @@ var getCanisterSession = function(req, res) {
 
 // Handler for displaying scent wheel session page
 var getScentWheelSession = function(req, res) {
-  // var id = req.query.id;
-  // var dogName = req.query.id;
-  var id = 2;
-  var dogName = "Teddy";
+  var id = req.query.id;
+  var dogName = req.query.dogName;
   var position = 2;
   var direction = "clockwise";
   res.render('scent-wheel-session.ejs', {id: id, dogName: dogName, position: position, direction: direction});
 }
 
 var getScentWheelSessionForm = function(req, res) {
-  // var dogID = req.query.dogID;
-  // var dogName = req.query.dogName;
-  dogID = 2;
-  dogName = "Skip";
+  var dogID = req.query.dogID;
+  var dogName = req.query.dogName;
   res.render('new-scent-wheel-session.ejs', {dogID: dogID, dogName: dogName});
 }
 
@@ -65,7 +60,7 @@ var getSessionSummary = function(req, res) {
       res.send(500);
     }
     else {
-      console.log(result);
+      // console.log(result);
       var composite_time = new Date(result.record_date);
 
       var sessionSummary = {
@@ -99,11 +94,12 @@ var getScentWheelSessionSummary = function(req, res) {
   var sessionId = req.query.id;
   var dogName = req.query.dogName;
 
-  scentWheelDB.getScentWheelSessionById(sessionId, function(result, err){
+  scentWheelDB.getSessionById(sessionId, function(result, err){
     if (err) {
       res.send(500);
     }
     else {
+
       var composite_time = new Date(result.record_date);
 
       var sessionSummary = {
@@ -142,13 +138,27 @@ var getDogInfo = function(req, res) {
       console.log(err);
     }
     else {
-      var result = [];
+      var canister_sessions = [];
       for (var i = 0; i < data.length; i++) {
-        result.push({date: data[i].record_date, sessionId: data[i].id});
+        canister_sessions.push({ date: data[i].record_date, 
+                                 sessionId: data[i].id });
       }
-      res.render('dog-menu.ejs', {dogName: dogName, 
-                                  sessions: result,
-                                  dogID: dogID});
+      scentWheelDB.getSessionsByDogId(dogID, function(data, err) {
+        if (err) {
+          console.log(err);
+        } else {
+          var wheel_sessions = [];
+          for (var i = 0; i < data.length; i++) {
+            wheel_sessions.push({ date: data[i].record_date, 
+                                 sessionId: data[i].id});
+          }
+          // console.log(wheel_sessions);
+          var result = canister_sessions.concat(wheel_sessions);
+          res.render('dog-menu.ejs', {dogName: dogName, 
+                                      sessions: result,
+                                      dogID: dogID});
+        }
+      })      
     }
   })  
 }
@@ -261,7 +271,7 @@ var postWheelSessionResults = function(req, res) {
   data.session_string = req.body.session_string;
   data.duration = req.body.duration;
 
-  scentWheelDB.updateScentWheelSession(data, function(result, err) {
+  scentWheelDB.updateSession(data, function(result, err) {
     if (err) {
       res.send(500);
     }
@@ -275,7 +285,7 @@ var postWheelSessionResults = function(req, res) {
 // TODO: Data format not clear
 var postAddScentWheelSession = function(req, res) {
   var data = {};
-  data.sessionID = req.body.uuid;
+  data.sessionId = req.body.uuid;
   data.dogID = req.body.dogID;
   data.handler = req.body.handler;
   data.sample_num = req.body.sample_num;

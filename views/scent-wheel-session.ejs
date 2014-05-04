@@ -42,7 +42,7 @@
 	</div>
 	<!-- SETUP FOR TRIAL  -->
 	<div id="trial">
-		<% if (dogName) { %> <h3>Dog: <%= dogName %></h3> <% } %>
+		<% if (dogName) { %> <h3><%= dogName %></h3> <% } %>
 		<div class="session field" >
 			<input type="hidden" id="id" name="id" value="<%=id%>">
 		</div>
@@ -84,8 +84,8 @@
 			<button id="new_trial" onclick="newTrial()" class="btn btn-primary btn-large">New Trial</button>
 	<!-- 	<h2> Total: <span id="arm_tally"> 0 </span></h2>  -->
 		</div>
-		<div>
-		<a href="/sessionsummary" class="btn btn-primary btn-large">End Session</a>
+		<div id="end-button">
+			<button type="button" class="btn btn-primary btn-large">End Session</button>
 		</div>
 	</div>
 	</body>

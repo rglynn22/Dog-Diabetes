@@ -16,9 +16,10 @@ var updateScentWheelSession = function(data, route_callbck) {
     else {
       console.log(data);
       var query = 'UPDATE scentwheelsession ' + 
-                  'SET session_string = ' + '\'' + data.session_string + '\'' +
-                      'duration = ' + '\'' + data.duration + '\'' + 
-                  'WHERE id=' + '\'' + data.sessionID + '\';';
+                  'SET session_string = ' + '\'' + data.session_string + '\', ' +
+                      'duration = ' + '\'' + data.duration + '\' ' + 
+                  'WHERE id=' + '\'' + data.sessionId + '\';';
+      console.log(query);
       client.query(query, function(err, result) {
         if (err) {
           route_callbck(null, err);
@@ -29,7 +30,6 @@ var updateScentWheelSession = function(data, route_callbck) {
         else route_callbck(result, null);
         client.end();
       })
-
     }
   })
 }
@@ -48,7 +48,7 @@ var addScentWheelSession = function(data, route_callbck) {
                   '(id, dogID, handler, sample_number,'+ 
                   'sample_info, sample_time, record_date, '+
                   'can1, can2, can3, can4) ' + 
-                  'VALUES (' + '\'' + data.sessionID + '\'' +','
+                  'VALUES (' + '\'' + data.sessionId + '\'' +','
                              + '\'' + data.dogID + '\'' +','
                              + '\'' + data.handler + '\'' + ','
                              + '\'' + data.sample_num + '\'' + ','
@@ -116,7 +116,7 @@ var getScentWheelSessionById = function(sessionId, route_callbck) {
           route_callbck(null, err);
         }
         else {
-          route_callbck(result.rows, null);
+          route_callbck(result.rows[0], null);
         }
         client.end();
       })

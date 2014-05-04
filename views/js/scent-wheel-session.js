@@ -1,3 +1,8 @@
+$(document).ready(function() {  
+  $('#end-button').click(function() {
+    endSession();
+  })
+})
 // Component of trial string written: 
 // <direction>,<position>,<data>
 // ex: c,1,3 --> clockwise, arm 1, 3 falses
@@ -20,21 +25,21 @@ var success = false;
 var tempFalseCount = 0;
 
 // Trial setup functions  
-function setDir(dir){
+var setDir = function(dir){
 	direction = dir;
 	if (position != null) {
 		$("#beginsession").prop("disabled",false);
 	}
 }
 
-function setPos(pos){
+var setPos = function(pos){
 	position = pos;
 	if (direction != null) {
 		$("#beginsession").prop("disabled",false);
 	}
 }
 
-function reset() {
+var reset = function() {
 	trial = "";
 	direction = null;
 	position = null;
@@ -43,7 +48,7 @@ function reset() {
 	tempFalseCount = 0;
 }
 
-function init() {
+var init = function() {
 	if (direction == "c"){
 		trial += 'c';
 	} else {
@@ -66,15 +71,15 @@ function init() {
 
 
 // Trial functions
-function recordSuccess() {
+var recordSuccess = function() {
 	success=true;
 }
 
-function recordFalse() {
+var recordFalse = function() {
 	tempFalseCount++;
 }
 
-function completeArm() {
+var completeArm = function() {
 	if (position == 3) {
 		trial+=(success)?'S':'M';
 		success = false;
@@ -84,7 +89,7 @@ function completeArm() {
 	}
 }
 
-function move(dir) {
+var move = function(dir) {
 	// Record result from previous arm
 	completeArm();
 
@@ -107,7 +112,7 @@ function move(dir) {
 	console.log(trial);
 }
 
-function updateDirection () {
+var updateDirection = function() {
 	if (direction == 'c') {
 		$('#current_direction').html("<h3>clockwise</h3>");
 	} else {
@@ -115,12 +120,12 @@ function updateDirection () {
 	}
 }
 
-function updatePosition () {
+var updatePosition = function() {
 	$('.arm button:enabled').prop('disabled',true);
 	$('#'+position).prop('disabled',false);
 }
 
-function newTrial() {
+var newTrial = function() {
 	completeArm();
 	session += trial + "/";
 	// reset the variables
@@ -134,20 +139,24 @@ function newTrial() {
 
 
 // Database interaction functions
-function endSession() {
-    var endTime = new Date().getTime();
+var endSession = function() {
+  var endTime = new Date().getTime();
 	var milliseconds = endTime - startTime;
 	var minutes = (milliseconds / (1000*60)) % 60;
 	var url = '/addwheelsessionstats';
-	var dogName = $('h2').val();
-	var results = [ { "duration":minutes, "session_string":session_string} ]
+	var dogName = $('h3').html();
+	var sessionId =  $('#id').val();
+	var results = { "sessionId": sessionId,
+									"duration": minutes,
+									"session_string": session};
 	
 	$.post(url, results, function(data, status) {
-      if (status == 'success') {
-        //window.location.replace('/scentwheelsessionsummary?id='+uuid +'&dogName=' + dogName);
-      }
-      else {
-        alert('Failed to store session results. Please try again!');
-      }
-    })
+    if (status == 'success') {
+    	var redirect = '/scentwheelsessionsummary?id='+sessionId +'&dogName=' + dogName;
+      window.location.replace(redirect);
+    }
+    else {
+      alert('Failed to store session results. Please try again!');
+    }
+  })
 }
