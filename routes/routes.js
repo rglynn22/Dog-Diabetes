@@ -40,7 +40,10 @@ var getScentWheelSession = function(req, res) {
   var dogName = req.query.dogName;
   var position = 2;
   var direction = "clockwise";
-  res.render('scent-wheel-session.ejs', {id: id, dogName: dogName, position: position, direction: direction});
+  res.render('scent-wheel-session.ejs', {id: id, 
+                                         dogName: dogName, 
+                                         position: position, 
+                                         direction: direction});
 }
 
 var getScentWheelSessionForm = function(req, res) {
@@ -86,7 +89,7 @@ var getSessionSummary = function(req, res) {
       }
       res.render('session-summary.ejs', {summary: sessionSummary, stats: sessionStats});
     }
-  })  
+  });
 }
 
 var getScentWheelSessionSummary = function(req, res) {
@@ -99,7 +102,6 @@ var getScentWheelSessionSummary = function(req, res) {
       res.send(500);
     }
     else {
-
       var composite_time = new Date(result.record_date);
 
       var sessionSummary = {
@@ -117,15 +119,15 @@ var getScentWheelSessionSummary = function(req, res) {
 		    can3_contents: result.can3,
 		    can4_contents: result.can4
       }
-
       var sessionStats = {
         duration: result.duration || 0,
-        session_string: result.session_string || 0,
+        session_string: result.session_string || 
+                "c,1,3 c,2,0 c,3,M/cc,4,0 c,3,S/cc,2,2 cc,1,0 cc,4,1 cc,3,S",
         notes: result.notes || "None"
       }
       res.render('scent-wheel-session-summary.ejs', {summary: sessionSummary, stats: sessionStats});
     }
-  })
+  });
 }
 
 // Handler for dog information page
@@ -160,7 +162,7 @@ var getDogInfo = function(req, res) {
         }
       })      
     }
-  })  
+  }); 
 }
 
 /*********************************************
@@ -176,7 +178,7 @@ var getAllDogs = function(req, res) {
     else {
       res.send(data);
     }
-  })
+  });
 }
 
 // Handler to get a single training session for a particular dog
@@ -190,7 +192,7 @@ var getTrainingSession = function(req, res) {
     else {
       res.send(data);
     }
-  })
+  });
 }
 
 var getNewDogForm = function(req, res) {
@@ -221,7 +223,7 @@ var postAddTrainingSession = function(req, res) {
     else {
       res.send(data);
     }
-  })    
+  })  ;  
 }
 
 var postAddDog = function(req, res) {
@@ -239,7 +241,7 @@ var postAddDog = function(req, res) {
     else {
       res.send(data);
     }
-  })
+  });
 }
  
 // BUGGY
@@ -260,7 +262,7 @@ var postSessionResults = function(req, res) {
     else {
       res.send(data);
     }
-  })    
+  });
  }
  
 // BUGGY
@@ -278,7 +280,7 @@ var postWheelSessionResults = function(req, res) {
     else {
       res.send(data);
     }
-  })    
+  });    
  }
   
 
@@ -303,9 +305,9 @@ var postAddScentWheelSession = function(req, res) {
     else {
       res.send(result);
     }
-  })  
+  });
 
- } 
+ }
 
 // Expose call backs to app controller
 var routes = {
