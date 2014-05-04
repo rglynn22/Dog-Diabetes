@@ -35,7 +35,9 @@ var endSession = function() {
   console.log("Ending session");
   var endTime = new Date().getTime();
 	var milliseconds = endTime - startTime;
-	var minutes = (milliseconds / (1000*60)) % 60;
+	int seconds = Math.floor((milliseconds / 1000) % 60);
+	var minutes = Math.floor((milliseconds / (1000*60)) % 60);
+	var duration = minutes + " mins, " + seconds + "secs";
 	var url = '/addsessionstats';
   var sessionId =  $('#id').val();
 
