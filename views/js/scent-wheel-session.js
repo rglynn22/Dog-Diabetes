@@ -145,7 +145,7 @@ var endSession = function() {
 	var minutes = (milliseconds / (1000*60)) % 60;
 	var url = '/addwheelsessionstats';
 
-	var dogName = $('h3').html();
+	var dogName = $('#dog_name').html();
 	var sessionId =  $('#id').val();
 	var results = { "sessionId": sessionId,
 									"duration": minutes,
