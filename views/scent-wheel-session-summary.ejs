@@ -7,7 +7,7 @@
 	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
 	<script type="text/javascript" src="js/scent-wheel-session-summary.js"></script>
 </head>
-<body onload="parseSession()">
+<body onload="parseSession('<%= stats.session_string%>')">
 	<h1>Training Session Summary</h1>  
 	<%if (summary != null && stats != null) { %>
 		<div class="session_stats panel panel-info">

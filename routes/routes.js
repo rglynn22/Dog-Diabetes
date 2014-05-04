@@ -314,7 +314,7 @@ var postAddScentWheelSession = function(req, res) {
 
 // Expose call backs to app controller
 var routes = {
-    // page rend routes
+  // page rend routes
   get_main: getMain,
   get_dog_info: getDogInfo,
   get_canister_session_form: getCanisterSessionForm,
