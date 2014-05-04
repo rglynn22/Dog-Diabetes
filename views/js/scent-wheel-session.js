@@ -135,6 +135,10 @@ function newTrial() {
 
 // Database interaction functions
 function endSession() {
+	// Update session string
+	completeArm();
+	session += trial;
+
     var endTime = new Date().getTime();
 	var milliseconds = endTime - startTime;
 	var minutes = (milliseconds / (1000*60)) % 60;
