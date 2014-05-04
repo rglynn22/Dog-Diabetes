@@ -139,8 +139,13 @@ var newTrial = function() {
 
 
 // Database interaction functions
-var endSession = function() {
-  var endTime = new Date().getTime();
+var endSession = function() { 
+
+	completeArm();
+	session += trial;
+
+	var endTime = new Date().getTime();
+
 	var milliseconds = endTime - startTime;
 	var minutes = (milliseconds / (1000*60)) % 60;
 	var url = '/addwheelsessionstats';
