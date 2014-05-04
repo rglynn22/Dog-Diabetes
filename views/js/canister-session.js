@@ -42,7 +42,7 @@ var endSession = function() {
   var sessionId =  $('#id').val();
 
   var results = {  "sessionId": sessionId,
-                   "duration": minutes,
+                   "duration": duration,
 		 			         "successes": successCount, 
 					         "misses": missCount, 
 					         "false_alerts": falseCount, 
