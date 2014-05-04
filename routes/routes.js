@@ -119,21 +119,7 @@ var getScentWheelSessionSummary = function(req, res) {
         session_string: result.session_string || 0,
         notes: result.notes || "None"
       }
-      // var sessionSummary = {
-      //   dog: "Skip", // add
-      //   sessionID: "1",
-      //   date: "3/10/14", // add
-      //   time: "12:00 PM", // add
-      //   handler: "Mike",
-      //   sample_num: "#578",
-      //   sample_info: "Used 10 times.",
-      //   sample_time: "9:00 PM"
-      // }
-      // var sessionStats = {
-      //   duration: "15 minutes",
-      //   trials: "c,1,3 c,2,0 c,3,M/cc,4,0 c,3,S/cc,2,2 cc,1,0 cc,4,1 cc,3,S",
-      //   notes: "Seemed distracted."
-      // }
+      
       res.render('scent-wheel-session-summary.ejs', {summary: sessionSummary, stats: sessionStats});
     }
   })
