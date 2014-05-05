@@ -144,64 +144,64 @@ var getScentWheelSessionForm = function(req, res) {
 
 var getScentWheelSessionSummary = function(req, res) {
 	
-  // var sessionId = req.query.id;
-  // var dogName = req.query.dogName;
+  var sessionId = req.query.id;
+  var dogName = req.query.dogName;
 
 
-  // scentWheelDB.getSessionById(sessionId, function(result, err){
-  //   if (err) {
-  //     res.send(500);
-  //   }
-  //   else {
-  //     var composite_time = new Date(result.record_date);
-
-  //     var sessionSummary = {
-  //       dog: dogName, // add
-  //       sessionID: sessionId,
-  //       date: composite_time.toDateString(), // add
-  //       time: composite_time.toTimeString(), // add
-		//     location: result.location,
-  //       handler: result.handler,
-  //       sample_num: result.sample_number,
-  //       sample_info: result.sample_info,
-  //       sample_time: result.sample_time,
-		//     can1_contents: result.can1,
-		//     can2_contents: result.can2,
-		//     can3_contents: result.can3,
-		//     can4_contents: result.can4
-  //     }
-      // var sessionStats = {
-      //   duration: result.duration || 0,
-      //   session_string: result.session_string || 
-      //           "c,1,3 c,2,0 c,3,M/cc,4,0 c,3,S/cc,2,2 cc,1,0 cc,4,1 cc,3,S",
-      //   notes: result.notes || "None"
-      // }
+  scentWheelDB.getSessionById(sessionId, function(result, err){
+    if (err) {
+      res.send(500);
+    }
+    else {
+      var composite_time = new Date(result.record_date);
 
       var sessionSummary = {
-        dog: "Spot", // add
-        sessionID: "200",
-        date: "March 23", // add
-        time: "3:36", // add
-        location: "Philly",
-        handler: "Joe",
-        sample_num: 69,
-        sample_info: "n/a",
-        sample_time: "10:31pm",
-        can1_contents: "gum",
-        can2_contents: "gum",
-        can3_contents: "sample",
-        can4_contents: "gum"
+        dog: dogName, // add
+        sessionID: sessionId,
+        date: composite_time.toDateString(), // add
+        time: composite_time.toTimeString(), // add
+		    location: result.location,
+        handler: result.handler,
+        sample_num: result.sample_number,
+        sample_info: result.sample_info,
+        sample_time: result.sample_time,
+		    can1_contents: result.can1,
+		    can2_contents: result.can2,
+		    can3_contents: result.can3,
+		    can4_contents: result.can4
+      }
+      var sessionStats = {
+        duration: result.duration || 0,
+        session_string: result.session_string || 
+                "c,1,3 c,2,0 c,3,M/cc,4,0 c,3,S/cc,2,2 cc,1,0 cc,4,1 cc,3,S",
+        notes: result.notes || "None"
       }
 
-      var sessionStats = {
-        duration: 0,
-        session_string: "c,1,3 c,2,0 c,3,M/cc,4,0 c,3,S/cc,2,2 cc,1,0 cc,4,1 cc,3,S",
-        notes: "None"
-      }
+      // var sessionSummary = {
+      //   dog: "Spot", // add
+      //   sessionID: "200",
+      //   date: "March 23", // add
+      //   time: "3:36", // add
+      //   location: "Philly",
+      //   handler: "Joe",
+      //   sample_num: 69,
+      //   sample_info: "n/a",
+      //   sample_time: "10:31pm",
+      //   can1_contents: "gum",
+      //   can2_contents: "gum",
+      //   can3_contents: "sample",
+      //   can4_contents: "gum"
+      // }
+
+      // var sessionStats = {
+      //   duration: 0,
+      //   session_string: "c,1,3 c,2,0 c,3,M/cc,4,0 c,3,S/cc,2,2 cc,1,0 cc,4,1 cc,3,S",
+      //   notes: "None"
+      // }
       
       res.render('scent-wheel-session-summary.ejs', {summary: sessionSummary, stats: sessionStats});
-  //   }
-  // })
+    }
+  })
 }
 
 /*********************************************
