@@ -21,10 +21,19 @@
 	
 	
 	</div>
-	<% if (sessions) {%>
-		<% for (i = 0; i < sessions.length;i++) {%>
-			<div class="past_session button" id="<%=sessions[i].sessionId%>">
-				<a href="/sessionsummary?dogName=<%=dogName%>&id=<%=sessions[i].sessionId%>"><%= sessions[i].date%></a>
+	<% if (canisterSessions) {%>
+		<h3> Canister Sessions </h3>
+		<% for (i = 0; i < canisterSessions.length;i++) {%>
+			<div class="past_canister_session button" id="<%=canisterSessions[i].sessionId%>">
+				<a href="/sessionsummary?dogName=<%=dogName%>&id=<%=canisterSessions[i].sessionId%>"><%= canisterSessions[i].date%></a>
+			</div>
+		<% } %>
+	<% } %>
+	<% if (wheelSessions) {%>
+		<h3> Wheel Sessions </h3>
+		<% for (i = 0; i < wheelSessions.length;i++) {%>
+			<div class="past_wheel_session button" id="<%=wheelSessions[i].sessionId%>">
+				<a href="/sessionsummary?dogName=<%=dogName%>&id=<%=wheelSessions[i].sessionId%>"><%= wheelSessions[i].date%></a>
 			</div>
 		<% } %>
 	<% } %>

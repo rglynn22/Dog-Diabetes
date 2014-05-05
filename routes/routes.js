@@ -28,36 +28,38 @@ var getNewDogForm = function(req, res) {
 var getDogInfo = function(req, res) {
   var dogID = req.query.id;
   var dogName = req.query.dogName;
+  var canister_sessions = [];
+  var wheel_sessions = [];
 
   sessionDB.getSessionsByDogId(dogID, function(data, err) {
     if (err) {
       console.log(err);
     }
     else {
-      var canister_sessions = [];
       for (var i = 0; i < data.length; i++) {
         canister_sessions.push({ date: data[i].record_date, 
                                  sessionId: data[i].id });
       }
-      scentWheelDB.getSessionsByDogId(dogID, function(data, err) {
-        if (err) {
-          console.log(err);
-        } else {
-          var wheel_sessions = [];
-          for (var i = 0; i < data.length; i++) {
-            wheel_sessions.push({ date: data[i].record_date, 
-                                 sessionId: data[i].id});
-          }
-          // console.log(wheel_sessions);
-          var result = canister_sessions.concat(wheel_sessions);
-          res.render('dog-menu.ejs', {dogName: dogName, 
-                                      sessions: result,
-                                      dogID: dogID});
-        }
-      })      
     }
-  })  
-}
+  })
+  scentWheelDB.getSessionsByDogId(dogID, function(data, err) {
+    if (err) {
+      console.log(err);
+    } else {
+        for (var i = 0; i < data.length; i++) {
+        wheel_sessions.push({ date: data[i].record_date, 
+                              sessionId: data[i].id});
+    	}
+	}
+  })
+          // console.log(wheel_sessions);
+  //var result = canister_sessions.concat(wheel_sessions);
+  res.render('dog-menu.ejs', {dogName: dogName, 
+                              canisterSessions: canister_sessions,
+							  wheelSessions: wheel_sessions,
+                              dogID: dogID});
+           
+  } 
 
 /*********************************************
   GET Requests for Canister Sessions
