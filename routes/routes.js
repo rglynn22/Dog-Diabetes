@@ -38,7 +38,7 @@ var getDogInfo = function(req, res) {
 	  var canister_sessions = [];
       for (var i = 0; i < data.length; i++) {
         var date = new Date(data[i].record_date);
-        canister_sessions.push({ date: date.toLocaleString(), 
+        canister_sessions.push({ date: date.toLocaleString("en-US"), 
                                  sessionId: data[i].id });
       }
 	  scentWheelDB.getSessionsByDogId(dogID, function(data2, err) {
@@ -48,7 +48,7 @@ var getDogInfo = function(req, res) {
 			var wheel_sessions = [];
 	        for (var i = 0; i < data2.length; i++) {
             var date = new Date(data2[i].record_date);
-	          wheel_sessions.push({ date: date.toLocaleString(), 
+	          wheel_sessions.push({ date: date.toLocaleString("en_US"), 
 	                              sessionId: data2[i].id});
 	    	}
           	// console.log(wheel_sessions);
@@ -99,8 +99,8 @@ var getSessionSummary = function(req, res) {
       var sessionSummary = {
         dog: dogName, // add
         sessionID: sessionId,
-        date: composite_time.toLocaleDateString(), // add
-        time: composite_time.toLocaleTimeString(), // add
+        date: composite_time.toLocaleDateString("en-US"), // add
+        time: composite_time.toLocaleTimeString("en-US"), // add
 		    location: result.location,
         canister: result.canister,
         handler: result.handler,
