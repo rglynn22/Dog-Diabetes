@@ -244,7 +244,7 @@ var postAddTrainingSession = function(req, res) {
   formData.sample_num = req.body.sample_num;
   formData.sample_info = req.body.sample_info;
   formData.sample_time = req.body.sample_time;
-  
+    
   sessionDB.addTrainingSession(formData, function(data, err) {
     if (err) {
       res.send(500);
@@ -263,6 +263,7 @@ var postSessionResults = function(req, res) {
   data.false_alerts = req.body.false_alerts;
   data.total_trials = req.body.total_trials;  
   data.duration = req.body.duration;
+  data.notes = req.body.notes;
 	
   sessionDB.updateTrainingSession(data, function(result, err) {
     if (err) {

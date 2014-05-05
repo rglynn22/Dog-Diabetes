@@ -38,6 +38,8 @@ var endSession = function() {
 	var seconds = Math.floor((milliseconds / 1000) % 60);
 	var minutes = Math.floor((milliseconds / (1000*60)) % 60);
 	var duration = minutes + " mins, " + seconds + " secs";
+	var notes = document.getElementById("notes");
+	
 	var url = '/addsessionstats';
   var sessionId =  $('#id').val();
 
@@ -46,7 +48,8 @@ var endSession = function() {
 		 			         "successes": successCount, 
 					         "misses": missCount, 
 					         "false_alerts": falseCount, 
-					         "total_trials": trialCount };
+					         "total_trials": trialCount,
+						 	 "notes": notes	};
 	
 	$.post(url, results, function(data, status) {
       if (status == 'success') {

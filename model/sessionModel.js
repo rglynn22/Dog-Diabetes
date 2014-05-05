@@ -21,6 +21,7 @@ var updateTrainingSession = function(data, route_callbck) {
                       ' false_alerts = ' + '\'' + data.false_alerts + '\',' +
                       ' total_trials = ' + '\'' + data.total_trials + '\',' +
 					            ' duration = ' + '\'' + data.duration + '\'' +
+								' notes = ' + '\'' + data.notes + '\'' +
                   ' WHERE id=' + '\'' + data.sessionId + '\';';
       console.log('Query: ' + query);
       client.query(query, function(err, result) {
