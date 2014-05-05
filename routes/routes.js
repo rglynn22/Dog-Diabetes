@@ -280,7 +280,8 @@ var postWheelSessionResults = function(req, res) {
   data.sessionId = req.body.sessionId;
   data.session_string = req.body.session_string;
   data.duration = req.body.duration;
-
+  data.notes = req.body.notes;
+  
   scentWheelDB.updateSession(data, function(result, err) {
     if (err) {
       res.send(500);

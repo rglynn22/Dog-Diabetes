@@ -153,13 +153,16 @@ var endSession = function() {
 	var minutes = Math.floor((milliseconds / (1000*60)) % 60);
 	var duration = minutes + " mins, " + seconds + " secs";
 	
+	var notes = document.getElementById("notes").value;
+	
 	var url = '/addwheelsessionstats';
 
 	var dogName = $('#dog_name').html();
 	var sessionId =  $('#id').val();
 	var results = { "sessionId": sessionId,
 									"duration": duration,
-									"session_string": session};
+									"session_string": session,
+									"notes": notes };
 	
 	$.post(url, results, function(data, status) {
     if (status == 'success') {
