@@ -18,7 +18,7 @@ var updateScentWheelSession = function(data, route_callbck) {
       var query = 'UPDATE scentwheelsession ' + 
                   'SET session_string = ' + '\'' + data.session_string + '\', ' +
                       'duration = ' + '\'' + data.duration + '\', ' + 
-					  'notes = ' + '\'' + data.notes + '\' ' + 
+					        'notes = ' + '\'' + data.notes + '\' ' + 
                   'WHERE id=' + '\'' + data.sessionId + '\';';
       console.log(query);
       client.query(query, function(err, result) {
