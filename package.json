@@ -7,6 +7,10 @@
    },
    "dependencies": {
       "express": "*",
+      // "body-parser": "*",
+      // "cookie-parser": "*",
+      // "morgan": "*",
+      // "express-session": "*",
       "ejs": "*",
 	   "pg": "*"
    },
