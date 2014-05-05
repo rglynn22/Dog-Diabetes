@@ -27,7 +27,7 @@
 		<h3> Canister Sessions </h3>
 		<% for (i = 0; i < canisterSessions.length;i++) {%>
 			<div class="past_canister_session button" id="<%=canisterSessions[i].sessionId%>">
-				<a href="/sessionsummary?dogName=<%=dogName%>&id=<%=canisterSessions[i].sessionId%>" class="btn btn-lg btn-success"><%= canisterSessions[i].date%></a>
+				<a href="/sessionsummary?dogName=<%=dogName%>&id=<%=canisterSessions[i].sessionId%>" class="btn btn-lg btn-primary"><%= canisterSessions[i].date%></a>
 			</div>
 		<% } %>
 	<% } %>
@@ -37,7 +37,7 @@
 		<h3> Wheel Sessions </h3>
 		<% for (i = 0; i < wheelSessions.length;i++) {%>
 			<div class="past_wheel_session button" id="<%=wheelSessions[i].sessionId%>">
-				<a href="/scentwheelsessionsummary?dogName=<%=dogName%>&id=<%=wheelSessions[i].sessionId%>" class="btn btn-lg btn-success""><%= wheelSessions[i].date%></a>
+				<a href="/scentwheelsessionsummary?dogName=<%=dogName%>&id=<%=wheelSessions[i].sessionId%>" class="btn btn-lg btn-primary""><%= wheelSessions[i].date%></a>
 			</div>
 		<% } %>
 	<% } %>
