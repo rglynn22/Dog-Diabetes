@@ -29,9 +29,9 @@ function parseSession(session){
 					var result = elems[2];
 					// Update overall tally
 					switch (position) {
-						case "1": pos1 += parseInt(result); falseAlert ++; break;
-						case "2": pos2 += parseInt(result); falseAlert ++; break;
-						case "4": pos4 += parseInt(result); falseAlert ++; break;
+						case "1": pos1 += parseInt(result); falseAlert += parseInt(result); break;
+						case "2": pos2 += parseInt(result); falseAlert += parseInt(result); break;
+						case "4": pos4 += parseInt(result); falseAlert += parseInt(result); break;
 						case "3": 
 							if (result == "S") success ++;
 							else miss ++;
@@ -59,7 +59,7 @@ function parseSession(session){
 		html += "<strong>-- Stats By Arm --</strong>"+"<br>"+
 				"Arm 1: "+pos1+" false alerts"+"<br>"+ 
 				"Arm 2: "+pos2+" false alerts"+"<br>"+ 
-				"Arm 3: "+success+"/"+totalTrials+" successes"+"<br>"+ 
+				"Arm 3: "+success+" successes/"+miss+"misses"+"<br>"+ 
 				"Arm 4: "+pos4+" false alerts"+"<br>"+"<br>";
 		html += "<strong>-- Detailed Trials --</strong>"+"<br>"+
 				parsedTrials;

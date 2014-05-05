@@ -141,8 +141,10 @@ var newTrial = function() {
 // Database interaction functions
 var endSession = function() { 
 
-	completeArm();
-	session += trial;
+	if (position != null) { 
+		completeArm(); 
+		session += trial;
+	}
 
 	var endTime = new Date().getTime();
 
