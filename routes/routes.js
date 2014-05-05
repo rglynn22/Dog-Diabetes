@@ -183,9 +183,9 @@ var getScentWheelSessionSummary = function(req, res) {
       var sessionSummary = {
         dog: dogName, // add
         sessionID: sessionId,
-        date: composite_time.toLocaleDateString("en-US"), // add
-        // time: composite_time.toLocaleTimeString(), // add
-        time: formatTime(composite_time), // add
+        date: composite_time.toLocaleDateString(), // add
+        time: composite_time.toLocaleTimeString(), // add
+        // time: formatTime(composite_time), // add
 		    location: result.location,
         handler: result.handler,
         sample_num: result.sample_number,

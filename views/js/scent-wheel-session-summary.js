@@ -59,7 +59,7 @@ function parseSession(session){
 		html += "<strong>-- Stats By Arm --</strong>"+"<br>"+
 				"Arm 1: "+pos1+" false alerts"+"<br>"+ 
 				"Arm 2: "+pos2+" false alerts"+"<br>"+ 
-				"Arm 3: "+success+" successes/"+miss+"misses"+"<br>"+ 
+				"Arm 3: "+success+" successes/"+miss+" misses"+"<br>"+ 
 				"Arm 4: "+pos4+" false alerts"+"<br>"+"<br>";
 		html += "<strong>-- Detailed Trials --</strong>"+"<br>"+
 				parsedTrials;
