@@ -47,7 +47,7 @@ var getDogInfo = function(req, res) {
 	    } else {
 			var wheel_sessions = [];
 	        for (var i = 0; i < data2.length; i++) {
-            var date = new Date(data[i].record_date);
+            var date = new Date(data2[i].record_date);
 	          wheel_sessions.push({ date: date.toLocaleString(), 
 	                              sessionId: data2[i].id});
 	    	}
