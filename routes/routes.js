@@ -38,7 +38,7 @@ var getDogInfo = function(req, res) {
 	  var canister_sessions = [];
       for (var i = 0; i < data.length; i++) {
         var date = new Date(data[i].record_date);
-        canister_sessions.push({ date: date.toLocaleDateString(), 
+        canister_sessions.push({ date: date.toLocaleString(), 
                                  sessionId: data[i].id });
       }
 	  scentWheelDB.getSessionsByDogId(dogID, function(data2, err) {
@@ -47,15 +47,16 @@ var getDogInfo = function(req, res) {
 	    } else {
 			var wheel_sessions = [];
 	        for (var i = 0; i < data2.length; i++) {
-	        wheel_sessions.push({ date: data2[i].record_date, 
+            var date = new Date(data[i].record_date);
+	          wheel_sessions.push({ date: date.toLocaleString(), 
 	                              sessionId: data2[i].id});
 	    	}
           	// console.log(wheel_sessions);
   			//var result = canister_sessions.concat(wheel_sessions);
   			res.render('dog-menu.ejs', {dogName: dogName, 
-            					  		canisterSessions: canister_sessions,
-							  		  	wheelSessions: wheel_sessions,
-                              		  	dogID: dogID});
+            					  		        canisterSessions: canister_sessions,
+							  		  	            wheelSessions: wheel_sessions,
+                              		  dogID: dogID});
 		}
 	  })
     }
