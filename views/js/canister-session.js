@@ -32,13 +32,13 @@ var recordFalseAlert = function() {
 }
 
 var endSession = function() {
-  	//console.log("Ending session");
+  	console.log("Ending session");
   	var endTime = new Date().getTime();
 	var milliseconds = endTime - startTime;
 	var seconds = Math.floor((milliseconds / 1000) % 60);
 	var minutes = Math.floor((milliseconds / (1000*60)) % 60);
 	var duration = minutes + " mins, " + seconds + " secs";
-	var notes = document.getElementById("notes");
+	var notes = document.getElementById("notes").innerHTML;
 	
 	var url = '/addsessionstats';
 	var sessionId =  $('#id').val();
