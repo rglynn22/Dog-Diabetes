@@ -69,7 +69,7 @@ var getDogInfo = function(req, res) {
 var getCanisterSessionForm = function(req, res) {
   // var dog = "Skip";
   var dogName = req.query.dogName;
-  var dogID = req.query.id;
+  var id = req.query.id;
   res.render('new-session.ejs', {id: id, dogName: dogName});
 }
 
@@ -137,7 +137,7 @@ var getScentWheelSession = function(req, res) {
 }
 
 var getScentWheelSessionForm = function(req, res) {
-  var dogID = req.query.id;
+  var id = req.query.id;
   var dogName = req.query.dogName;
   res.render('new-scent-wheel-session.ejs', {id: id, dogName: dogName});
 }
