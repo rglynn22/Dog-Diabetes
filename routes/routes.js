@@ -69,8 +69,8 @@ var getDogInfo = function(req, res) {
 var getCanisterSessionForm = function(req, res) {
   // var dog = "Skip";
   var dogName = req.query.dogName;
-  var dogID = req.query.dogID;
-  res.render('new-session.ejs', {dogID: dogID, dogName: dogName});
+  var dogID = req.query.id;
+  res.render('new-session.ejs', {id: id, dogName: dogName});
 }
 
 // Handler for displaying canister session page
