@@ -3,6 +3,30 @@ var scentWheelDB = require('../model/scentWheelModel.js');
 var dogDB = require('../model/dogModel.js');
 
 /*********************************************
+  Formatting function
+ *********************************************/
+
+function formatTime (date) {
+
+  var min = d.getMinutes();
+  var hr = d.getHours();
+
+  var timeStamp;
+  if (hr == 0) {
+    timeStamp = "12:"+min+"AM";
+  } else if (hr < 11) {
+    timeStamp = hr+":"+min+"AM";
+  } else if (hr == 12) {
+    timeStamp = "12:"+min+"PM";
+  } else {
+    timeStamp = hr-12+":"+min+"PM";
+  }
+
+  return timeStamp;
+
+}
+
+/*********************************************
   Callbacks for GET requests
  *********************************************/
 
@@ -93,6 +117,7 @@ var getSessionSummary = function(req, res) {
     else {
       // console.log(result);
       var composite_time = new Date(result.record_date);
+      console.log(formatTime(composite_time));
 
       var sessionSummary = {
         dog: dogName, // add
@@ -158,7 +183,7 @@ var getScentWheelSessionSummary = function(req, res) {
       var sessionSummary = {
         dog: dogName, // add
         sessionID: sessionId,
-        date: composite_time.toDateString(), // add
+        date: composite_time.toLocaleDateString("en-US"), // add
         time: composite_time.toLocaleTimeString(), // add
 		    location: result.location,
         handler: result.handler,
