@@ -137,9 +137,9 @@ var getScentWheelSession = function(req, res) {
 }
 
 var getScentWheelSessionForm = function(req, res) {
-  var dogID = req.query.dogID;
+  var dogID = req.query.id;
   var dogName = req.query.dogName;
-  res.render('new-scent-wheel-session.ejs', {dogID: dogID, dogName: dogName});
+  res.render('new-scent-wheel-session.ejs', {id: id, dogName: dogName});
 }
 
 var getScentWheelSessionSummary = function(req, res) {
