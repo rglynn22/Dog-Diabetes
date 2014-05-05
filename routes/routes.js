@@ -38,7 +38,10 @@ var getDogInfo = function(req, res) {
 	  var canister_sessions = [];
       for (var i = 0; i < data.length; i++) {
         var date = new Date(data[i].record_date);
-        canister_sessions.push({ date: date.toLocaleString("en-US"), 
+        var dateString = date.toLocaleDateString("en-US")+
+                         " @ "+
+                         date.toLocaleTimeString("en-US");
+        canister_sessions.push({ date: dateString, 
                                  sessionId: data[i].id });
       }
 	  scentWheelDB.getSessionsByDogId(dogID, function(data2, err) {
@@ -48,7 +51,10 @@ var getDogInfo = function(req, res) {
 			var wheel_sessions = [];
 	        for (var i = 0; i < data2.length; i++) {
             var date = new Date(data2[i].record_date);
-	          wheel_sessions.push({ date: date.toLocaleString("en_US"), 
+            var dateString = date.toLocaleDateString("en-US")+
+                             " @ " +
+                             date.toLocaleTimeString("en-US");
+	          wheel_sessions.push({ date: dateString, 
 	                              sessionId: data2[i].id});
 	    	}
           	// console.log(wheel_sessions);
