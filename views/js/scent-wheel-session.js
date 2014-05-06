@@ -32,11 +32,12 @@ var setDir = function(dir){
 	}
 }
 
-var setPos = function(pos){
+var setPos = function(pos, button){
 	position = pos;
 	if (direction != null) {
 		$("#beginsession").prop("disabled",false);
 	}
+	console.log($(button));
 }
 
 var reset = function() {
