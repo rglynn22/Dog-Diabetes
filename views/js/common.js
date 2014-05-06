@@ -5,7 +5,3 @@ var guid = function(){
   }
   return _p8() + _p8(true) + _p8(true) + _p8();
 }
-
-var timestamp() {
-		
-}
