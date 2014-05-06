@@ -166,14 +166,14 @@ var endSession = function() {
 	var dogName = $('#dog_name').html();
 	var sessionId =  $('#id').val();
 	var results = { "sessionId": sessionId,
-									"duration": duration,
-									"session_string": session,
-									"notes": notes };
+					"duration": duration,
+					"session_string": session,
+					"notes": notes };
 	
 	$.post(url, results, function(data, status) {
     if (status == 'success') {
     	var redirect = '/scentwheelsessionsummary?id='+sessionId +'&dogName=' + dogName;
-      window.location.replace(redirect);
+        window.location.replace(redirect);
     }
     else {
       alert('Failed to store session results. Please try again!');

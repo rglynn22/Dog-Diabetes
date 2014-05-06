@@ -101,6 +101,10 @@ var getSessionSummary = function(req, res) {
     else {
       // console.log(result);
       var composite_time = new Date(result.record_date);
+      var offset = composite_time.getTimezoneOffset()/60;
+      var currentHrs = composite_time.getHours();
+      if (currentHrs + offset < 24) composite_time.setHours(currentHrs + offset);
+      else (composite_time.setHours(offset + currentHrs - 24));
 
       var sessionSummary = {
         dog: dogName, // add
