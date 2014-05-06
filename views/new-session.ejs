@@ -12,50 +12,53 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
-	<h1>New Training Session</h1>
+	<div class="wrapper">
+		<h1>New Training Session</h1>
 
-	<% if (dogName) { %> <h2><%= dogName %></h2> <% } %>
+		<% if (dogName) { %> <h2><%= dogName %></h2> <% } %>
 
-	<form id="new-training-form">
-		<div class="session field" >
-			<input type="hidden" id="uuid" name="uuid">
+		<form id="new-training-form">
+			<div class="session field" >
+				<input type="hidden" id="uuid" name="uuid">
+			</div>
+			<div class="session field" >
+				<input type="hidden" id="dogID" name="dogID" value="<%=dogID%>">
+			</div>
+			<div class="session field" >
+				<input type="hidden" id="dogName" name="dogName" value="<%=dogName%>">
+			</div>
+			<div class="session field">
+				<input class="form-control" type="text" id="location" name="location" placeholder="Location" required> 
+			</div>
+			<div class="session field">
+				<input class="form-control" type="text" id="canister" name="canister" placeholder="Canister position" required>
+			</div>
+			<div class="session field">
+				<input class="form-control" type="text" id="handler" name="handler" placeholder="Handler" required>
+			</div>
+			<div class="session field">
+				<input class="form-control" type="number" id="sample_num" name="sample_num" placeholder="Sample Number" required>
+			</div>
+			<div class="session field">
+				<input class="form-control" type="text" id="sample_info" name="sample_info" placeholder="Sample Usage Info" required>
+			</div>
+			<div class="session field">
+				<input class="form-control" type="text" id="sample_time" name="sample_time" placeholder="Time Obtained" required>
+			</div>
+			<div class="session submit_button">
+				<input class="btn btn-lg btn-success" type="submit" value="Begin Session">
+			</div>
+		</form>
+		
+		<div class="nav button">
+			<button type="button" class="btn btn-lg btn-warning" onclick=window.location.replace("/doginfo?id=<%=dogID%>&dogName=<%=dogName%>")>
+				Back to Dog Menu
+			</button>
 		</div>
-		<div class="session field" >
-			<input type="hidden" id="dogID" name="dogID" value="<%=dogID%>">
-		</div>
-		<div class="session field" >
-			<input type="hidden" id="dogName" name="dogName" value="<%=dogName%>">
-		</div>
-		<div class="session field">
-			<input class="form-control" type="text" id="location" name="location" placeholder="Location" required> 
-		</div>
-		<div class="session field">
-			<input class="form-control" type="text" id="canister" name="canister" placeholder="Canister position" required>
-		</div>
-		<div class="session field">
-			<input class="form-control" type="text" id="handler" name="handler" placeholder="Handler" required>
-		</div>
-		<div class="session field">
-			<input class="form-control" type="number" id="sample_num" name="sample_num" placeholder="Sample Number" required>
-		</div>
-		<div class="session field">
-			<input class="form-control" type="text" id="sample_info" name="sample_info" placeholder="Sample Usage Info" required>
-		</div>
-		<div class="session field">
-			<input class="form-control" type="text" id="sample_time" name="sample_time" placeholder="Time Obtained" required>
-		</div>
-		<div class="session submit_button">
-			<input class="btn btn-lg btn-success" type="submit" value="Begin Session">
-		</div>
-	</form>
-	
-	<div class="nav button">
-	<button type="button" class="btn btn-lg btn-warning" onclick=window.location.replace("/doginfo?id=<%=dogID%>&dogName=<%=dogName%>")>
-		Back to Dog Menu
-	</button>
-</div>
-<div class="footer">
-  Created for UPenn Working Dog Center
-</div>
+		<div class="push"></div>
+	</div>
+	<div class="footer">
+		Created for UPenn Working Dog Center
+	</div>
 </body>
 </html>

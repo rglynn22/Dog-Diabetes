@@ -13,27 +13,28 @@
 	<title> Scent Wheel Session</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
-	<body>
-	<h1> Scent Wheel Session</h1>
-	<!-- SETUP FOR TRIAL  -->
-	<div id="setup">
-		<form>
-			<div>
-				<h3>Choose an initial position: </h3>
-				<br>
-				<button type="button" onclick="setPos(1,this)" class="btn btn-default btn-large"> 1 </button>
-				<button type="button" onclick="setPos(2,this)" class="btn btn-default btn-large"> 2 </button>
-				<button type="button" onclick="setPos(3,this)" class="btn btn-default btn-large"> 3 </button>
-				<button type="button" onclick="setPos(4,this)" class="btn btn-default btn-large"> 4 </button>
-			</div>
-			<div>
-				<h3>Choose a starting direction: </h3>
-				<br>
-				<button type="button" onclick="setDir('cc',this)" class="btn btn-default btn-large" >
-					<--
-				</button>
-				<button type="button" onclick="setDir('c',this)" class="btn btn-default btn-large"> 
-				    -->
+<body>
+	<div class="wrapper">
+		<h1> Scent Wheel Session</h1>
+		<!-- SETUP FOR TRIAL  -->
+		<div id="setup">
+			<form>
+				<div>
+					<h3>Choose an initial position: </h3>
+					<br>
+					<button type="button" onclick="setPos(1,this)" class="btn btn-default btn-large"> 1 </button>
+					<button type="button" onclick="setPos(2,this)" class="btn btn-default btn-large"> 2 </button>
+					<button type="button" onclick="setPos(3,this)" class="btn btn-default btn-large"> 3 </button>
+					<button type="button" onclick="setPos(4,this)" class="btn btn-default btn-large"> 4 </button>
+				</div>
+				<div>
+					<h3>Choose a starting direction: </h3>
+					<br>
+					<button type="button" onclick="setDir('cc',this)" class="btn btn-default btn-large" >
+						<--
+					</button>
+					<button type="button" onclick="setDir('c',this)" class="btn btn-default btn-large"> 
+					-->
 				</button>
 			</div>
 			<div>
@@ -42,9 +43,10 @@
 			</div>
 		</form>
 	</div>
+	
 	<!-- SETUP FOR TRIAL  -->
 	<div id="trial">
-		
+
 		<% if (dogName) { %> <h3 id="dog_name"><%= dogName %></h3> <% } %>
 
 		<div class="session field" >
@@ -80,28 +82,30 @@
 				<--
 			</button>
 			<button id="right_button" type="button" onclick="move('c')" class="btn btn-primary btn-large"> 
-			    -->
+			-->
 			</button>
 		</div>
 		<div>
 			<br>
 			<button id="new_trial" onclick="newTrial()" class="btn btn-primary btn-large">New Trial</button>
-	<!-- 	<h2> Total: <span id="arm_tally"> 0 </span></h2>  -->
+			<!-- 	<h2> Total: <span id="arm_tally"> 0 </span></h2>  -->
 		</div>
-		
+
 		<br>
 		<div class="session field">
 			<h3>Notes:</h3>
 			<textarea id="notes" name="notes"></textarea> 
 		</div>
 		<br>
-		
+
 		<div id="end-button">
 			<button type="button" class="btn btn-primary btn-large">End Session</button>
 		</div>
 	</div>
-	<div class="footer">
-  	Created for UPenn Working Dog Center
-	</div>
-	</body>
+	<div class="push"></div>
+</div>
+<div class="footer">
+	Created for UPenn Working Dog Center
+</div>
+</body>
 </html>

@@ -12,7 +12,7 @@
 	<div class="wrapper">
 		<h1>Dog Menu</h1>
 		<% if (dogName) { %> <h2> Dog: <%= dogName %></h2> <% } %>
-		<div>
+		<div id="new-sessions">
 
 			<a href="/newsessionform?dogID=<%=dogID%>&dogName=<%=dogName%>"  class="btn btn-lg btn-success">
 				New Canister Session
@@ -20,8 +20,8 @@
 			<a href="/newscentwheelsessionform?dogID=<%=dogID%>&dogName=<%=dogName%>" class="btn btn-lg btn-success">
 				New Scent Wheel Session
 			</a>
-			
-			
+
+
 		</div>
 		<div>
 			<div>
