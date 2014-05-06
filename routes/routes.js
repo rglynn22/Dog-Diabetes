@@ -100,7 +100,7 @@ var getSessionSummary = function(req, res) {
       var sessionSummary = {
         dog: dogName, // add
         sessionID: sessionId,
-        date: composite_time.format("ddd, MMM Do YYYY"), // add
+        date: composite_time.format("ddd, MMM D, YYYY"), // add
         time: composite_time.format("h:mm a"), // add
 		    location: result.location,
         canister: result.canister,
@@ -161,7 +161,7 @@ var getScentWheelSessionSummary = function(req, res) {
       var sessionSummary = {
         dog: dogName, // add
         sessionID: sessionId,
-        date: composite_time.format("ddd, MMM Do YYYY"), // add
+        date: composite_time.format("ddd, MMM D, YYYY"), // add
         time: composite_time.format("h:mm a"), // add
 		    location: result.location,
         handler: result.handler,
