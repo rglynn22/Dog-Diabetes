@@ -13,8 +13,10 @@
 </head>
 <body onload="parseSession('<%= stats.session_string%>')">
 	<div class="wrapper">
-		<h1>Scent Wheel Session Summary</h1>  
-		<%if (summary != null && stats != null) { %>
+		<div class="header">
+			<h1>Scent Wheel Session Summary</h1>  
+			<%if (summary != null && stats != null) { %>
+		</div>
 		<div class="session_stats panel panel-info">
 			<div class="panel-heading">
 				<h3 class="panel-title">Summary</h3>

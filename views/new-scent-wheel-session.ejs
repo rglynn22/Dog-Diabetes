@@ -13,9 +13,10 @@
 </head>
 <body>
 	<div class="wrapper">
-		<h1>New Scent Wheel Session</h1>
-		<% if (dogName) { %> <h2><%= dogName %></h2> <% } %>
-
+		<div class="header">
+			<h1>New Scent Wheel Session</h1>
+			<% if (dogName) { %> <h2><%= dogName %></h2> <% } %>
+		</div>
 		<form id="new-training-form">
 			<div class="session field" >
 				<input type="hidden" id="uuid" name="uuid">
@@ -23,11 +24,11 @@
 			<div class="session field" >
 				<input class="form-control" type="hidden" id="dogID" name="dogID" value="<%=dogID%>">
 			</div>
-			
+
 			<div class="session field">
 				<input class="form-control" type="text" id="handler" name="handler" placeholder="Handler" required>
 			</div>
-			
+
 			<div class="session field">
 				<input class="form-control" type="number" id="sample_num" name="sample_num" placeholder="Sample Number" required>
 			</div>
@@ -37,7 +38,7 @@
 			<div class="session field">
 				<input class="form-control" type="text" id="sample_time" name="sample_time" placeholder="Time Obtained" required>
 			</div>
-			
+
 			<div> Can Contents: </div> 
 			<div class="session field">
 				<input class="form-control" type="text" id="can1_contents" name="can1_contents" placeholder="Can 1 Contents" required>
@@ -51,15 +52,15 @@
 			<div class="session field">
 				<input class="form-control" type="text" id="can4_contents" name="can4_contents" placeholder="Can 4 Contents" required>
 			</div>
-			
-			
+
+
 			<!-- Automate later -->
-			
+
 			<div class="session submit_button">
 				<input class="btn btn-lg btn-success" type="submit" value="Begin Session">
 			</div>
 		</form>
-		
+
 		<div class="nav button">
 			<button type="button" class="btn btn-lg btn-warning" onclick=window.location="/doginfo?id=<%=dogID%>&dogName=<%=dogName%>">
 				Back to Dog Menu

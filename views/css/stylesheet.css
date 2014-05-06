@@ -42,6 +42,7 @@ a {
 
 #dogs_box {
   width: 200px;
+  position: relative;
 }
 
 #new-dog-button {
@@ -137,6 +138,10 @@ textarea {
   position: relative;
   height: 40px;
   margin: 0 auto;
+}
+
+.header {
+  padding-bottom: 3%;
 }
 
 .footer {

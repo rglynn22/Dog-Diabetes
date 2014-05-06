@@ -9,9 +9,10 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
-<div class="wrapper">
-	
-		<h1>Dogs</h1>
+	<div class="wrapper">
+		<div class="header">
+			<h1>Dogs</h1>
+		</div>
 		<% if (results != null && results.length > 0) {%>
 		<div id="dogs_box">
 			<% for (i = 0; i < results.length; i++) {%>
@@ -29,8 +30,8 @@
 			<a href="/newdogform" class="btn btn-primary btn-lg btn-success btn-block"> Add New Dog </a>
 		</div>		
 
-	<div class="push"></div>
-</div>
+		<div class="push"></div>
+	</div>
 	<div class="footer">
 		Created for UPenn Working Dog Center
 	</div>
