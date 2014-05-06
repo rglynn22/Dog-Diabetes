@@ -23,13 +23,13 @@ var updateTrainingSession = function(data, route_callbck) {
 					          ' duration = ' + '\'' + data.duration + '\',' +
 						      ' notes = ' + '\'' + data.notes + '\'' +
                   ' WHERE id=' + '\'' + data.sessionId + '\';';
-      console.log('Query: ' + query);
+      // console.log('Query: ' + query);
       client.query(query, function(err, result) {
-        if (err) {
-          route_callbck(null, err);
+        if (err) {          
           console.log('Error executing query.')
           console.log('Query: ' + query);
           console.log('Error: ' + err);
+          route_callbck(null, err);
         }
         else {
           route_callbck(result, null);
@@ -64,10 +64,10 @@ var addTrainingSession = function(data, route_callbck) {
 							               + '\'' + (new Date()) + '\''
                              + ');';      
 			client.query(query, function (err, result) {
-  			if (err) {
-          route_callbck(null, err);
+  			if (err) {          
   				console.log("Error inserting specified data" + err);
-          console.log(query);
+          route_callbck(null, err);
+          // console.log(query);
   			}
   			else route_callbck(result, null);
         client.end();
@@ -88,9 +88,9 @@ var getSessionsByDogId = function(dogID, route_callbck) {
       // console.log(query);
       client.query(query, function(err, result) {
         if (err) {
-          console.log('Error running query: ');
-          console.log(query);
-          console.log(err);
+          console.log('Error executing query.')
+          console.log('Query: ' + query);
+          console.log('Error: ' + err);
           route_callbck(null, err);
         }
         else route_callbck(result.rows, null);

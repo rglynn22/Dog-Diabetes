@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Main Menu</title>
-	<link type="text/css" rel="stylesheet" href="css/stylesheet.css"/>
+	<title>Main Menu</title>	
 	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
 	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
+	<link type="text/css" rel="stylesheet" href="css/stylesheet.css"/>
+	<link href= 'http://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'> 
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <script>
 //Dog Array
@@ -17,7 +18,7 @@
   		<div id="dogs_box">
 		<% for (i = 0; i < results.length; i++) {%>
 			<div>
-				<a href="doginfo?id=<%= results[i].id%>&dogName=<%= results[i].name%>" class="btn btn-primary btn-large btn-block form-control">
+				<a href="doginfo?id=<%= results[i].id%>&dogName=<%= results[i].name%>" class="btn btn-primary btn-large btn-block">
 					<%= results[i].name%>
 				</a>
 			</div>

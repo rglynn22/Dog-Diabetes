@@ -1,6 +1,6 @@
 function parseSession(session){
   console.log(session);
-	if (session == 0) {
+	if (session == "") {
 		alert("Error retrieving session from the database.")
 	} else {
 		var pos1 = 0;

@@ -14,8 +14,7 @@ var getMain = function(req, res) {
     if (err) {
       res.send(500);
     }
-    else {
-      // console.log(result);      
+    else {     
       res.render('index.ejs', {results: result});
     }
   }) 
@@ -52,8 +51,6 @@ var getDogInfo = function(req, res) {
 	          wheel_sessions.push({ date: date.format("M/D/YYYY @ h:MM a"),
 	                              sessionId: data2[i].id});
 	    	}
-          	// console.log(wheel_sessions);
-  			//var result = canister_sessions.concat(wheel_sessions);
   			res.render('dog-menu.ejs', {dogName: dogName, 
             					  		        canisterSessions: canister_sessions,
 							  		  	            wheelSessions: wheel_sessions,
@@ -175,32 +172,9 @@ var getScentWheelSessionSummary = function(req, res) {
       }
       var sessionStats = {
         duration: result.duration || 0,
-        session_string: result.session_string || 
-                "c,1,3 c,2,0 c,3,M/cc,4,0 c,3,S/cc,2,2 cc,1,0 cc,4,1 cc,3,S",
+        session_string: result.session_string || "",
         notes: result.notes || "None"
       }
-
-      // var sessionSummary = {
-      //   dog: "Spot", // add
-      //   sessionID: "200",
-      //   date: "March 23", // add
-      //   time: "3:36", // add
-      //   location: "Philly",
-      //   handler: "Joe",
-      //   sample_num: 69,
-      //   sample_info: "n/a",
-      //   sample_time: "10:31pm",
-      //   can1_contents: "gum",
-      //   can2_contents: "gum",
-      //   can3_contents: "sample",
-      //   can4_contents: "gum"
-      // }
-
-      // var sessionStats = {
-      //   duration: 0,
-      //   session_string: "c,1,3 c,2,0 c,3,M/cc,4,0 c,3,S/cc,2,2 cc,1,0 cc,4,1 cc,3,S",
-      //   notes: "None"
-      // }
       
       res.render('scent-wheel-session-summary.ejs', {summary: sessionSummary, stats: sessionStats});
     }

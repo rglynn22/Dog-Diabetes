@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>New Scent Wheel Session</title>
-	<link type="text/css" rel="stylesheet" href="css/stylesheet.css"/>
+	<title>New Scent Wheel Session</title>	
 	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
 	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
+	<link type="text/css" rel="stylesheet" href="css/stylesheet.css"/>
+	<link href= 'http://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+	<script src="js/common.js"></script>
+	<script src="js/scent-wheel-session-form.js"></script>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-<script src="js/common.js"></script>
-<script src="js/scent-wheel-session-form.js"></script>
 <body>
 	<h1>New Scent Wheel Session</h1>
 	<% if (dogName) { %> <h2><%= dogName %></h2> <% } %>
@@ -19,42 +20,42 @@
 			<input type="hidden" id="uuid" name="uuid">
 		</div>
 		<div class="session field" >
-			<input type="hidden" id="dogID" name="dogID" value="<%=dogID%>">
+			<input class="form-control" type="hidden" id="dogID" name="dogID" value="<%=dogID%>">
 		</div>
 		
 		<div class="session field">
-			<input type="text" id="handler" name="handler" placeholder="Handler" required>
+			<input class="form-control" type="text" id="handler" name="handler" placeholder="Handler" required>
 		</div>
 		
 		<div class="session field">
-			<input type="text" id="sample_num" name="sample_num" placeholder="Sample Number" required>
+			<input class="form-control" type="text" id="sample_num" name="sample_num" placeholder="Sample Number" required>
 		</div>
 		<div class="session field">
-			<input type="text" id="sample_info" name="sample_info" placeholder="Sample Usage Info" required>
+			<input class="form-control" type="text" id="sample_info" name="sample_info" placeholder="Sample Usage Info" required>
 		</div>
 		<div class="session field">
-			<input type="text" id="sample_time" name="sample_time" placeholder="Time Obtained" required>
+			<input class="form-control" type="text" id="sample_time" name="sample_time" placeholder="Time Obtained" required>
 		</div>
 		
 		<div> Can Contents: </div> 
 		<div class="session field">
-			<input type="text" id="can1_contents" name="can1_contents" placeholder="Can 1 Contents" required>
+			<input class="form-control" type="text" id="can1_contents" name="can1_contents" placeholder="Can 1 Contents" required>
 		</div>
 		<div class="session field">
-			<input type="text" id="can2_contents" name="can2_contents" placeholder="Can 2 Contents" required>
+			<input class="form-control" type="text" id="can2_contents" name="can2_contents" placeholder="Can 2 Contents" required>
 		</div>
 		<div class="session field">
-			<input type="text" id="can3_contents" name="can3_contents" placeholder="Can 3 Contents" required>
+			<input class="form-control" type="text" id="can3_contents" name="can3_contents" placeholder="Can 3 Contents" required>
 		</div>
 		<div class="session field">
-			<input type="text" id="can4_contents" name="can4_contents" placeholder="Can 4 Contents" required>
+			<input class="form-control" type="text" id="can4_contents" name="can4_contents" placeholder="Can 4 Contents" required>
 		</div>
 		
 		
 		<!-- Automate later -->
 		
 	<div class="session submit_button">
-			<input type="submit" value="Begin Session">
+			<input class="btn btn-lg btn-success" type="submit" value="Begin Session">
 		</div>
 	</form>
 	

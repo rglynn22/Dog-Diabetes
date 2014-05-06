@@ -1,4 +1,5 @@
-$(document).ready(function() {  
+$(document).ready(function() {
+	$('textarea').autosize();   
   $('#end-button').click(function() {
     endSession();
   })

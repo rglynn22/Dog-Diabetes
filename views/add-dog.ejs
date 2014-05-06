@@ -1,16 +1,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Add New Dog</title>
-  <link type="text/css" rel="stylesheet" href="css/stylesheet.css"/>
+	<title>Add New Dog</title>  
   <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
   <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
+  <link type="text/css" rel="stylesheet" href="css/stylesheet.css"/>
+  <link href= 'http://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>  
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  <script src="js/common.js"></script>
+  <script src="js/add-dog.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-<script src="js/common.js"></script>
-<script src="js/add-dog.js"></script>
-</head>
+
 <body>
 	<h1>Add New Dog</h1>
   <form id="add-dog-form">
@@ -18,19 +19,19 @@
       <input type="hidden" id="uuid" name="uuid">
     </div>
     <div class="dog field">
-      <input type="text" id="name" name="name" placeholder="Name" required> 
+      <input class="form-control" type="text" id="name" name="name" placeholder="Name" required> 
     </div>
     <div class="dog field">
-      <input type="text" id="age" name="age" placeholder="Dog age" required>
+      <input class="form-control" type="text" id="age" name="age" placeholder="Dog age" required>
     </div>
     <div class="dog field">
-      <input type="text" id="breed" name="breed" placeholder="Dog breed" required>
+      <input class="form-control" type="text" id="breed" name="breed" placeholder="Dog breed" required>
     </div>
     <div class="dog field">
-      <input type="hidden" id="date" name="date">
+      <input class="form-control" type="hidden" id="date" name="date">
     </div>
     <div class="dog submit_button">
-      <input type="submit" value="Add Dog">
+      <input class="btn btn-lg btn-success" type="submit" value="Add Dog">
     </div>
   </form>
   <div class="nav button">

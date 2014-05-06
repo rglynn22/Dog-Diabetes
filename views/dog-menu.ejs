@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<link type="text/css" rel="stylesheet" href="../css/stylesheet.css"/>
+<head>	
 	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
 	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
+	<link type="text/css" rel="stylesheet" href="../css/stylesheet.css"/>
+	<link href= 'http://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Dog Menu</title>
 </head>
@@ -31,6 +32,9 @@
 			</div>
 		<% } %>
 	<% } %>
+	<% if (canisterSessions.length == 0){%>
+		<h4 style="color:red"> No session on record</h4>
+	<% } %>
 	</div>
 	<div>
 	<% if (wheelSessions) {%>
@@ -40,6 +44,9 @@
 				<a href="/scentwheelsessionsummary?dogName=<%=dogName%>&id=<%=wheelSessions[i].sessionId%>" class="btn btn-lg btn-primary"><%= wheelSessions[i].date%></a>
 			</div>
 		<% } %>
+	<% } %>
+	<% if (wheelSessions.length == 0) {%>
+		<h4 style="color:red"> No session on record </h4>
 	<% } %>
 	</div>
 	</div>

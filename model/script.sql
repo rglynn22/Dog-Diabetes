@@ -25,7 +25,7 @@ CREATE TABLE Session (
   misses int,
   false_alerts int,
   total_trials int,
-  notes varchar(255)
+  notes text
 );
 
 CREATE TABLE ScentWheelSession (
@@ -41,8 +41,8 @@ CREATE TABLE ScentWheelSession (
   can4 varchar(32) NOT NULL,
   record_date varchar(64),
   duration varchar(32),
-  session_string varchar(255), 
-  notes varchar(255)
+  session_string text, 
+  notes text
 );
 
 

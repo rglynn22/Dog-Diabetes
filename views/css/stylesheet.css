@@ -13,22 +13,26 @@ p {
 
 
 div {
-    margin: 10px auto;
-    text-align: center;
-    
+  margin: 10px auto;
+  text-align: center;
 }
 
 h1, h2, h3 {
-    text-align: center;
+  font-family: Pacifico, serif;
+  text-align: center;  
+}
+
+h1 {
+  padding-bottom: 1%;
 }
 
 a {
-    text-decoration: none;
-    font-family: Univers, sans-serif;
+  text-decoration: none;
+  font-family: Univers, sans-serif;
 }
 
 #dogs_box {
-    width: 200px;
+  width: 200px;
 }
 
 #new-dog-button {
@@ -37,7 +41,7 @@ a {
 }
 
 .session_stats{
-    width: 250px;
+  width: 250px;
 }
 
 div.button{}
@@ -67,4 +71,27 @@ div.arm {
   height: 60px;
   display: inline-block;
   margin: 5px;
+}
+
+textarea {
+  transition: height 0.2s;
+  -webkit-transition: height 0.2s;
+  -moz-transition: height 0.2s;
+  width: 30%;
+}
+
+.panel-body {
+  overflow: hidden;
+  word-wrap: break-word;
+}
+
+.panel-heading {
+  margin-top: 0;
+}
+
+.form-control {
+  text-align: center;
+  margin: auto;
+  margin-bottom: 2%;
+  width: 40%;
 }

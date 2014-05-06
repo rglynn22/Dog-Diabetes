@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>New Training Session</title>
-	<link type="text/css" rel="stylesheet" href="css/stylesheet.css"/>
+	<title>New Training Session</title>	
 	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
 	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
+	<link type="text/css" rel="stylesheet" href="css/stylesheet.css"/>
+	<link href= 'http://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+	<script src="js/common.js"></script>
+	<script src = "js/canister-session-form.js"></script>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-<script src="js/common.js"></script>
-<script src = "js/canister-session-form.js"></script>
 <body>
 	<h1>New Training Session</h1>
 
@@ -26,25 +27,25 @@
 			<input type="hidden" id="dogName" name="dogName" value="<%=dogName%>">
 		</div>
 		<div class="session field">
-			<input type="text" id="location" name="location" placeholder="Location" required> 
+			<input class="form-control" type="text" id="location" name="location" placeholder="Location" required> 
 		</div>
 		<div class="session field">
-			<input type="text" id="canister" name="canister" placeholder="Canister position" required>
+			<input class="form-control" type="text" id="canister" name="canister" placeholder="Canister position" required>
 		</div>
 		<div class="session field">
-			<input type="text" id="handler" name="handler" placeholder="Handler" required>
+			<input class="form-control" type="text" id="handler" name="handler" placeholder="Handler" required>
 		</div>
 		<div class="session field">
-			<input type="text" id="sample_num" name="sample_num" placeholder="Sample Number" required>
+			<input class="form-control" type="text" id="sample_num" name="sample_num" placeholder="Sample Number" required>
 		</div>
 		<div class="session field">
-			<input type="text" id="sample_info" name="sample_info" placeholder="Sample Usage Info" required>
+			<input class="form-control" type="text" id="sample_info" name="sample_info" placeholder="Sample Usage Info" required>
 		</div>
 		<div class="session field">
-			<input type="text" id="sample_time" name="sample_time" placeholder="Time Obtained" required>
+			<input class="form-control" type="text" id="sample_time" name="sample_time" placeholder="Time Obtained" required>
 		</div>
 		<div class="session submit_button">
-			<input type="submit" value="Begin Session">
+			<input class="btn btn-lg btn-success" type="submit" value="Begin Session">
 		</div>
 	</form>
 	
