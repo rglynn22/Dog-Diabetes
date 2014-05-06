@@ -38,11 +38,8 @@ var getDogInfo = function(req, res) {
     else {
 	  var canister_sessions = [];
       for (var i = 0; i < data.length; i++) {
-        var date = new Date(data[i].record_date);
-        var dateString = date.toLocaleDateString("en-US")+
-                         " @ "+
-                         date.toLocaleTimeString("en-US");
-        canister_sessions.push({ date: dateString, 
+        var date = moment(new Date(data[i].record_date)).tz("America/New_York");
+        canister_sessions.push({ date: date.format("M/D/YYYY @ h:MM a"), 
                                  sessionId: data[i].id });
       }
 	  scentWheelDB.getSessionsByDogId(dogID, function(data2, err) {
@@ -51,11 +48,8 @@ var getDogInfo = function(req, res) {
 	    } else {
 			var wheel_sessions = [];
 	        for (var i = 0; i < data2.length; i++) {
-            var date = new Date(data2[i].record_date);
-            var dateString = date.toLocaleDateString("en-US")+
-                             " @ " +
-                             date.toLocaleTimeString("en-US");
-	          wheel_sessions.push({ date: dateString, 
+            var date = moment(new Date(data2[i].record_date)).tz("America/New_York");
+	          wheel_sessions.push({ date: date.format("M/D/YYYY @ h:MM a"),
 	                              sessionId: data2[i].id});
 	    	}
           	// console.log(wheel_sessions);
@@ -101,13 +95,13 @@ var getSessionSummary = function(req, res) {
     }
     else {
       // console.log(result);
-      var composite_time = new Date(result.record_date);
+      var composite_time = moment(new Date(result.record_date)).tz("America/New_York");
 
       var sessionSummary = {
         dog: dogName, // add
         sessionID: sessionId,
-        date: composite_time.toLocaleDateString("en-US"), // add
-        time: composite_time.toLocaleTimeString("en-US"), // add
+        date: composite_time.format("ddd, MMM Do YYYY"), // add
+        time: composite_time.format("h:mm a"), // add
 		    location: result.location,
         canister: result.canister,
         handler: result.handler,
@@ -167,8 +161,8 @@ var getScentWheelSessionSummary = function(req, res) {
       var sessionSummary = {
         dog: dogName, // add
         sessionID: sessionId,
-        date: composite_time.format("dd, MMM Do YYYY"), // add
-        time: composite_time.format("hA"), // add
+        date: composite_time.format("ddd, MMM Do YYYY"), // add
+        time: composite_time.format("h:mm a"), // add
 		    location: result.location,
         handler: result.handler,
         sample_num: result.sample_number,
