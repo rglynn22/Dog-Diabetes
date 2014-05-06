@@ -1,6 +1,7 @@
 var sessionDB = require('../model/sessionModel.js');
 var scentWheelDB = require('../model/scentWheelModel.js');
 var dogDB = require('../model/dogModel.js');
+var moment = require('moment-timezone');
 
 /*********************************************
   Callbacks for GET requests
@@ -101,11 +102,6 @@ var getSessionSummary = function(req, res) {
     else {
       // console.log(result);
       var composite_time = new Date(result.record_date);
-      var offset = composite_time.getTimezoneOffset()/60;
-      var currentHrs = composite_time.getHours();
-      console.log(offset + " " + currentHrs);
-      if (currentHrs + offset < 24) composite_time.setHours(currentHrs + offset);
-      else (composite_time.setHours(offset + currentHrs - 24));
 
       var sessionSummary = {
         dog: dogName, // add
@@ -166,7 +162,7 @@ var getScentWheelSessionSummary = function(req, res) {
       res.send(500);
     }
     else {
-      var composite_time = new Date(result.record_date);
+      var composite_time = moment(new Date(result.record_date)).tz("America/New_York").format();
 
       var sessionSummary = {
         dog: dogName, // add
