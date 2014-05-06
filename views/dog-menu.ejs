@@ -9,55 +9,58 @@
 	<title>Dog Menu</title>
 </head>
 <body>
-	<h1>Dog Menu</h1>
-	<% if (dogName) { %> <h2> Dog: <%= dogName %></h2> <% } %>
-	<div>
+	<div class="wrapper">
+		<h1>Dog Menu</h1>
+		<% if (dogName) { %> <h2> Dog: <%= dogName %></h2> <% } %>
+		<div>
 
-	<a href="/newsessionform?dogID=<%=dogID%>&dogName=<%=dogName%>"  class="btn btn-lg btn-success">
-		New Canister Session
-	</a>
-	<a href="/newscentwheelsessionform?dogID=<%=dogID%>&dogName=<%=dogName%>" class="btn btn-lg btn-success">
-		New Scent Wheel Session
-	</a>
-	
-	
-	</div>
-	<div>
-	<div>
-	<% if (canisterSessions) {%>
-		<h3> Canister Sessions </h3>
-		<% for (i = 0; i < canisterSessions.length;i++) {%>
-			<div class="past_canister_session button" id="<%=canisterSessions[i].sessionId%>">
-				<a href="/sessionsummary?dogName=<%=dogName%>&id=<%=canisterSessions[i].sessionId%>" class="btn btn-lg btn-primary"><%= canisterSessions[i].date%></a>
+			<a href="/newsessionform?dogID=<%=dogID%>&dogName=<%=dogName%>"  class="btn btn-lg btn-success">
+				New Canister Session
+			</a>
+			<a href="/newscentwheelsessionform?dogID=<%=dogID%>&dogName=<%=dogName%>" class="btn btn-lg btn-success">
+				New Scent Wheel Session
+			</a>
+			
+			
+		</div>
+		<div>
+			<div>
+				<% if (canisterSessions) {%>
+				<h3> Canister Sessions </h3>
+				<% for (i = 0; i < canisterSessions.length;i++) {%>
+				<div class="past_canister_session button" id="<%=canisterSessions[i].sessionId%>">
+					<a href="/sessionsummary?dogName=<%=dogName%>&id=<%=canisterSessions[i].sessionId%>" class="btn btn-lg btn-primary"><%= canisterSessions[i].date%></a>
+				</div>
+				<% } %>
+				<% } %>
+				<% if (canisterSessions.length == 0){%>
+				<h4 style="color:red"> No session on record</h4>
+				<% } %>
 			</div>
-		<% } %>
-	<% } %>
-	<% if (canisterSessions.length == 0){%>
-		<h4 style="color:red"> No session on record</h4>
-	<% } %>
-	</div>
-	<div>
-	<% if (wheelSessions) {%>
-		<h3> Wheel Sessions </h3>
-		<% for (i = 0; i < wheelSessions.length;i++) {%>
-			<div class="past_wheel_session button" id="<%=wheelSessions[i].sessionId%>">
-				<a href="/scentwheelsessionsummary?dogName=<%=dogName%>&id=<%=wheelSessions[i].sessionId%>" class="btn btn-lg btn-primary"><%= wheelSessions[i].date%></a>
+			<div>
+				<% if (wheelSessions) {%>
+				<h3> Wheel Sessions </h3>
+				<% for (i = 0; i < wheelSessions.length;i++) {%>
+				<div class="past_wheel_session button" id="<%=wheelSessions[i].sessionId%>">
+					<a href="/scentwheelsessionsummary?dogName=<%=dogName%>&id=<%=wheelSessions[i].sessionId%>" class="btn btn-lg btn-primary"><%= wheelSessions[i].date%></a>
+				</div>
+				<% } %>
+				<% } %>
+				<% if (wheelSessions.length == 0) {%>
+				<h4 style="color:red"> No session on record </h4>
+				<% } %>
 			</div>
-		<% } %>
-	<% } %>
-	<% if (wheelSessions.length == 0) {%>
-		<h4 style="color:red"> No session on record </h4>
-	<% } %>
+		</div>
+		<div class="nav button">
+			<a href="/" class="btn btn-lg btn-primary">
+				<i class="icon-white icon-arrow-left"></i>
+				Main Menu
+			</a>
+		</div>
+		<div class="push"></div>
 	</div>
+	<div class="footer">
+		Created for UPenn Working Dog Center
 	</div>
-<div class="nav button">
-	<a href="/" class="btn btn-lg btn-primary">
-		<i class="icon-white icon-arrow-left"></i>
-		Main Menu
-	</a>
-</div>
-<div class="footer">
-  Created for UPenn Working Dog Center
-</div>
 </body>
 </html>

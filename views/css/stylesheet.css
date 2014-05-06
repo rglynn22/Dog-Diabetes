@@ -100,6 +100,10 @@ textarea {
   margin-bottom: 1%;
 }
 
+.push {
+  height: 40px;
+}
+
 .footer {
   border-top: 1px solid #e4e4e4;
   background-color: #f2f2f2;

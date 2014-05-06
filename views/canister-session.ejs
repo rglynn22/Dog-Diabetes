@@ -14,38 +14,41 @@
 	<title> Training Session</title>
 </head>
 <body>
-<h1> Training Session</h1>
-<% if (dogName) { %> <h2><%= dogName %></h2> <% } %>
+	<div class="wrapper">
+		<h1> Training Session</h1>
+		<% if (dogName) { %> <h2><%= dogName %></h2> <% } %>
 
-<input type="hidden" id="id" name="id" value="<%=id%>">
+		<input type="hidden" id="id" name="id" value="<%=id%>">
 
-<div>
-	<button id="successbutton" type="button" onclick="recordSuccess()" class="btn btn-success btn-large">
-		Success <br> <span id="success_tally"> 0 </span>
-	</button>
-	<button id="missbutton" type="button" onclick="recordMiss()" class="btn btn-warning btn-large">
-		Miss <br> <span id="miss_tally"> 0 </span>
-	</button>
-	<button id="falsebutton" type="button" onclick="recordFalseAlert()" class="btn btn-danger btn-large">
-		False Alert  <br> <span id="false_tally"> 0 </span>
-	</button>
-</div>
+		<div>
+			<button id="successbutton" type="button" onclick="recordSuccess()" class="btn btn-success btn-large">
+				Success <br> <span id="success_tally"> 0 </span>
+			</button>
+			<button id="missbutton" type="button" onclick="recordMiss()" class="btn btn-warning btn-large">
+				Miss <br> <span id="miss_tally"> 0 </span>
+			</button>
+			<button id="falsebutton" type="button" onclick="recordFalseAlert()" class="btn btn-danger btn-large">
+				False Alert  <br> <span id="false_tally"> 0 </span>
+			</button>
+		</div>
 
-<h2> Total: <span id="trial_tally"> 0 </span></h2> 
+		<h2> Total: <span id="trial_tally"> 0 </span></h2> 
 
-<br>
+		<br>
 
-<div class="session field">
-	<h3>Notes:</h3>
-	<textarea id="notes" name="notes"></textarea> 
-</div>
+		<div class="session field">
+			<h3>Notes:</h3>
+			<textarea id="notes" name="notes"></textarea> 
+		</div>
 
-<br>
-<div id="end-button">
-	<button type="button" class="btn btn-primary btn-large">End Session</button>
-</div>
-<div class="footer">
-  Created for UPenn Working Dog Center
-</div>
+		<br>
+		<div id="end-button">
+			<button type="button" class="btn btn-primary btn-large">End Session</button>
+		</div>
+		<div class="push"></div>
+	</div>
+	<div class="footer">
+		Created for UPenn Working Dog Center
+	</div>
 </body>
 </html>
