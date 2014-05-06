@@ -9,7 +9,7 @@
     "express": "*",
     "ejs": "*",
     "pg": "*",
-    "moment": "^2.6.0"
+    "moment-timezone": "0.0.6"
   },
   "repository": {
     "type": "git",
