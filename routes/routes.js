@@ -162,13 +162,13 @@ var getScentWheelSessionSummary = function(req, res) {
       res.send(500);
     }
     else {
-      var composite_time = moment(new Date(result.record_date)).tz("America/New_York").format();
+      var composite_time = moment(new Date(result.record_date)).tz("America/New_York");
 
       var sessionSummary = {
         dog: dogName, // add
         sessionID: sessionId,
-        date: composite_time.toLocaleDateString(), // add
-        time: composite_time.toLocaleTimeString(), // add
+        date: composite_time.format("dd, MMM Do YYYY"), // add
+        time: composite_time.format("hA"), // add
 		    location: result.location,
         handler: result.handler,
         sample_num: result.sample_number,
