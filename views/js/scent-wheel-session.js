@@ -51,7 +51,10 @@ var reset = function() {
 	tempFalseCount = 0;
 }
 
-var init = function() {
+var init = function(button) {
+	$(button).prop("disabled",true);
+	$("#setup .btn-primary").removeClass("btn-primary").addClass("btn-default");
+
 	if (direction == "c"){
 		trial += 'c';
 	} else {
