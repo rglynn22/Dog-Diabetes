@@ -43,13 +43,13 @@ var endSession = function() {
 	var url = '/addsessionstats';
 	var sessionId =  $('#id').val();
 
-  	var results = {  "sessionId": sessionId,
-                   "duration": duration,
-		 			         "successes": successCount, 
-					         "misses": missCount, 
-					         "false_alerts": falseCount, 
-					         "total_trials": trialCount,
-						 	 "notes": notes	};
+  	var results = { "sessionId": sessionId,
+                    "duration": duration,
+		 			"successes": successCount, 
+					"misses": missCount, 
+					"false_alerts": falseCount, 
+					"total_trials": trialCount,
+					"notes": notes };
 	
 	$.post(url, results, function(data, status) {
       if (status == 'success') {
