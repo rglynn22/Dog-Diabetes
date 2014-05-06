@@ -25,11 +25,12 @@ var success = false;
 var tempFalseCount = 0;
 
 // Trial setup functions  
-var setDir = function(dir){
+var setDir = function(dir, button){
 	direction = dir;
 	if (position != null) {
 		$("#beginsession").prop("disabled",false);
 	}
+	$(button).removeClass("btn-default").addClass("btn-primary");
 }
 
 var setPos = function(pos, button){
@@ -38,6 +39,7 @@ var setPos = function(pos, button){
 		$("#beginsession").prop("disabled",false);
 	}
 	console.log($(button));
+	$(button).removeClass("btn-default").addClass("btn-primary");
 }
 
 var reset = function() {
