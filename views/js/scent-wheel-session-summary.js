@@ -1,7 +1,7 @@
 function parseSession(session){
   console.log(session);
 	if (session == "") {
-		alert("Error retrieving session from the database.")
+		alert("No trial data available for this session")
 	} else {
 		var pos1 = 0;
 		var pos2 = 0;
